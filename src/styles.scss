@@ -4,6 +4,11 @@ $padding-size: $grid-size / 2;
 $bg-color: #0D1616;
 $fg-color: #A0B8BC;
 
+@font-face {
+  font-family: phasmophobia;
+  src: url(./assets/OctoberCrow.ttf) format("truetype");
+}
+
 body {
   background-color: #0D1616;
   color: $fg-color;
@@ -17,8 +22,12 @@ hr {
 
 h2,
 h3 {
+  // font-family: phasmophobia;
+  // margin: 0 0 $grid-size 0;
   margin: 0;
   margin-bottom: $padding-size;
+  // letter-spacing: 1.5pt;
+  // transform: scaleY(1.1);
 }
 
 ul {
