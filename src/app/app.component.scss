@@ -20,3 +20,17 @@
   grid-row-gap: 0px;
   grid-auto-rows: auto;
 }
+
+.ghost:hover {
+  background-color: rgba(black, .1);
+  cursor: pointer;
+}
+
+.ghost {
+  transition: opacity 100ms ease;
+
+  &.disabled {
+    opacity: 0.25;
+    transition: opacity 100ms ease;
+  }
+}
