@@ -40,6 +40,16 @@ export class AppComponent {
       });
     }
 
+    // If all possible evidences are selected, filter out all ghosts that have a forced evidence which was not selected
+    if (this.evidenceSelection.selected.length === this.numberOfEvidence()) {
+      filteredGhosts = filteredGhosts.filter(g => {
+        if (g.forcedEvidence) {
+          return this.evidenceSelection.selected.includes(g.forcedEvidence);
+        }
+        return true;
+      });
+    }
+
     // Filter fast ghosts
     if (this.speedSelection.selected.includes(Speed.FAST)) {
       filteredGhosts = filteredGhosts.filter(g => g.huntSpeed.some(s => s > 1.7));

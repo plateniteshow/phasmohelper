@@ -4,6 +4,8 @@
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  font-family: sans-serif;
+  font-weight: lighter;
 }
 
 .evidence,
@@ -33,4 +35,8 @@
     opacity: 0.25;
     transition: opacity 100ms ease;
   }
+}
+
+.forced-evidence {
+  font-weight: bold;
 }

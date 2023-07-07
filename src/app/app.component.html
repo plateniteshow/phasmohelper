@@ -47,7 +47,7 @@
       <li *ngFor="let ghost of filteredGhosts" class="ghost" [class.disabled]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)">
         <h3>{{ghost.name}}</h3>
         <ul>
-          <li *ngFor="let evidence of ghost.evidences">
+          <li *ngFor="let evidence of ghost.evidences" [class.forced-evidence]="ghost.forcedEvidence && ghost.forcedEvidence === evidence">
             {{evidence}}
           </li>
         </ul>
