@@ -1,4 +1,4 @@
-<aside>
+<aside id="settings">
 
   <!-- Difficulty -->
   <section>
@@ -69,9 +69,10 @@
   </section>
 </aside>
 
-<main>
+<main id="ghosts">
   <!-- Ghosts -->
   <section>
+    <h2>Ghosts</h2>
     <ul class="ghost-container">
       <box *ngFor="let ghost of filteredGhosts" [disabled]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)">
         <h3>{{ghost.name}}</h3>
@@ -85,6 +86,8 @@
   </section>
 </main>
 
-<aside>
-  meta info
+<aside id="meta">
+  <section>
+    <h2>Meta Info</h2>
+  </section>
 </aside>

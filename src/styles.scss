@@ -9,13 +9,6 @@ $fg-color: #A0B8BC;
   src: url(./assets/OctoberCrow.ttf) format("truetype");
 }
 
-body {
-  background-color: #0D1616;
-  color: $fg-color;
-  font-family: sans-serif;
-  border: $border-size solid $fg-color;
-}
-
 hr {
   color: $fg-color;
 }

@@ -16,19 +16,29 @@ $tertiary-color: #2E3535;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   text-transform: uppercase;
-}
-
-aside {
-  padding: $padding-size;
   background-color: #0D1616;
-
-  section {
-    padding: $padding-size;
-  }
+  color: $fg-color;
+  font-family: sans-serif;
+  border: $border-size solid $fg-color;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
 }
 
-main {
+#ghosts {
+  overflow: scroll;
+}
+
+#settings,
+#ghosts,
+#meta {
   padding: $padding-size;
+}
+
+#ghosts {
   border-left: $border-size solid $fg-color;
   border-right: $border-size solid $fg-color;
 }
