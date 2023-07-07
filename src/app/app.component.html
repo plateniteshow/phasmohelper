@@ -10,8 +10,10 @@
     </select>
   </section>
 
+  <hr />
+
   <!-- Evidence -->
-  <section>
+  <section class="evidence-selection">
     <h2>Evidence</h2>
     <ul>
       <li *ngFor="let evidence of Evidence | keyvalue" class="evidence">
@@ -23,8 +25,10 @@
     </ul>
   </section>
 
+  <hr />
+
   <!-- Speed -->
-  <section>
+  <section class="speed-selection">
     <h2>Speed</h2>
     <ul>
       <li *ngFor="let speed of Speed | keyvalue" class="speed">
@@ -36,17 +40,19 @@
     </ul>
   </section>
 
+  <hr />
+
   <!-- Sanity -->
-  <section>
+  <section style="display:none;">
     <h2>Sanity</h2>
     <label>
-      <input type="range" name="sanity" min="0" max="100" step="5" [(ngModel)]="sanitySelection">
+      <input type=" range" name="sanity" min="0" max="100" step="5" [(ngModel)]="sanitySelection">
       {{sanitySelection}}
     </label>
   </section>
 
   <!-- Smudge Timer -->
-  <section>
+  <section style="display:none;">
     <h2>Smudge Timer</h2>
     <p>{{smudgeTimer}} s</p>
     <button type="button" (click)="toggleSmudgeTimer()">
@@ -54,13 +60,14 @@
     </button>
   </section>
 
-  <button type="button" (click)="reset()">Reset</button>
+  <section>
+    <button type="button" class="reset-button" (click)="reset()">Reset</button>
+  </section>
 </aside>
 
 <main>
   <!-- Ghosts -->
   <section>
-    <h2>Ghosts</h2>
     <ul class="ghost-container">
       <li *ngFor="let ghost of filteredGhosts" class="ghost" [class.disabled]="isGhostSelected(ghost)" [class.active]="canHunt(ghost)" (click)="toggleGhostSelection(ghost)">
         <h3>{{ghost.name}}</h3>

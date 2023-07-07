@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+$grid-size: 16px;
+$border-size: $grid-size / 4;
+$padding-size: $grid-size / 2;
+$bg-color: #0D1616;
+$fg-color: #A0B8BC;
+
+body {
+  background-color: #0D1616;
+  color: $fg-color;
+  font-family: sans-serif;
+  border: $border-size solid $fg-color;
+}
+
+hr {
+  color: $fg-color;
+}
+
+h2,
+h3 {
+  margin: 0;
+  margin-bottom: $padding-size;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
