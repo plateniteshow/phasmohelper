@@ -1,91 +1,94 @@
-<aside>
+<crt-wrapper>
 
-  <!-- Difficulty -->
-  <section>
-    <h2>Difficulty</h2>
-    <select [(ngModel)]="difficultySelection" (ngModelChange)="onChangeDifficulty()">
-      <option *ngFor="let difficulty of Difficulty | keyvalue" [value]="difficulty.value">
-        {{difficulty.value}}
-      </option>
-    </select>
-  </section>
+  <aside>
 
-  <hr />
+    <!-- Difficulty -->
+    <section>
+      <h2>Difficulty</h2>
+      <select [(ngModel)]="difficultySelection" (ngModelChange)="onChangeDifficulty()">
+        <option *ngFor="let difficulty of Difficulty | keyvalue" [value]="difficulty.value">
+          {{difficulty.value}}
+        </option>
+      </select>
+    </section>
 
-  <!-- Evidence -->
-  <section class="evidence-selection">
-    <h2>Evidence</h2>
-    <ul>
-      <li *ngFor="let evidence of Evidence | keyvalue">
-        <ph-box class="evidence" (click)="toggleEvidenceSelection(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)">
-          <!-- <label>
+    <hr />
+
+    <!-- Evidence -->
+    <section class="evidence-selection">
+      <h2>Evidence</h2>
+      <ul>
+        <li *ngFor="let evidence of Evidence | keyvalue">
+          <box class="evidence" (click)="toggleEvidenceSelection(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)">
+            <!-- <label>
             <input type="checkbox" [checked]="isEvidenceSelected(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)"> -->
-          <span>{{evidence.value}}</span>
-          <!-- </label> -->
-          <!-- TODO: -->
-          <span style="float:right;">{{isEvidenceSelected(evidence.value) ? 'Y' : 'N'}}</span>
-        </ph-box>
-      </li>
-    </ul>
-  </section>
+            <span>{{evidence.value}}</span>
+            <!-- </label> -->
+            <!-- TODO: -->
+            <span style="float:right;">{{isEvidenceSelected(evidence.value) ? 'Y' : 'N'}}</span>
+          </box>
+        </li>
+      </ul>
+    </section>
 
-  <hr />
+    <hr />
 
-  <!-- Speed -->
-  <section class="speed-selection">
-    <h2>Speed</h2>
-    <ul>
-      <li *ngFor="let speed of Speed | keyvalue" class="speed">
-        <label>
-          <input type="checkbox" (change)="toggleSpeedSelection(speed.value)" [checked]="isSpeedSelected(speed.value)">
-          {{speed.value}}
-        </label>
-      </li>
-    </ul>
-  </section>
+    <!-- Speed -->
+    <section class="speed-selection">
+      <h2>Speed</h2>
+      <ul>
+        <li *ngFor="let speed of Speed | keyvalue" class="speed">
+          <label>
+            <input type="checkbox" (change)="toggleSpeedSelection(speed.value)" [checked]="isSpeedSelected(speed.value)">
+            {{speed.value}}
+          </label>
+        </li>
+      </ul>
+    </section>
 
-  <hr />
+    <hr />
 
-  <!-- Sanity -->
-  <section style="display:none;">
-    <h2>Sanity</h2>
-    <label>
-      <input type=" range" name="sanity" min="0" max="100" step="5" [(ngModel)]="sanitySelection">
-      {{sanitySelection}}
-    </label>
-  </section>
+    <!-- Sanity -->
+    <section style="display:none;">
+      <h2>Sanity</h2>
+      <label>
+        <input type=" range" name="sanity" min="0" max="100" step="5" [(ngModel)]="sanitySelection">
+        {{sanitySelection}}
+      </label>
+    </section>
 
-  <!-- Smudge Timer -->
-  <section style="display:none;">
-    <h2>Smudge Timer</h2>
-    <p>{{smudgeTimer}} s</p>
-    <button type="button" (click)="toggleSmudgeTimer()">
-      {{ isSmugdeTimerRunning ? 'Pause' : 'Stop'}}
-    </button>
-  </section>
+    <!-- Smudge Timer -->
+    <section style="display:none;">
+      <h2>Smudge Timer</h2>
+      <p>{{smudgeTimer}} s</p>
+      <button type="button" (click)="toggleSmudgeTimer()">
+        {{ isSmugdeTimerRunning ? 'Pause' : 'Stop'}}
+      </button>
+    </section>
 
-  <section>
-    <button type="button" class="reset-button" (click)="reset()">Reset</button>
-  </section>
-</aside>
+    <section>
+      <button type="button" class="reset-button" (click)="reset()">Reset</button>
+    </section>
+  </aside>
 
-<main>
-  <!-- Ghosts -->
-  <section>
-    <ul class="ghost-container">
-      <ph-box *ngFor="let ghost of filteredGhosts" [disabled]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)">
-        <h3>{{ghost.name}}</h3>
-        <ul>
-          <li *ngFor="let evidence of ghost.evidences" [class.forced-evidence]="ghost.forcedEvidence && ghost.forcedEvidence === evidence">
-            {{evidence}}
-          </li>
-        </ul>
-      </ph-box>
-    </ul>
-  </section>
-</main>
+  <main>
+    <!-- Ghosts -->
+    <section>
+      <ul class="ghost-container">
+        <box *ngFor="let ghost of filteredGhosts" [disabled]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)">
+          <h3>{{ghost.name}}</h3>
+          <ul>
+            <li *ngFor="let evidence of ghost.evidences" [class.forced-evidence]="ghost.forcedEvidence && ghost.forcedEvidence === evidence">
+              {{evidence}}
+            </li>
+          </ul>
+        </box>
+      </ul>
+    </section>
+  </main>
 
+  <aside>
+    meta info
+  </aside>
 
-<aside>
-  meta info
-</aside>
+</crt-wrapper>

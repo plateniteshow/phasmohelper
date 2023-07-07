@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BoxModule } from './box/box.module';
+
+import { CrtWrapperComponent } from './crt-wrapper/crt-wrapper.component';
+import { BoxComponent } from './box/box.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    BoxModule,
+    BoxComponent,
+    CrtWrapperComponent,
   ],
-  exports: [BoxModule]
+  exports: [
+    BoxComponent,
+    CrtWrapperComponent,
+  ],
 })
 export class SharedModule { }

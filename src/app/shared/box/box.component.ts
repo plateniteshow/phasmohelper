@@ -1,9 +1,10 @@
 import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
-  selector: 'ph-box',
-  templateUrl: './box.component.html',
-  styleUrls: ['./box.component.scss']
+  selector: 'box',
+  template: '<ng-content></ng-content>',
+  styleUrls: ['./box.component.scss'],
+  standalone: true,
 })
 export class BoxComponent {
   @HostBinding('class.disabled')
