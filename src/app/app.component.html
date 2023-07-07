@@ -23,7 +23,9 @@
           <span>{{evidence.value}}</span>
           <!-- </label> -->
           <!-- TODO: -->
-          <span style="float:right;">{{isEvidenceSelected(evidence.value) ? 'Y' : 'N'}}</span>
+          <div style="float:right;" *ngIf="isEvidenceSelected(evidence.value)">
+            <span class="material-symbols-outlined">done</span>
+          </div>
         </box>
       </li>
     </ul>
