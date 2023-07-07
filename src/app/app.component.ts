@@ -17,15 +17,17 @@ export class AppComponent {
   public difficultySelection: Difficulty;
   public evidenceSelection: SelectionModel<Evidence>;
   public ghostSelection: SelectionModel<Ghost>;
+  public sanitySelection: number;
   public speedSelection: SelectionModel<Speed>;
 
   private readonly ghosts = GHOSTS;
 
   constructor() {
-    this.difficultySelection = Difficulty.INSANITY;
+    this.difficultySelection = Difficulty.PROFESSIONAL;
     this.evidenceSelection = new SelectionModel(true);
-    this.speedSelection = new SelectionModel(true);
     this.ghostSelection = new SelectionModel(true);
+    this.sanitySelection = 100;
+    this.speedSelection = new SelectionModel(true);
   }
 
   public get filteredGhosts(): Ghost[] {
@@ -89,6 +91,10 @@ export class AppComponent {
     return this.evidenceSelection.selected.length >= this.numberOfEvidence();
   }
 
+  public canHunt = (ghost: Ghost) => {
+    return this.sanitySelection <= ghost.huntSanity;
+  }
+
   public isEvidenceSelected = (evidence: Evidence): boolean => {
     return this.evidenceSelection.isSelected(evidence);
   }
@@ -117,10 +123,15 @@ export class AppComponent {
 
   public onChangeDifficulty = () => {
     this.evidenceSelection.selected.forEach(s => this.evidenceSelection.deselect(s));
+
+    if (this.difficultySelection === Difficulty.INSANITY) {
+      this.sanitySelection = 75;
+    }
   }
 
   public reset = (): void => {
     this.difficultySelection = Difficulty.PROFESSIONAL;
+    this.sanitySelection = 100;
     this.evidenceSelection.clear();
     this.speedSelection.clear();
     this.ghostSelection.clear();

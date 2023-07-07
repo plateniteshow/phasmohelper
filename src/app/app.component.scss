@@ -31,6 +31,11 @@
 .ghost {
   transition: opacity 100ms ease;
 
+  &.active {
+    background-color: rgb(red, .25);
+    border-color: red;
+  }
+
   &.disabled {
     opacity: 0.25;
     transition: opacity 100ms ease;

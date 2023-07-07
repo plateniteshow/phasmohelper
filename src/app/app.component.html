@@ -36,6 +36,15 @@
     </ul>
   </section>
 
+  <!-- Sanity -->
+  <section>
+    <h2>Sanity</h2>
+    <label>
+      <input type="range" name="sanity" min="0" max="100" step="5" [(ngModel)]="sanitySelection">
+      {{sanitySelection}}
+    </label>
+  </section>
+
   <button type="button" (click)="reset()">Reset</button>
 </aside>
 
@@ -44,7 +53,7 @@
   <section>
     <h2>Ghosts</h2>
     <ul class="ghost-container">
-      <li *ngFor="let ghost of filteredGhosts" class="ghost" [class.disabled]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)">
+      <li *ngFor="let ghost of filteredGhosts" class="ghost" [class.disabled]="isGhostSelected(ghost)" [class.active]="canHunt(ghost)" (click)="toggleGhostSelection(ghost)">
         <h3>{{ghost.name}}</h3>
         <ul>
           <li *ngFor="let evidence of ghost.evidences" [class.forced-evidence]="ghost.forcedEvidence && ghost.forcedEvidence === evidence">
