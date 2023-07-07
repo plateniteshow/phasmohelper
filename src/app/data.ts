@@ -99,7 +99,7 @@ export const GHOSTS: Ghost[] = [
     evidences: [Evidence.FINGERPRINTS, Evidence.FREEZING, Evidence.ORBS],
     forcedEvidence: Evidence.FREEZING,
     huntSanity: 50,
-    huntSpeed: [1.44, 2.7],
+    huntSpeed: [1.44, 1.7, 2.7],
     // does not speed up
   },
   // Goryo
@@ -159,7 +159,7 @@ export const GHOSTS: Ghost[] = [
     evidences: [Evidence.FREEZING, Evidence.SPIRITBOX, Evidence.WRITING],
     forcedEvidence: Evidence.SPIRITBOX,
     huntSanity: 50,
-    huntSpeed: [1.5, 2.25, 3.71],
+    huntSpeed: [1.5, 1.7, 2.25],
   },
   // Deogen
   {
@@ -175,7 +175,7 @@ export const GHOSTS: Ghost[] = [
     name: 'Thaye',
     evidences: [Evidence.DOTS, Evidence.ORBS, Evidence.WRITING],
     huntSanity: 75,
-    huntSpeed: [1.0, 2.75],
+    huntSpeed: [1.0, 1.7, 2.75],
     // does not speed up
   },
 ];
