@@ -17,7 +17,9 @@ export class AppComponent {
   public difficultySelection: Difficulty;
   public evidenceSelection: SelectionModel<Evidence>;
   public ghostSelection: SelectionModel<Ghost>;
+  public isSmugdeTimerRunning: boolean;
   public sanitySelection: number;
+  public smudgeTimer: number;
   public speedSelection: SelectionModel<Speed>;
 
   private readonly ghosts = GHOSTS;
@@ -27,6 +29,8 @@ export class AppComponent {
     this.evidenceSelection = new SelectionModel(true);
     this.ghostSelection = new SelectionModel(true);
     this.sanitySelection = 100;
+    this.smudgeTimer = 0;
+    this.isSmugdeTimerRunning = false;
     this.speedSelection = new SelectionModel(true);
   }
 
@@ -70,6 +74,10 @@ export class AppComponent {
     return filteredGhosts;
   }
 
+  public canHunt = (ghost: Ghost) => {
+    return this.sanitySelection <= ghost.huntSanity;
+  }
+
   public isEvidenceDisabled = (evidence: Evidence) => {
     // If evidence is already selected, do not disable
     if (this.evidenceSelection.selected.includes(evidence)) {
@@ -89,10 +97,6 @@ export class AppComponent {
     }
     // Otherwise, compare number of selected items with max number of allowed evidence (defined by difficulty)
     return this.evidenceSelection.selected.length >= this.numberOfEvidence();
-  }
-
-  public canHunt = (ghost: Ghost) => {
-    return this.sanitySelection <= ghost.huntSanity;
   }
 
   public isEvidenceSelected = (evidence: Evidence): boolean => {
@@ -131,10 +135,33 @@ export class AppComponent {
 
   public reset = (): void => {
     this.difficultySelection = Difficulty.PROFESSIONAL;
-    this.sanitySelection = 100;
     this.evidenceSelection.clear();
-    this.speedSelection.clear();
     this.ghostSelection.clear();
+    this.sanitySelection = 100;
+    this.smudgeTimer = 0;
+    this.isSmugdeTimerRunning = false;
+    this.speedSelection.clear();
+  }
+
+  public toggleSmudgeTimer = (): void => {
+    let smudgeInterval: any;
+    if (this.isSmugdeTimerRunning) {
+      // Stop Smudge Timer
+      this.isSmugdeTimerRunning = false;
+      clearInterval(smudgeInterval);
+    } else {
+      // Start Smudge Timer
+      this.smudgeTimer = 0;
+      this.isSmugdeTimerRunning = true;
+      smudgeInterval = setInterval(() => {
+        this.smudgeTimer += 1;
+        // Automatically Stop Smudge Timer
+        if (this.smudgeTimer === 180) {
+          this.isSmugdeTimerRunning = false;
+          clearInterval(smudgeInterval);
+        }
+      }, 1000);
+    }
   }
 
   public toggleEvidenceSelection = (evidence: Evidence) => {

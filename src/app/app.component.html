@@ -45,6 +45,15 @@
     </label>
   </section>
 
+  <!-- Smudge Timer -->
+  <section>
+    <h2>Smudge Timer</h2>
+    <p>{{smudgeTimer}} s</p>
+    <button type="button" (click)="toggleSmudgeTimer()">
+      {{ isSmugdeTimerRunning ? 'Pause' : 'Stop'}}
+    </button>
+  </section>
+
   <button type="button" (click)="reset()">Reset</button>
 </aside>
 
