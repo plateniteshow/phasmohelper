@@ -1,3 +1,5 @@
+@import '../assets/styles/crt-effect.scss';
+
 $grid-size: 16px;
 $border-size: $grid-size / 4;
 $padding-size: $grid-size / 2;
@@ -6,6 +8,8 @@ $fg-color: #A0B8BC;
 $tertiary-color: #2E3535;
 
 :host {
+  @include crt();
+
   display: grid;
   grid-template-columns: 250px 1fr 250px;
   grid-template-rows: 1fr;
@@ -15,7 +19,6 @@ $tertiary-color: #2E3535;
 }
 
 aside {
-  // border: $border-size solid $fg-color;
   padding: $padding-size;
   background-color: #0D1616;
 
@@ -42,21 +45,6 @@ main {
   li {
     padding: 0;
   }
-
-  // label {
-  //   display: block;
-  //   padding: $padding-size;
-
-  //   &:hover {
-  //     background-color: darken($bg-color, 2);
-  //     transition: background-color 100ms ease;
-  //     cursor: pointer;
-  //   }
-
-  //   input {
-  //     // display: none;
-  //   }
-  // }
 }
 
 .evidence {
@@ -75,10 +63,6 @@ main {
   grid-column-gap: $padding-size;
   grid-row-gap: $padding-size;
   grid-auto-rows: auto;
-}
-
-.forced-evidence {
-  // font-weight: bold;
 }
 
 .reset-button {

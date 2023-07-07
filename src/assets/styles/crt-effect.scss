@@ -1,7 +1,10 @@
 @import './flicker.scss';
 @import './color-separation.scss';
 
-:host {
+@mixin crt {
+  display: block;
+  width: 100%;
+  height: 100%;
   animation: color-separation 1.6s infinite;
 
   &::before {
