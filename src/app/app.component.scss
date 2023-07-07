@@ -11,10 +11,8 @@ $tertiary-color: #2E3535;
   @include crt();
 
   display: grid;
-  grid-template-columns: 300px 1fr 500px;
+  grid-template-columns: 1fr 3fr 2fr;
   grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
   text-transform: uppercase;
   background-color: #0D1616;
   color: $fg-color;
@@ -28,21 +26,19 @@ $tertiary-color: #2E3535;
   overflow: hidden;
 }
 
-#ghosts {
+main {
   overflow: scroll;
-}
-
-#settings,
-#ghosts,
-#meta {
-  padding: $padding-size;
-}
-
-#ghosts {
   border-left: $border-size solid $fg-color;
   border-right: $border-size solid $fg-color;
 }
 
+aside section:not(:last-child) {
+  border-bottom: $border-size solid $fg-color;
+}
+
+section {
+  padding: $padding-size;
+}
 
 .evidence-selection,
 .speed-selection {

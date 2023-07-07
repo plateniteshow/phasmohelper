@@ -1,7 +1,6 @@
-<aside id="settings">
-
+<aside>
   <!-- Difficulty -->
-  <section>
+  <section class="difficulty">
     <h2>Difficulty</h2>
     <select [(ngModel)]="difficultySelection" (ngModelChange)="onChangeDifficulty()">
       <option *ngFor="let difficulty of Difficulty | keyvalue" [value]="difficulty.value">
@@ -10,10 +9,8 @@
     </select>
   </section>
 
-  <hr />
-
   <!-- Evidence -->
-  <section class="evidence-selection">
+  <section>
     <h2>Evidence</h2>
     <ul>
       <li *ngFor="let evidence of Evidence | keyvalue">
@@ -25,10 +22,8 @@
     </ul>
   </section>
 
-  <hr />
-
   <!-- Speed -->
-  <section class="speed-selection">
+  <section class="speed">
     <h2>Speed</h2>
     <ul>
       <li *ngFor="let speed of Speed | keyvalue" class="speed">
@@ -40,34 +35,32 @@
     </ul>
   </section>
 
-  <hr />
-
   <!-- Sanity -->
-  <section style="display:none;">
-    <h2>Sanity</h2>
-    <label>
-      <input type=" range" name="sanity" min="0" max="100" step="5" [(ngModel)]="sanitySelection">
-      {{sanitySelection}}
-    </label>
-  </section>
+  <!-- <section>
+  <h2>Sanity</h2>
+  <label>
+    <input type=" range" name="sanity" min="0" max="100" step="5" [(ngModel)]="sanitySelection">
+    {{sanitySelection}}
+  </label>
+</section> -->
 
   <!-- Smudge Timer -->
-  <section style="display:none;">
-    <h2>Smudge Timer</h2>
-    <p>{{smudgeTimer}} s</p>
-    <button type="button" (click)="toggleSmudgeTimer()">
-      {{ isSmugdeTimerRunning ? 'Pause' : 'Stop'}}
-    </button>
-  </section>
+  <!-- <section>
+  <h2>Smudge Timer</h2>
+  <p>{{smudgeTimer}} s</p>
+  <button type="button" (click)="toggleSmudgeTimer()">
+    {{ isSmugdeTimerRunning ? 'Pause' : 'Stop'}}
+  </button>
+</section> -->
 
   <section>
     <button type="button" class="reset-button" (click)="reset()">Reset</button>
   </section>
 </aside>
 
-<main id="ghosts">
+<main>
   <!-- Ghosts -->
-  <section>
+  <section class="ghosts">
     <h2>Ghosts</h2>
     <ul class="ghost-container">
       <box *ngFor="let ghost of filteredGhosts" [disabled]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)">
@@ -82,21 +75,24 @@
   </section>
 </main>
 
-<aside id="meta">
-  <section>
+<aside>
+  <!-- Tells -->
+  <section class="tells">
     <h2>Tells</h2>
   </section>
-  <hr />
-  <section>
+
+  <!-- Behaviors -->
+  <section class="behaviors">
     <h2>Behaviors</h2>
   </section>
-  <hr />
-  <section>
+
+  <!-- Hunt Sanity -->
+  <section class="hunt-sanity">
     <h2>Hunt Sanity</h2>
   </section>
-  <hr />
-  <section>
+
+  <!-- Hunt Speed -->
+  <section class="hunt-speed">
     <h2>Hunt Speed</h2>
   </section>
-  <hr />
 </aside>
