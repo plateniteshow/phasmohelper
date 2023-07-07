@@ -16,11 +16,15 @@
   <section class="evidence-selection">
     <h2>Evidence</h2>
     <ul>
-      <li *ngFor="let evidence of Evidence | keyvalue" class="evidence">
-        <label>
-          <input type="checkbox" (change)="toggleEvidenceSelection(evidence.value)" [checked]="isEvidenceSelected(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)">
-          {{evidence.value}}
-        </label>
+      <li *ngFor="let evidence of Evidence | keyvalue">
+        <ph-box class="evidence" (click)="toggleEvidenceSelection(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)">
+          <!-- <label>
+            <input type="checkbox" [checked]="isEvidenceSelected(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)"> -->
+          <span>{{evidence.value}}</span>
+          <!-- </label> -->
+          <!-- TODO: -->
+          <span style="float:right;">{{isEvidenceSelected(evidence.value) ? 'Y' : 'N'}}</span>
+        </ph-box>
       </li>
     </ul>
   </section>
@@ -69,14 +73,14 @@
   <!-- Ghosts -->
   <section>
     <ul class="ghost-container">
-      <li *ngFor="let ghost of filteredGhosts" class="ghost" [class.disabled]="isGhostSelected(ghost)" [class.active]="canHunt(ghost)" (click)="toggleGhostSelection(ghost)">
+      <ph-box *ngFor="let ghost of filteredGhosts" [disabled]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)">
         <h3>{{ghost.name}}</h3>
         <ul>
           <li *ngFor="let evidence of ghost.evidences" [class.forced-evidence]="ghost.forcedEvidence && ghost.forcedEvidence === evidence">
             {{evidence}}
           </li>
         </ul>
-      </li>
+      </ph-box>
     </ul>
   </section>
 </main>
