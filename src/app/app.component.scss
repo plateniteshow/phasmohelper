@@ -11,7 +11,7 @@ $tertiary-color: #2E3535;
   @include crt();
 
   display: grid;
-  grid-template-columns: 250px 1fr 250px;
+  grid-template-columns: 300px 1fr 500px;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
