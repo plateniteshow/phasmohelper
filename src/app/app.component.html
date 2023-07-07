@@ -1,0 +1,49 @@
+<aside>
+  <section>
+    <h2>Difficulty</h2>
+    <select>
+      <option>Professional (3 evidences)</option>
+      <option>Nightmare (2 evidences)</option>
+      <option>Insanity (1 evidence)</option>
+      <option>Apocalypse (0 evidence)</option>
+    </select>
+  </section>
+  <section>
+    <h2>Evidence</h2>
+    <ul>
+      <li *ngFor="let evidence of Evidence | keyvalue" class="evidence">
+        <label>
+          <input type="checkbox">
+          {{evidence.value}}
+        </label>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h2>Speed</h2>
+    <ul>
+      <li *ngFor="let speed of Speed | keyvalue" class="speed">
+        <label>
+          <input type="checkbox">
+          {{speed.value}}
+        </label>
+      </li>
+    </ul>
+  </section>
+</aside>
+
+<main>
+  <section>
+    <h2>Ghosts</h2>
+    <ul class="ghost-container">
+      <li *ngFor="let ghost of ghosts" class="ghost">
+        <h3>{{ghost.name}}</h3>
+        <ul>
+          <li *ngFor="let evidence of ghost.evidences">
+            {{evidence}}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</main>
