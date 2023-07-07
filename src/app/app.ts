@@ -1,3 +1,12 @@
+import { FormControl } from "@angular/forms";
+
+export enum Difficulty {
+  PROFESSIONAL = "Professional (3 evidence)",
+  NIGHTMARE = "Nightmare (2 evidence)",
+  INSANITY = "Insanity (1 evidence)",
+  APOCALYPSE = "Apocalypse (0 evidence)",
+}
+
 export enum Evidence {
   DOTS = "DOTs",
   EMF5 = "EMF 5",
@@ -25,3 +34,7 @@ export type Ghost = {
   name: string;
   tells?: string[];
 }
+
+export type ControlsOf<T> = Required<{
+  [K in keyof T]: FormControl<T[K]>;
+}>;

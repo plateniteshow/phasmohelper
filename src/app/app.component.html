@@ -1,13 +1,16 @@
 <aside>
+
+  <!-- Difficulty -->
   <section>
     <h2>Difficulty</h2>
-    <select>
-      <option>Professional (3 evidences)</option>
-      <option>Nightmare (2 evidences)</option>
-      <option>Insanity (1 evidence)</option>
-      <option>Apocalypse (0 evidence)</option>
+    <select [(ngModel)]="difficulty">
+      <option *ngFor="let difficulty of Difficulty | keyvalue" [value]="difficulty.value">
+        {{difficulty.value}}
+      </option>
     </select>
   </section>
+
+  <!-- Evidence -->
   <section>
     <h2>Evidence</h2>
     <ul>
@@ -19,6 +22,8 @@
       </li>
     </ul>
   </section>
+
+  <!-- Speed -->
   <section>
     <h2>Speed</h2>
     <ul>
@@ -33,6 +38,7 @@
 </aside>
 
 <main>
+  <!-- Ghosts -->
   <section>
     <h2>Ghosts</h2>
     <ul class="ghost-container">
