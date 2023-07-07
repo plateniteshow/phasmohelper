@@ -58,6 +58,11 @@ $tertiary-color: #2E3535;
 }
 
 .evidence {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 24px;
+
   label {
     display: block;
     margin: -$padding-size;

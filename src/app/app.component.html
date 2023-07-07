@@ -18,14 +18,8 @@
     <ul>
       <li *ngFor="let evidence of Evidence | keyvalue">
         <box class="evidence" (click)="toggleEvidenceSelection(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)">
-          <!-- <label>
-            <input type="checkbox" [checked]="isEvidenceSelected(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)"> -->
           <span>{{evidence.value}}</span>
-          <!-- </label> -->
-          <!-- TODO: -->
-          <div style="float:right;" *ngIf="isEvidenceSelected(evidence.value)">
-            <span class="material-symbols-outlined">done</span>
-          </div>
+          <span class="material-symbols-outlined" *ngIf="isEvidenceSelected(evidence.value)">done</span>
         </box>
       </li>
     </ul>
@@ -38,10 +32,10 @@
     <h2>Speed</h2>
     <ul>
       <li *ngFor="let speed of Speed | keyvalue" class="speed">
-        <label>
-          <input type="checkbox" (change)="toggleSpeedSelection(speed.value)" [checked]="isSpeedSelected(speed.value)">
-          {{speed.value}}
-        </label>
+        <box class="evidence" (click)="toggleSpeedSelection(speed.value)">
+          <span>{{speed.value}}</span>
+          <span class="material-symbols-outlined" *ngIf="isSpeedSelected(speed.value)">done</span>
+        </box>
       </li>
     </ul>
   </section>
