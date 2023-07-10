@@ -1,10 +1,10 @@
 import { FormControl } from "@angular/forms";
 
 export enum Difficulty {
-  PROFESSIONAL = "Professional (3 evidence)",
-  NIGHTMARE = "Nightmare (2 evidence)",
-  INSANITY = "Insanity (1 evidence)",
-  APOCALYPSE = "Apocalypse (0 evidence)",
+  PROFESSIONAL = "Professional",
+  NIGHTMARE = "Nightmare",
+  INSANITY = "Insanity",
+  APOCALYPSE = "Apocalypse",
 }
 
 export enum Evidence {

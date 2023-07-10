@@ -1,5 +1,8 @@
-<select [(ngModel)]="selectedDifficulty">
-  <option *ngFor="let difficulty of Difficulty | keyvalue" [value]="difficulty.value">
-    {{difficulty.value}}
-  </option>
-</select>
+<label for="difficulty-slider">
+  {{selectedDifficulty}}
+  <input type="range" min="0" max="3" step="1" #difficulty list="difficulties" [(ngModel)]="selectedDifficultyIndex" (ngModelChange)="onChangeDifficulty($event)">
+</label>
+
+<datalist id="difficulties">
+  <option *ngFor="let difficulty of Difficulty | keyvalue; let i=index" [value]="i"></option>
+</datalist>

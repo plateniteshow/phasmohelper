@@ -9,11 +9,13 @@ import { AppService } from 'src/app/app.service';
 })
 export class DifficultySelectionComponent {
   public readonly Difficulty = Difficulty;
+  public selectedDifficultyIndex: number;
 
   constructor(
     private appService: AppService,
   ) {
     this.selectedDifficulty = this.appService.selectedDifficulty;
+    this.selectedDifficultyIndex = Object.values(Difficulty).indexOf(this.selectedDifficulty);
   }
 
   public get selectedDifficulty(): Difficulty {
@@ -22,5 +24,12 @@ export class DifficultySelectionComponent {
 
   public set selectedDifficulty(value: Difficulty) {
     this.appService.selectedDifficulty = value;
+  }
+
+  public onChangeDifficulty = (value: number) => {
+    const difficulty = Object.values(Difficulty).at(value);
+    if (difficulty) {
+      this.appService.selectedDifficulty = difficulty;
+    }
   }
 }
