@@ -78,7 +78,7 @@ export class AppComponent {
     this.ghostSelection.toggle(ghost);
   }
 
-  public hoverGhost = (ghost: Ghost) => {
+  public hoverGhost = (ghost: Ghost | undefined) => {
     this.highlightedGhost = ghost;
   }
 }
