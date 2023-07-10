@@ -27,7 +27,8 @@ $tertiary-color: #2E3535;
 }
 
 main {
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   border-left: $border-size solid $fg-color;
   border-right: $border-size solid $fg-color;
 }
