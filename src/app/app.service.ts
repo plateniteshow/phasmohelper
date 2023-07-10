@@ -74,9 +74,10 @@ export class AppService {
         break;
     }
 
-    if (this.evidenceSelection.selected.includes(Evidence.ORBS)) {
-      numberOfEvidences += 1;
-    }
+    // TODO: Bugged
+    // if (this.evidenceSelection.selected.includes(Evidence.ORBS)) {
+    //   numberOfEvidences += 1;
+    // }
 
     return numberOfEvidences;
   }
@@ -86,11 +87,22 @@ export class AppService {
   }
 
   public set selectedDifficulty(value: Difficulty) {
-    this.evidenceSelection.selected.forEach(s => this.evidenceSelection.deselect(s));
-    if (this.selectedDifficulty === Difficulty.INSANITY) {
-      this.selectedSanity = 75; // TODO: Map from difficulty
-    }
     this._selectedDifficulty = value;
+
+    switch (value) {
+      case Difficulty.INSANITY:
+        this.selectedSanity = 75;
+        break;
+      default:
+        this.selectedSanity = 100;
+        break;
+    }
+
+    this.evidenceSelection.selected.forEach(s => {
+      if (this.evidenceSelection.selected.length > this.numberOfEvidences) {
+        this.evidenceSelection.deselect(s);
+      }
+    });
   }
 
   public get selectedEvidences(): Evidence[] {
@@ -114,14 +126,15 @@ export class AppService {
     if (this.selectedEvidences.includes(evidence)) {
       return false;
     }
-    // Orbs can always be selected (since this is the special ability of the mimimc)
-    if (evidence === Evidence.ORBS) {
-      return false;
-    }
     // If all of the filtered ghosts cannot have this evidence, disable
     if (this.filteredGhosts.map(g => g.evidences).every(e => !e.includes(evidence))) {
       return true;
     }
+    // Orbs can always be selected (since this is the special ability of the mimimc)
+    // TODO: Bugged
+    // if (this.filteredGhosts.some(g => g.name === "The Mimic") && evidence === Evidence.ORBS) {
+    //   return false;
+    // }
     // Otherwise, compare number of selected items with max number of allowed evidence (defined by difficulty)
     return this.selectedEvidences.length >= this.numberOfEvidences;
   }
@@ -129,7 +142,6 @@ export class AppService {
   public reset = (): void => {
     this.selectedDifficulty = Difficulty.INSANITY;
     this.evidenceSelection.clear();
-    this.selectedSanity = 75; // TODO: Map from difficulty
     this.speedSelection.clear();
   }
 }
