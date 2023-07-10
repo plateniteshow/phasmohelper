@@ -1,3 +1,8 @@
+Inspirations:
+- http://aleclownes.com/2017/02/01/crt-display.html
+
+
+
 Metronome
 https://grantjam.es/creating-a-simple-metronome-using-javascript-and-the-web-audio-api/
 

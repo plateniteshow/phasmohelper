@@ -6,7 +6,12 @@ $fg-color: #A0B8BC;
 
 @font-face {
   font-family: phasmophobia;
-  src: url(./assets/OctoberCrow.ttf) format("truetype");
+  src: url(./assets/fonts/OctoberCrow.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: crt;
+  src: url(./assets/fonts/retro_computer_personal_use.ttf) format("truetype");
 }
 
 hr {
