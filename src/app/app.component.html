@@ -45,7 +45,7 @@
   <section class="ghosts">
     <h2>Ghosts</h2>
     <ul class="ghost-container">
-      <box *ngFor="let ghost of filteredGhosts" [disabled]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)">
+      <box *ngFor="let ghost of filteredGhosts" [disabled]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)" (mouseenter)="hoverGhost(ghost)">
         <h3>{{ghost.name}}</h3>
         <ul>
           <li *ngFor="let evidence of ghost.evidences" [class.forced-evidence]="ghost.forcedEvidence && ghost.forcedEvidence === evidence">
@@ -61,20 +61,32 @@
   <!-- Tells -->
   <section class="tells">
     <h2>Tells</h2>
+    <p>
+      {{highlightedGhost?.tells}}
+    </p>
   </section>
 
   <!-- Behaviors -->
   <section class="behaviors">
     <h2>Behaviors</h2>
+    <p>
+      {{highlightedGhost?.behaviors}}
+    </p>
   </section>
 
   <!-- Hunt Sanity -->
   <section class="hunt-sanity">
     <h2>Hunt Sanity</h2>
+    <p>
+      {{highlightedGhost?.huntSanityInfo}}
+    </p>
   </section>
 
   <!-- Hunt Speed -->
   <section class="hunt-speed">
     <h2>Hunt Speed</h2>
+    <p>
+      {{highlightedGhost?.huntSpeedInfo}}
+    </p>
   </section>
 </aside>

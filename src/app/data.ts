@@ -7,6 +7,10 @@ export const GHOSTS: Ghost[] = [
     evidences: [Evidence.EMF5, Evidence.SPIRITBOX, Evidence.WRITING],
     huntSanity: 50,
     huntSpeed: [1.7],
+    tells: ['lorem ipsum'],
+    behaviors: ['lorem ipsum'],
+    huntSanityInfo: 'lorem ipsum',
+    huntSpeedInfo: 'lorem ipsum',
   },
   // Wraith
   {

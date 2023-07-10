@@ -15,6 +15,7 @@ export class AppComponent {
   public readonly Speed = Speed;
 
   public ghostSelection: SelectionModel<Ghost>;
+  public highlightedGhost: Ghost | undefined = undefined;
 
   constructor(
     private appService: AppService,
@@ -75,5 +76,9 @@ export class AppComponent {
   // }
   public toggleGhostSelection = (ghost: Ghost) => {
     this.ghostSelection.toggle(ghost);
+  }
+
+  public hoverGhost = (ghost: Ghost) => {
+    this.highlightedGhost = ghost;
   }
 }
