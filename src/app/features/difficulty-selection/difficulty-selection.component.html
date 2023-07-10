@@ -1,0 +1,5 @@
+<select [(ngModel)]="selectedDifficulty">
+  <option *ngFor="let difficulty of Difficulty | keyvalue" [value]="difficulty.value">
+    {{difficulty.value}}
+  </option>
+</select>

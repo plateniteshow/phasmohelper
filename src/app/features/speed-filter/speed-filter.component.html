@@ -1,0 +1,6 @@
+<ng-container *ngFor="let speed of Speed | keyvalue">
+  <checkbox (click)="toggleSpeedSelection(speed.value)">
+    <span>{{speed.value}}</span>
+    <span class="material-symbols-outlined" *ngIf="isSpeedSelected(speed.value)">done</span>
+  </checkbox>
+</ng-container>

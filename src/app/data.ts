@@ -151,7 +151,7 @@ export const GHOSTS: Ghost[] = [
     name: 'The Mimic',
     evidences: [Evidence.FINGERPRINTS, Evidence.FREEZING, Evidence.SPIRITBOX, Evidence.ORBS],
     huntSanity: 50,
-    huntSpeed: [1.7],
+    huntSpeed: [1.0, 1.7, 2.75],
   },
   // Moroi
   {

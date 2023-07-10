@@ -1,0 +1,12 @@
+@import '../box/box.component.scss';
+
+:host {
+  align-items: center;
+  display: flex;
+  height: 24px;
+  justify-content: space-between;
+
+  &.disabled {
+    pointer-events: none;
+  }
+}

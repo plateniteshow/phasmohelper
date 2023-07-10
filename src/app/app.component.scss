@@ -38,33 +38,9 @@ aside section:not(:last-child) {
 
 section {
   padding: $padding-size;
-}
 
-.evidence-selection,
-.speed-selection {
-  ul {
-    display: flex;
-    flex-flow: column nowrap;
-    gap: $padding-size;
-  }
-
-  li {
-    padding: 0;
-  }
-}
-
-.evidence {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 24px;
-
-  label {
-    display: block;
-    margin: -$padding-size;
-    padding: $padding-size;
-    width: 100%;
-    pointer-events: none;
+  h2 {
+    margin-bottom: $padding-size;
   }
 }
 

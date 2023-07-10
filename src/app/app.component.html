@@ -2,37 +2,19 @@
   <!-- Difficulty -->
   <section class="difficulty">
     <h2>Difficulty</h2>
-    <select [(ngModel)]="difficultySelection" (ngModelChange)="onChangeDifficulty()">
-      <option *ngFor="let difficulty of Difficulty | keyvalue" [value]="difficulty.value">
-        {{difficulty.value}}
-      </option>
-    </select>
+    <difficulty-selection></difficulty-selection>
   </section>
 
   <!-- Evidence -->
   <section>
     <h2>Evidence</h2>
-    <ul>
-      <li *ngFor="let evidence of Evidence | keyvalue">
-        <box class="evidence" (click)="toggleEvidenceSelection(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)">
-          <span>{{evidence.value}}</span>
-          <span class="material-symbols-outlined" *ngIf="isEvidenceSelected(evidence.value)">done</span>
-        </box>
-      </li>
-    </ul>
+    <evidence-filter></evidence-filter>
   </section>
 
   <!-- Speed -->
   <section class="speed">
     <h2>Speed</h2>
-    <ul>
-      <li *ngFor="let speed of Speed | keyvalue" class="speed">
-        <box class="evidence" (click)="toggleSpeedSelection(speed.value)">
-          <span>{{speed.value}}</span>
-          <span class="material-symbols-outlined" *ngIf="isSpeedSelected(speed.value)">done</span>
-        </box>
-      </li>
-    </ul>
+    <speed-filter></speed-filter>
   </section>
 
   <!-- Sanity -->
