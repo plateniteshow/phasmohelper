@@ -45,12 +45,40 @@ section {
   }
 }
 
+.settings {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+
+  .evidence-filter,
+  .speed-filter {
+    flex: 1 1 auto;
+  }
+}
+
+.info {
+  ul {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 16px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .ghost-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: $padding-size;
   grid-row-gap: $padding-size;
   grid-auto-rows: auto;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .reset-button {

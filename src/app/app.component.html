@@ -1,18 +1,19 @@
-<aside>
+<aside class="settings">
+
   <!-- Difficulty -->
-  <section class="difficulty">
+  <section class="difficulty-selection">
     <h2>Difficulty</h2>
     <difficulty-selection></difficulty-selection>
   </section>
 
   <!-- Evidence -->
-  <section>
+  <section class="evidence-filter">
     <h2>Evidence</h2>
     <evidence-filter></evidence-filter>
   </section>
 
   <!-- Speed -->
-  <section class="speed">
+  <section class="speed-filter">
     <h2>Speed</h2>
     <speed-filter></speed-filter>
   </section>
@@ -44,7 +45,7 @@
   <!-- Ghosts -->
   <section class="ghosts">
     <h2>Ghosts</h2>
-    <ul class="ghost-container">
+    <div class="ghost-container">
       <box *ngFor="let ghost of filteredGhosts" [disabled]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)" (mouseenter)="hoverGhost(ghost)" (mouseleave)="hoverGhost(undefined)">
         <h3>{{ghost.name}}</h3>
         <ul>
@@ -53,25 +54,29 @@
           </li>
         </ul>
       </box>
-    </ul>
+    </div>
   </section>
 </main>
 
-<aside>
+<aside class="info">
   <!-- Tells -->
   <section class="tells" *ngIf="highlightedGhost?.tells">
     <h2>Tells</h2>
-    <p>
-      {{highlightedGhost?.tells}}
-    </p>
+    <ul>
+      <li *ngFor="let tell of highlightedGhost?.tells">
+        {{tell}}
+      </li>
+    </ul>
   </section>
 
   <!-- Behaviors -->
   <section class="behaviors" *ngIf="highlightedGhost?.behaviors">
     <h2>Behaviors</h2>
-    <p>
-      {{highlightedGhost?.behaviors}}
-    </p>
+    <ul>
+      <li *ngFor="let behaviors of highlightedGhost?.behaviors">
+        {{behaviors}}
+      </li>
+    </ul>
   </section>
 
   <!-- Hunt Sanity -->
