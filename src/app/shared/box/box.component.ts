@@ -7,11 +7,16 @@ import { Component, HostBinding, Input } from '@angular/core';
   standalone: true,
 })
 export class BoxComponent {
+  @HostBinding('class.active')
+  @Input()
+  public active: boolean;
+
   @HostBinding('class.disabled')
   @Input()
   public disabled: boolean;
 
   constructor() {
+    this.active = false;
     this.disabled = false;
   }
 }

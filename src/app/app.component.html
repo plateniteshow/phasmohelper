@@ -43,55 +43,58 @@
 
 <main>
   <!-- Ghosts -->
-  <section class="ghosts">
+  <section class="ghost-overview">
     <h2>Ghosts</h2>
-    <div class="ghost-container">
-      <box *ngFor="let ghost of filteredGhosts" [disabled]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)" (mouseenter)="hoverGhost(ghost)" (mouseleave)="hoverGhost(undefined)">
-        <h3>{{ghost.name}}</h3>
-        <ul>
-          <li *ngFor="let evidence of ghost.evidences" [class.forced-evidence]="ghost.forcedEvidence && ghost.forcedEvidence === evidence">
-            {{evidence}}
-          </li>
-        </ul>
-      </box>
-    </div>
+    <ghost-overview></ghost-overview>
   </section>
 </main>
 
 <aside class="info">
+
+  <section *ngIf="selectedGhost" class="info__ghost">
+    <box>
+      <h3>{{selectedGhost.name}}</h3>
+      <ul>
+        <li *ngFor="let evidence of selectedGhost.evidences">
+          {{evidence}}
+        </li>
+      </ul>
+    </box>
+  </section>
+
   <!-- Tells -->
-  <section class="tells" *ngIf="highlightedGhost?.tells">
+  <section class="tells" *ngIf="selectedGhost?.tells">
     <h2>Tells</h2>
     <ul>
-      <li *ngFor="let tell of highlightedGhost?.tells">
+      <li *ngFor="let tell of selectedGhost?.tells">
         {{tell}}
       </li>
     </ul>
   </section>
 
   <!-- Behaviors -->
-  <section class="behaviors" *ngIf="highlightedGhost?.behaviors">
+  <section class="behaviors" *ngIf="selectedGhost?.behaviors">
     <h2>Behaviors</h2>
     <ul>
-      <li *ngFor="let behaviors of highlightedGhost?.behaviors">
+      <li *ngFor="let behaviors of selectedGhost?.behaviors">
         {{behaviors}}
       </li>
     </ul>
   </section>
 
   <!-- Hunt Sanity -->
-  <section class="hunt-sanity" *ngIf="highlightedGhost?.huntSanityInfo">
+  <section class="hunt-sanity" *ngIf="selectedGhost?.huntSanityInfo">
     <h2>Hunt Sanity</h2>
     <p>
-      {{highlightedGhost?.huntSanityInfo}}
+      {{selectedGhost.huntSanityInfo}}
     </p>
   </section>
 
   <!-- Hunt Speed -->
-  <section class="hunt-speed" *ngIf="highlightedGhost?.huntSpeedInfo">
+  <section class="hunt-speed" *ngIf="selectedGhost?.huntSpeedInfo">
     <h2>Hunt Speed</h2>
     <p>
-      {{highlightedGhost?.huntSpeedInfo}}
+      {{selectedGhost.huntSpeedInfo}}
     </p>
   </section>
 </aside>

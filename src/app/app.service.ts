@@ -8,6 +8,7 @@ import { GHOSTS } from './data';
 })
 export class AppService {
   public readonly evidenceSelection: SelectionModel<Evidence>;
+  public readonly ghostSelection: SelectionModel<Ghost>;
   public readonly speedSelection: SelectionModel<Speed>;
 
   private readonly ghosts = GHOSTS;
@@ -17,6 +18,7 @@ export class AppService {
 
   constructor() {
     this.evidenceSelection = new SelectionModel(true);
+    this.ghostSelection = new SelectionModel(false);
     this.speedSelection = new SelectionModel(true);
   }
 
@@ -142,6 +144,7 @@ export class AppService {
   public reset = (): void => {
     this.selectedDifficulty = Difficulty.INSANITY;
     this.evidenceSelection.clear();
+    this.ghostSelection.clear();
     this.speedSelection.clear();
   }
 }

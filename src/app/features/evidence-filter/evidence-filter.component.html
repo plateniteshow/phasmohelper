@@ -1,6 +1,5 @@
 <ng-container *ngFor="let evidence of Evidence | keyvalue">
-  <checkbox (click)="toggleEvidenceSelection(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)">
-    <span>{{evidence.value}}</span>
-    <span class="material-symbols-outlined" *ngIf="isEvidenceSelected(evidence.value)">done</span>
-  </checkbox>
+  <box (click)="toggleEvidenceSelection(evidence.value)" [active]="isEvidenceSelected(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)">
+    {{evidence.value}}
+  </box>
 </ng-container>

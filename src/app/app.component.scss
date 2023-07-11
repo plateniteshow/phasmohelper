@@ -58,26 +58,24 @@ section {
 
 .info {
   ul {
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 16px;
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
-}
 
-.ghost-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: $padding-size;
-  grid-row-gap: $padding-size;
-  grid-auto-rows: auto;
+  &__ghost {
+    pointer-events: none;
+  }
 
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  .tells,
+  .behaviors,
+  .hunt-sanity,
+  .hunt-speed {
+    ul {
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 16px;
+    }
   }
 }
 

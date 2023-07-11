@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 
-import { GHOSTS } from './data';
 import { Difficulty, Evidence, Ghost, Speed } from './app';
 import { AppService } from './app.service';
 
@@ -14,22 +13,19 @@ export class AppComponent {
   public readonly Evidence = Evidence;
   public readonly Speed = Speed;
 
-  public ghostSelection: SelectionModel<Ghost>;
-  public highlightedGhost: Ghost | undefined = undefined;
-
   constructor(
     private appService: AppService,
   ) {
-    this.ghostSelection = new SelectionModel(true);
     // this.smudgeTimer = 0;
     // this.isSmugdeTimerRunning = false;
   }
 
+  public get selectedGhost(): Ghost {
+    return this.appService.ghostSelection.selected[0];
+  }
+
   // public isSmugdeTimerRunning: boolean;
   // public smudgeTimer: number;
-  public get filteredGhosts(): Ghost[] {
-    return this.appService.filteredGhosts;
-  }
 
   public get selectedDifficulty(): Difficulty {
     return this.appService.selectedDifficulty;
@@ -43,15 +39,10 @@ export class AppComponent {
     return this.appService.selectedSanity <= ghost.huntSanity;
   }
 
-  public isGhostSelected = (ghost: Ghost): boolean => {
-    return this.ghostSelection.isSelected(ghost);
-  }
-
   public reset = (): void => {
     // this.isSmugdeTimerRunning = false;
     // this.smudgeTimer = 0;
     this.appService.reset();
-    this.ghostSelection.clear();
   }
 
   // public toggleSmudgeTimer = (): void => {
@@ -74,11 +65,4 @@ export class AppComponent {
   //     }, 1000);
   //   }
   // }
-  public toggleGhostSelection = (ghost: Ghost) => {
-    this.ghostSelection.toggle(ghost);
-  }
-
-  public hoverGhost = (ghost: Ghost | undefined) => {
-    this.highlightedGhost = ghost;
-  }
 }
