@@ -83,7 +83,6 @@ export class GhostComponent implements OnDestroy {
     if (evidences.length === 0) {
       this.ghostService.ghosts = GHOSTS;
     } else {
-      console.log('filter', evidences);
       this.ghostService.ghosts = GHOSTS.filter(g => evidences.every(e => g.evidences.includes(e)));
     }
   }
