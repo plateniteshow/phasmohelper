@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EvidenceFilterComponent } from './evidence-filter.component';
+import { GhostComponent } from './ghost.component';
 import { BoxComponent } from 'src/app/shared/box/box.component';
 
 @NgModule({
   declarations: [
-    EvidenceFilterComponent,
+    GhostComponent
   ],
   imports: [
     CommonModule,
     BoxComponent,
   ],
   exports: [
-    EvidenceFilterComponent,
-  ]
+    GhostComponent,
+  ],
 })
-export class EvidenceFilterModule { }
+export class GhostModule { }

@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { SelectionModel } from '@angular/cdk/collections';
 
-import { Difficulty, Evidence, Ghost, Speed } from './app';
+import { Evidence, Ghost, Speed } from './app';
 import { AppService } from './app.service';
+import { DifficultyService } from './features/difficulty/difficulty.service';
+import { GhostService } from './features/ghost/ghost.service';
+import { Observable } from 'rxjs';
+import { EvidenceService } from './features/evidence/evidence.service';
 
 @Component({
   selector: 'app-root',
@@ -15,24 +18,19 @@ export class AppComponent {
 
   constructor(
     private appService: AppService,
+    private difficultyService: DifficultyService,
+    private evidenceService: EvidenceService,
+    private ghostService: GhostService,
   ) {
     // this.smudgeTimer = 0;
     // this.isSmugdeTimerRunning = false;
   }
 
-  public get selectedGhost(): Ghost {
-    return this.appService.ghostSelection.selected[0];
-  }
-
   // public isSmugdeTimerRunning: boolean;
   // public smudgeTimer: number;
 
-  public get selectedDifficulty(): Difficulty {
-    return this.appService.selectedDifficulty;
-  }
-
-  public set selectedDifficulty(value: Difficulty) {
-    this.appService.selectedDifficulty = value;
+  public get selectedGhost$(): Observable<Ghost | undefined> {
+    return this.ghostService.selectedGhost$;
   }
 
   public canHunt = (ghost: Ghost) => {
@@ -43,6 +41,8 @@ export class AppComponent {
     // this.isSmugdeTimerRunning = false;
     // this.smudgeTimer = 0;
     this.appService.reset();
+    this.difficultyService.reset();
+    this.evidenceService.reset();
   }
 
   // public toggleSmudgeTimer = (): void => {

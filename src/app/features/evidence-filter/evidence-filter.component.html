@@ -1,5 +1,0 @@
-<ng-container *ngFor="let evidence of Evidence | keyvalue">
-  <box (click)="toggleEvidenceSelection(evidence.value)" [active]="isEvidenceSelected(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)">
-    {{evidence.value}}
-  </box>
-</ng-container>

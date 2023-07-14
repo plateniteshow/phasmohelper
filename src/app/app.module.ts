@@ -8,10 +8,10 @@ import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/shared.module';
 
-import { EvidenceFilterModule } from './features/evidence-filter/evidence-filter.module';
+import { EvidenceModule } from './features/evidence/evidence.module';
 import { SpeedFilterModule } from './features/speed-filter/speed-filter.module';
-import { DifficultySelectionModule } from './features/difficulty-selection/difficulty-selection.module';
-import { GhostOverviewModule } from './features/ghost-overview/ghost-overview.module';
+import { GhostModule } from './features/ghost/ghost.module';
+import { DifficultyModule } from './features/difficulty/difficulty.module';
 
 @NgModule({
   declarations: [
@@ -21,10 +21,10 @@ import { GhostOverviewModule } from './features/ghost-overview/ghost-overview.mo
     AppRoutingModule,
     BrowserModule,
     CommonModule,
-    DifficultySelectionModule,
-    EvidenceFilterModule,
+    DifficultyModule,
+    EvidenceModule,
     FormsModule,
-    GhostOverviewModule,
+    GhostModule,
     ReactiveFormsModule,
     SharedModule,
     SpeedFilterModule,

@@ -1,15 +1,15 @@
 <aside class="settings">
 
   <!-- Difficulty -->
-  <section class="difficulty-selection">
+  <section class="difficulty">
     <h2>Difficulty</h2>
-    <difficulty-selection></difficulty-selection>
+    <difficulty></difficulty>
   </section>
 
   <!-- Evidence -->
-  <section class="evidence-filter">
+  <section class="evidence">
     <h2>Evidence</h2>
-    <evidence-filter></evidence-filter>
+    <evidence></evidence>
   </section>
 
   <!-- Speed -->
@@ -43,15 +43,15 @@
 
 <main>
   <!-- Ghosts -->
-  <section class="ghost-overview">
+  <section class="ghost">
     <h2>Ghosts</h2>
-    <ghost-overview></ghost-overview>
+    <ghost></ghost>
   </section>
 </main>
 
-<aside class="info">
+<aside class="info" *ngIf="selectedGhost$ | async; let selectedGhost">
 
-  <section *ngIf="selectedGhost" class="info__ghost">
+  <section class="info__ghost">
     <box>
       <h3>{{selectedGhost.name}}</h3>
       <ul>
@@ -63,27 +63,27 @@
   </section>
 
   <!-- Tells -->
-  <section class="tells" *ngIf="selectedGhost?.tells">
+  <section class="tells" *ngIf="selectedGhost.tells">
     <h2>Tells</h2>
     <ul>
-      <li *ngFor="let tell of selectedGhost?.tells">
+      <li *ngFor="let tell of selectedGhost.tells">
         {{tell}}
       </li>
     </ul>
   </section>
 
   <!-- Behaviors -->
-  <section class="behaviors" *ngIf="selectedGhost?.behaviors">
+  <section class="behaviors" *ngIf="selectedGhost.behaviors">
     <h2>Behaviors</h2>
     <ul>
-      <li *ngFor="let behaviors of selectedGhost?.behaviors">
+      <li *ngFor="let behaviors of selectedGhost.behaviors">
         {{behaviors}}
       </li>
     </ul>
   </section>
 
   <!-- Hunt Sanity -->
-  <section class="hunt-sanity" *ngIf="selectedGhost?.huntSanityInfo">
+  <section class="hunt-sanity" *ngIf="selectedGhost.huntSanityInfo">
     <h2>Hunt Sanity</h2>
     <p>
       {{selectedGhost.huntSanityInfo}}
@@ -91,7 +91,7 @@
   </section>
 
   <!-- Hunt Speed -->
-  <section class="hunt-speed" *ngIf="selectedGhost?.huntSpeedInfo">
+  <section class="hunt-speed" *ngIf="selectedGhost.huntSpeedInfo">
     <h2>Hunt Speed</h2>
     <p>
       {{selectedGhost.huntSpeedInfo}}

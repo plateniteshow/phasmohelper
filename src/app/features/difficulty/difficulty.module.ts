@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DifficultySelectionComponent } from './difficulty-selection.component';
+import { DifficultyComponent } from './difficulty.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    DifficultySelectionComponent,
+    DifficultyComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
   ],
   exports: [
-    DifficultySelectionComponent,
+    DifficultyComponent,
   ]
 })
-export class DifficultySelectionModule { }
+export class DifficultyModule { }
