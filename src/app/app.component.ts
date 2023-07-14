@@ -18,9 +18,9 @@ export class AppComponent {
 
   constructor(
     private appService: AppService,
-    private difficultyService: DifficultyService,
-    private evidenceService: EvidenceService,
     private ghostService: GhostService,
+    private evidenceService: EvidenceService,
+    private difficultyService: DifficultyService,
   ) {
     // this.smudgeTimer = 0;
     // this.isSmugdeTimerRunning = false;
