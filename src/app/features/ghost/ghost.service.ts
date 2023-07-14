@@ -34,7 +34,7 @@ export class GhostService {
     this.selectedGhostSource.next(ghost);
   }
 
-  // public reset = (): void => {
-  //   this.ghosts = GHOSTS;
-  // }
+  public reset = (): void => {
+    this.selectedGhost = undefined;
+  }
 }

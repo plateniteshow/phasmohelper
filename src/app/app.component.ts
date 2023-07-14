@@ -43,6 +43,7 @@ export class AppComponent {
     this.appService.reset();
     this.difficultyService.reset();
     this.evidenceService.reset();
+    this.ghostService.reset();
   }
 
   // public toggleSmudgeTimer = (): void => {
