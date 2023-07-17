@@ -89,8 +89,8 @@ section {
   outline: none;
   padding: $padding-size;
   text-transform: uppercase;
-  width: 100%;
   transition: background-color 100ms ease;
+  width: 100%;
 
   &:hover {
     background-color: darken($fg-color, 10);

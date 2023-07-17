@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/shared.module';
 
-import { EvidenceModule } from './features/evidence/evidence.module';
-import { SpeedModule } from './features/speed/speed.module';
-import { GhostModule } from './features/ghost/ghost.module';
 import { DifficultyModule } from './features/difficulty/difficulty.module';
+import { EvidenceModule } from './features/evidence/evidence.module';
+import { GhostModule } from './features/ghost/ghost.module';
+import { SmudgeTimerModule } from './features/smudge-timer/smudge-timer.module';
+import { SpeedModule } from './features/speed/speed.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DifficultyModule } from './features/difficulty/difficulty.module';
     GhostModule,
     ReactiveFormsModule,
     SharedModule,
+    SmudgeTimerModule,
     SpeedModule,
   ],
   providers: [],

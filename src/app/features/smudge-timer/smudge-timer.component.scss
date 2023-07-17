@@ -1,0 +1,22 @@
+$bg-color: #0D1616;
+$fg-color: #A0B8BC;
+
+.smudge-timer-button {
+  background-color: transparent;
+  border: 2px solid $fg-color;
+  color: $fg-color;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  outline: none;
+  padding: 8px;
+  text-transform: uppercase;
+  transition: background-color 100ms ease;
+  width: 100%;
+
+  &:hover {
+    background-color: lighten($bg-color, 10);
+    transition: background-color 100ms ease;
+    cursor: pointer;
+  }
+}
