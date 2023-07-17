@@ -1,9 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Evidence, Ghost } from 'src/app/app';
+import { Evidence, Ghost, Speed } from 'src/app/app';
 import { GhostService } from './ghost.service';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, combineLatest } from 'rxjs';
 import { EvidenceService } from '../evidence/evidence.service';
 import { GHOSTS } from 'src/app/data';
+import { SpeedService } from '../speed/speed.service';
 
 @Component({
   selector: 'ghost',
@@ -15,11 +16,17 @@ export class GhostComponent implements OnDestroy {
 
   constructor(
     private evidenceService: EvidenceService,
+    private speedService: SpeedService,
     private ghostService: GhostService,
   ) {
-    this.evidences$ = this.evidenceService.evidence$.subscribe(evidences => {
-      this.filterGhosts(evidences);
-    });
+    this.evidences$ =
+      combineLatest([
+        this.evidenceService.evidence$,
+        this.speedService.speed$
+      ]).subscribe(([evidences, speeds]) => {
+        this.filterGhosts(evidences, speeds);
+      });
+
   }
 
   /** @deprecated move to GhostComponent */
@@ -79,11 +86,19 @@ export class GhostComponent implements OnDestroy {
     }
   }
 
-  private filterGhosts = (evidences: Evidence[]) => {
-    if (evidences.length === 0) {
-      this.ghostService.ghosts = GHOSTS;
-    } else {
-      this.ghostService.ghosts = GHOSTS.filter(g => evidences.every(e => g.evidences.includes(e)));
+  private filterGhosts = (evidences: Evidence[], speeds: Speed[]) => {
+    let ghosts: Ghost[] = GHOSTS;
+
+    // Filter by evidences
+    if (evidences.length > 0) {
+      ghosts = ghosts.filter(g => evidences.every(e => g.evidences.includes(e)));
     }
+
+    // Filter by speed
+    if (speeds.length > 0) {
+      ghosts = ghosts.filter(g => speeds.every(s => g.speeds.includes(s)));
+    }
+
+    this.ghostService.ghosts = ghosts;
   }
 }

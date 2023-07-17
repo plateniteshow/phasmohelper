@@ -6,8 +6,9 @@ import { Evidence } from 'src/app/app';
   providedIn: 'root'
 })
 export class EvidenceService {
-  private evidenceSource: BehaviorSubject<Evidence[]>;
   public readonly evidence$: Observable<Evidence[]>;
+
+  private evidenceSource: BehaviorSubject<Evidence[]>;
 
   constructor() {
     this.evidenceSource = new BehaviorSubject<Evidence[]>([]);

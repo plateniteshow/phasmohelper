@@ -26,6 +26,7 @@ export enum Speed {
 export type Ghost = {
   behaviors?: string[];
   evidences: Evidence[];
+  speeds: Speed[];
   forcedEvidence?: Evidence;
   huntSanity: number;
   huntSanityInfo?: string;

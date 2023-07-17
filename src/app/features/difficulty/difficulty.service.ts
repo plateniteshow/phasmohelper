@@ -12,7 +12,7 @@ export class DifficultyService {
   private difficultySource: BehaviorSubject<Difficulty>;
 
   constructor() {
-    this.difficultySource = new BehaviorSubject<Difficulty>(Difficulty.INSANITY);
+    this.difficultySource = new BehaviorSubject<Difficulty>(Difficulty.PROFESSIONAL);
     this.difficulty$ = this.difficultySource.asObservable();
   }
 
@@ -25,6 +25,6 @@ export class DifficultyService {
   }
 
   public reset = (): void => {
-    this.difficulty = Difficulty.INSANITY;
+    this.difficulty = Difficulty.PROFESSIONAL;
   }
 }

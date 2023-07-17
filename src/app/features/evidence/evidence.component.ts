@@ -12,7 +12,6 @@ import { EvidenceService } from './evidence.service';
 })
 export class EvidenceComponent implements OnInit {
   public readonly Evidence = Evidence;
-
   public readonly evidenceSelection: SelectionModel<Evidence>;
 
   private numberOfEvidences: number;
@@ -85,5 +84,4 @@ export class EvidenceComponent implements OnInit {
       });
     });
   }
-
 }

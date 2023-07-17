@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
 import { EvidenceModule } from './features/evidence/evidence.module';
-import { SpeedFilterModule } from './features/speed-filter/speed-filter.module';
+import { SpeedModule } from './features/speed/speed.module';
 import { GhostModule } from './features/ghost/ghost.module';
 import { DifficultyModule } from './features/difficulty/difficulty.module';
 
@@ -27,7 +27,7 @@ import { DifficultyModule } from './features/difficulty/difficulty.module';
     GhostModule,
     ReactiveFormsModule,
     SharedModule,
-    SpeedFilterModule,
+    SpeedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

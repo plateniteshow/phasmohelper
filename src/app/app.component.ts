@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-
-import { Evidence, Ghost, Speed } from './app';
-import { AppService } from './app.service';
-import { DifficultyService } from './features/difficulty/difficulty.service';
-import { GhostService } from './features/ghost/ghost.service';
 import { Observable } from 'rxjs';
+
+import { DifficultyService } from './features/difficulty/difficulty.service';
+import { Evidence, Ghost, Speed } from './app';
 import { EvidenceService } from './features/evidence/evidence.service';
+import { GhostService } from './features/ghost/ghost.service';
+import { SpeedService } from './features/speed/speed.service';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +17,10 @@ export class AppComponent {
   public readonly Speed = Speed;
 
   constructor(
-    private appService: AppService,
-    private ghostService: GhostService,
-    private evidenceService: EvidenceService,
     private difficultyService: DifficultyService,
+    private evidenceService: EvidenceService,
+    private ghostService: GhostService,
+    private speedService: SpeedService,
   ) {
     // this.smudgeTimer = 0;
     // this.isSmugdeTimerRunning = false;
@@ -33,17 +33,13 @@ export class AppComponent {
     return this.ghostService.selectedGhost$;
   }
 
-  public canHunt = (ghost: Ghost) => {
-    return this.appService.selectedSanity <= ghost.huntSanity;
-  }
-
   public reset = (): void => {
     // this.isSmugdeTimerRunning = false;
     // this.smudgeTimer = 0;
-    this.appService.reset();
     this.difficultyService.reset();
     this.evidenceService.reset();
     this.ghostService.reset();
+    this.speedService.reset();
   }
 
   // public toggleSmudgeTimer = (): void => {

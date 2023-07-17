@@ -3,18 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { BoxComponent } from 'src/app/shared/box/box.component';
 
-import { SpeedFilterComponent } from './speed-filter.component';
+import { SpeedComponent } from './speed.component';
 
 @NgModule({
   declarations: [
-    SpeedFilterComponent,
+    SpeedComponent,
   ],
   imports: [
     CommonModule,
     BoxComponent,
   ],
   exports: [
-    SpeedFilterComponent,
+    SpeedComponent,
   ],
 })
-export class SpeedFilterModule { }
+export class SpeedModule { }
