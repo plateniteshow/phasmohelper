@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
 
+import { AppService } from 'src/app/app.service';
 import { Speed } from 'src/app/app';
 
 import { SpeedService } from './speed.service';
-import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'speed',
@@ -15,12 +16,14 @@ export class SpeedComponent {
   public readonly speedSelection: SelectionModel<Speed>;
 
   constructor(
+    private appService: AppService,
     private speedService: SpeedService,
   ) {
     this.speedSelection = new SelectionModel(true);
 
-    this.speedService.speed$.subscribe((speeds) => {
-      this.speedSelection.setSelection(...speeds);
+    this.appService.reset$.subscribe(() => {
+      this.speedSelection.clear();
+      this.speedService.speeds = [];
     });
   }
 

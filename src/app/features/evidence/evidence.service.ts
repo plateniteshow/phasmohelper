@@ -18,8 +18,4 @@ export class EvidenceService {
   public set evidences(value: Evidence[]) {
     this.evidenceSource.next(value);
   }
-
-  public reset = (): void => {
-    this.evidences = [];
-  }
 }

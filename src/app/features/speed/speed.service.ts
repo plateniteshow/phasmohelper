@@ -18,8 +18,4 @@ export class SpeedService {
   public set speeds(value: Speed[]) {
     this.speedSource.next(value);
   }
-
-  public reset = (): void => {
-    this.speeds = [];
-  }
 }

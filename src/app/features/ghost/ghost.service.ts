@@ -24,6 +24,10 @@ export class GhostService {
 
   public set ghosts(ghosts: Ghost[]) {
     this.ghostsSource.next(ghosts);
+
+    if (this.selectedGhost && !ghosts.includes(this.selectedGhost)) {
+      this.selectedGhost = undefined;
+    }
   }
 
   public get selectedGhost(): Ghost | undefined {
@@ -32,9 +36,5 @@ export class GhostService {
 
   public set selectedGhost(ghost: Ghost | undefined) {
     this.selectedGhostSource.next(ghost);
-  }
-
-  public reset = (): void => {
-    this.selectedGhost = undefined;
   }
 }

@@ -5,6 +5,7 @@ import { Observable, Subscription, combineLatest } from 'rxjs';
 import { EvidenceService } from '../evidence/evidence.service';
 import { GHOSTS } from 'src/app/data';
 import { SpeedService } from '../speed/speed.service';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'ghost',
@@ -15,6 +16,7 @@ export class GhostComponent implements OnDestroy {
   private evidences$: Subscription;
 
   constructor(
+    private appService: AppService,
     private evidenceService: EvidenceService,
     private speedService: SpeedService,
     private ghostService: GhostService,
@@ -27,6 +29,9 @@ export class GhostComponent implements OnDestroy {
         this.filterGhosts(evidences, speeds);
       });
 
+    this.appService.reset$.subscribe(() => {
+      this.ghostService.selectedGhost = undefined;
+    });
   }
 
   /** @deprecated move to GhostComponent */

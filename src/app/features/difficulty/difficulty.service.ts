@@ -1,30 +1,26 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 
-import { Difficulty } from "src/app/app";
+import { NumberOfEvidences } from "./difficulty";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DifficultyService {
-  public readonly difficulty$: Observable<Difficulty>;
+  public readonly numberOfEvidences$: Observable<NumberOfEvidences>;
 
-  private difficultySource: BehaviorSubject<Difficulty>;
+  private numberOfEvidencesSource: BehaviorSubject<NumberOfEvidences>;
 
   constructor() {
-    this.difficultySource = new BehaviorSubject<Difficulty>(Difficulty.PROFESSIONAL);
-    this.difficulty$ = this.difficultySource.asObservable();
+    this.numberOfEvidencesSource = new BehaviorSubject<NumberOfEvidences>(3);
+    this.numberOfEvidences$ = this.numberOfEvidencesSource.asObservable();
   }
 
-  public get difficulty(): Difficulty {
-    return this.difficultySource.value;
+  public get numberOfEvidences(): NumberOfEvidences {
+    return this.numberOfEvidencesSource.value;
   }
 
-  public set difficulty(value: Difficulty) {
-    this.difficultySource.next(value);
-  }
-
-  public reset = (): void => {
-    this.difficulty = Difficulty.PROFESSIONAL;
+  public set numberOfEvidences(value: NumberOfEvidences) {
+    this.numberOfEvidencesSource.next(value);
   }
 }
