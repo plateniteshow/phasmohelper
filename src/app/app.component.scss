@@ -33,10 +33,6 @@ main {
   border-right: $border-size solid $fg-color;
 }
 
-aside section:not(:last-child) {
-  border-bottom: $border-size solid $fg-color;
-}
-
 section {
   padding: $padding-size;
 
@@ -45,15 +41,27 @@ section {
   }
 }
 
-.settings {
+// Grid Containers
+
+aside.settings {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
 
-  .evidence,
-  .speed {
-    flex: 1 1 auto;
+  section:not(:last-child) {
+    border-bottom: $border-size solid $fg-color;
   }
+}
+
+aside.info {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.evidence,
+.speed {
+  flex: 1 1 auto;
 }
 
 .info {
@@ -71,6 +79,8 @@ section {
   .behaviors,
   .hunt-sanity,
   .hunt-speed {
+    margin-bottom: $padding-size * 2;
+
     ul {
       display: flex;
       flex-flow: column nowrap;
@@ -78,6 +88,14 @@ section {
     }
   }
 }
+
+.smudge-timer {
+  border-top: $border-size solid $fg-color;
+  margin-top: auto;
+  flex: 0 1 25%;
+}
+
+///
 
 .reset-button {
   background-color: $fg-color;

@@ -18,12 +18,6 @@
     <speed></speed>
   </section>
 
-  <!-- Smudge Timer -->
-  <section class="smugde-timer">
-    <h2>Smudge-Timer</h2>
-    <smudge-timer></smudge-timer>
-  </section>
-
   <!-- Sanity -->
   <!-- <section>
   <h2>Sanity</h2>
@@ -55,52 +49,63 @@
   </section>
 </main>
 
-<aside class="info" *ngIf="selectedGhost$ | async; let selectedGhost">
+<aside class="info">
 
-  <section class="info__ghost">
-    <box>
-      <h3>{{selectedGhost.name}}</h3>
+  <section *ngIf="selectedGhost$ | async; let selectedGhost" style="padding: 0;">
+    <section class="info__ghost">
+      <h2>Selected Ghost</h2>
+      <box>
+        <h3>{{selectedGhost.name}}</h3>
+        <ul>
+          <li *ngFor="let evidence of selectedGhost.evidences">
+            {{evidence}}
+          </li>
+        </ul>
+      </box>
+    </section>
+
+    <!-- Tells -->
+    <section class="tells" *ngIf="selectedGhost.tells">
+      <h2>Tells</h2>
       <ul>
-        <li *ngFor="let evidence of selectedGhost.evidences">
-          {{evidence}}
+        <li *ngFor="let tell of selectedGhost.tells">
+          {{tell}}
         </li>
       </ul>
-    </box>
+    </section>
+
+    <!-- Behaviors -->
+    <section class="behaviors" *ngIf="selectedGhost.behaviors">
+      <h2>Behaviors</h2>
+      <ul>
+        <li *ngFor="let behaviors of selectedGhost.behaviors">
+          {{behaviors}}
+        </li>
+      </ul>
+    </section>
+
+    <!-- Hunt Sanity -->
+    <section class="hunt-sanity" *ngIf="selectedGhost.huntSanityInfo">
+      <h2>Hunt Sanity</h2>
+      <p>
+        {{selectedGhost.huntSanityInfo}}
+      </p>
+    </section>
+
+    <!-- Hunt Speed -->
+    <section class="hunt-speed" *ngIf="selectedGhost.huntSpeedInfo">
+      <h2>Hunt Speed</h2>
+      <p>
+        {{selectedGhost.huntSpeedInfo}}
+      </p>
+    </section>
   </section>
 
-  <!-- Tells -->
-  <section class="tells" *ngIf="selectedGhost.tells">
-    <h2>Tells</h2>
-    <ul>
-      <li *ngFor="let tell of selectedGhost.tells">
-        {{tell}}
-      </li>
-    </ul>
+
+  <!-- Smudge Timer -->
+  <section class="smudge-timer">
+    <h2>Smudge-Timer</h2>
+    <smudge-timer></smudge-timer>
   </section>
 
-  <!-- Behaviors -->
-  <section class="behaviors" *ngIf="selectedGhost.behaviors">
-    <h2>Behaviors</h2>
-    <ul>
-      <li *ngFor="let behaviors of selectedGhost.behaviors">
-        {{behaviors}}
-      </li>
-    </ul>
-  </section>
-
-  <!-- Hunt Sanity -->
-  <section class="hunt-sanity" *ngIf="selectedGhost.huntSanityInfo">
-    <h2>Hunt Sanity</h2>
-    <p>
-      {{selectedGhost.huntSanityInfo}}
-    </p>
-  </section>
-
-  <!-- Hunt Speed -->
-  <section class="hunt-speed" *ngIf="selectedGhost.huntSpeedInfo">
-    <h2>Hunt Speed</h2>
-    <p>
-      {{selectedGhost.huntSpeedInfo}}
-    </p>
-  </section>
 </aside>
