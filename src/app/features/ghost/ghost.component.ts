@@ -6,6 +6,7 @@ import { EvidenceService } from '../evidence/evidence.service';
 import { GHOSTS } from 'src/app/data';
 import { SpeedService } from '../speed/speed.service';
 import { AppService } from 'src/app/app.service';
+import { DifficultyService } from '../difficulty/difficulty.service';
 
 @Component({
   selector: 'ghost',
@@ -17,16 +18,23 @@ export class GhostComponent implements OnDestroy {
 
   constructor(
     private appService: AppService,
+    private difficultyService: DifficultyService,
     private evidenceService: EvidenceService,
     private speedService: SpeedService,
     private ghostService: GhostService,
   ) {
     this.evidences$ =
       combineLatest([
+        this.difficultyService.numberOfEvidences$,
         this.evidenceService.evidence$,
         this.speedService.speed$
-      ]).subscribe(([evidences, speeds]) => {
-        this.filterGhosts(evidences, speeds);
+      ]).subscribe(([numberOfEvidences, evidences, speeds]) => {
+        if (numberOfEvidences < evidences.length) {
+          // TODO: This is kind of hacky
+          this.ghostService.ghosts = GHOSTS.filter(g => g.name === 'The Mimic');
+        } else {
+          this.filterGhosts(evidences, speeds);
+        }
       });
 
     this.appService.reset$.subscribe(() => {
@@ -34,43 +42,6 @@ export class GhostComponent implements OnDestroy {
     });
   }
 
-  /** @deprecated move to GhostComponent */
-  // public get filteredGhosts(): Ghost[] {
-  // let filteredGhosts = this.ghosts;
-
-  // Filter all ghosts by selected evidences
-  // filteredGhosts = this.ghosts.filter(g => {
-  //   return this.selectedEvidences.every(s => g.evidences.includes(s));
-  // });
-
-  // If all possible evidences are selected, filter out all ghosts that have a forced evidence which was not selected
-  // if (this.selectedEvidences.length === this.numberOfEvidences) {
-  //   filteredGhosts = filteredGhosts.filter(g => {
-  //     if (g.forcedEvidence) {
-  //       return this.selectedEvidences.includes(g.forcedEvidence);
-  //     }
-  //     return true;
-  //   });
-  // }
-
-  // Filter fast ghosts
-  // if (this.selectedSpeed.includes(Speed.FAST)) {
-  //   filteredGhosts = filteredGhosts.filter(g => g.huntSpeed.some(s => s > 1.7));
-  // }
-
-  // Filter normal ghosts
-  // if (this.selectedSpeed.includes(Speed.NORMAL)) {
-  //   filteredGhosts = filteredGhosts.filter(g => g.huntSpeed.some(s => s === 1.7));
-  // }
-
-  // Filter slow ghosts
-  // if (this.selectedSpeed.includes(Speed.SLOW)) {
-  //   filteredGhosts = filteredGhosts.filter(g => g.huntSpeed.some(s => s < 1.7));
-  // }
-
-  // return filteredGhosts;
-  //   return [];
-  // }
   public get ghosts$(): Observable<Ghost[]> {
     return this.ghostService.ghosts$;
   }
