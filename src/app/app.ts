@@ -24,6 +24,7 @@ export enum Speed {
 }
 
 export type Ghost = {
+  id: number;
   behaviors?: string[];
   evidences: Evidence[];
   speeds: Speed[];

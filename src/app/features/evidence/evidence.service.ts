@@ -1,21 +1,56 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, combineLatest, map, startWith } from 'rxjs';
+
 import { Evidence } from 'src/app/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EvidenceService {
-  public readonly evidence$: Observable<Evidence[]>;
-
-  private evidenceSource: BehaviorSubject<Evidence[]>;
+  private readonly _excludedEvidences: SelectionModel<Evidence>;
+  private readonly _selectedEvidences: SelectionModel<Evidence>;
 
   constructor() {
-    this.evidenceSource = new BehaviorSubject<Evidence[]>([]);
-    this.evidence$ = this.evidenceSource.asObservable();
+    this._selectedEvidences = new SelectionModel(true);
+    this._excludedEvidences = new SelectionModel(true);
   }
 
-  public set evidences(value: Evidence[]) {
-    this.evidenceSource.next(value);
+  public get excludedEvidences(): Evidence[] {
+    return this._excludedEvidences.selected;
+  }
+
+  public set excludedEvidences(selectedEvidences: Evidence[]) {
+    this._excludedEvidences.setSelection(...selectedEvidences);
+  }
+
+  public get excludedEvidences$(): Observable<Evidence[]> {
+    return this._excludedEvidences.changed.pipe(
+      map(s => s.source.selected),
+      startWith(this.excludedEvidences)
+    );
+  }
+
+  public get selectedEvidences(): Evidence[] {
+    return this._selectedEvidences.selected;
+  }
+
+  public set selectedEvidences(selectedEvidences: Evidence[]) {
+    this._selectedEvidences.setSelection(...selectedEvidences);
+  }
+
+  public get selectedEvidences$(): Observable<Evidence[]> {
+    return this._selectedEvidences.changed.pipe(
+      map(s => s.source.selected),
+      startWith(this.selectedEvidences)
+    );
+  }
+
+  public excludeEvidence = (evidence: Evidence) => {
+    this._excludedEvidences.toggle(evidence);
+  }
+
+  public selectEvidence = (evidence: Evidence) => {
+    this._selectedEvidences.toggle(evidence);
   }
 }

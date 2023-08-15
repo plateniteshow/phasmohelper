@@ -24,8 +24,8 @@ export class AppComponent {
 
   // public isSmugdeTimerRunning: boolean;
   // public smudgeTimer: number;
-  public get selectedGhost$(): Observable<Ghost | undefined> {
-    return this.ghostService.selectedGhost$;
+  public get selectedGhost(): Ghost | undefined {
+    return this.ghostService.selectedGhost;
   }
 
   public reset = (): void => {

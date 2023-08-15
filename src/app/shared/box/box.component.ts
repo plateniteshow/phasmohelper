@@ -15,23 +15,13 @@ export class BoxComponent {
   @Input()
   public disabled: boolean;
 
-  // @HostBinding('class.indeterminate')
-  // @Input()
-  // public indeterminate: boolean;
+  @HostBinding('class.indeterminate')
+  @Input()
+  public indeterminate: boolean;
 
   constructor() {
     this.active = false;
     this.disabled = false;
-    // this.indeterminate = false;
+    this.indeterminate = false;
   }
-
-  // @HostListener('click', ['$event'])
-  // public onClick = (event: MouseEvent) => {
-  //   if (event.shiftKey) {
-  //     this.active = false;
-  //     this.indeterminate = !this.indeterminate;
-  //   } else {
-  //     this.active = !this.active;
-  //   }
-  // }
 }

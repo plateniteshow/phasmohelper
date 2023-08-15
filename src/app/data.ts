@@ -3,6 +3,7 @@ import { Evidence, Ghost, Speed } from "./app";
 export const GHOSTS: Ghost[] = [
   // Spirit
   {
+    id: 0,
     name: 'Spirit',
     evidences: [Evidence.EMF5, Evidence.SPIRITBOX, Evidence.WRITING],
     speeds: [Speed.NORMAL],
@@ -12,6 +13,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Wraith
   {
+    id: 1,
     name: 'Wraith',
     evidences: [Evidence.DOTS, Evidence.EMF5, Evidence.SPIRITBOX],
     speeds: [Speed.NORMAL],
@@ -22,6 +24,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Phantom
   {
+    id: 2,
     name: 'Phantom',
     evidences: [Evidence.DOTS, Evidence.FINGERPRINTS, Evidence.SPIRITBOX],
     speeds: [Speed.NORMAL],
@@ -36,6 +39,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Poltergeist
   {
+    id: 3,
     name: 'Poltergeist',
     evidences: [Evidence.DOTS, Evidence.SPIRITBOX, Evidence.WRITING],
     speeds: [Speed.NORMAL],
@@ -52,6 +56,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Banshee
   {
+    id: 4,
     name: 'Banshee',
     evidences: [Evidence.DOTS, Evidence.FINGERPRINTS, Evidence.ORBS],
     speeds: [Speed.NORMAL],
@@ -67,6 +72,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Jinn
   {
+    id: 5,
     name: 'Jinn',
     evidences: [Evidence.EMF5, Evidence.FINGERPRINTS, Evidence.FREEZING],
     speeds: [Speed.NORMAL, Speed.FAST],
@@ -78,6 +84,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Mare
   {
+    id: 6,
     name: 'Mare',
     evidences: [Evidence.ORBS, Evidence.SPIRITBOX, Evidence.WRITING],
     speeds: [Speed.NORMAL],
@@ -92,6 +99,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Revenant
   {
+    id: 7,
     name: 'Revenant',
     evidences: [Evidence.FREEZING, Evidence.ORBS, Evidence.WRITING],
     speeds: [Speed.SLOW, Speed.FAST],
@@ -101,6 +109,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Shade
   {
+    id: 8,
     name: 'Shade',
     evidences: [Evidence.EMF5, Evidence.FREEZING, Evidence.WRITING],
     speeds: [Speed.NORMAL],
@@ -118,6 +127,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Demon
   {
+    id: 9,
     name: 'Demon',
     evidences: [Evidence.FINGERPRINTS, Evidence.FREEZING, Evidence.WRITING],
     speeds: [Speed.NORMAL],
@@ -132,6 +142,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Yurei
   {
+    id: 10,
     name: 'Yurei',
     evidences: [Evidence.DOTS, Evidence.FREEZING, Evidence.ORBS],
     speeds: [Speed.NORMAL],
@@ -145,6 +156,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Oni
   {
+    id: 11,
     name: 'Oni',
     evidences: [Evidence.DOTS, Evidence.EMF5, Evidence.FREEZING],
     speeds: [Speed.NORMAL],
@@ -159,6 +171,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Yokai
   {
+    id: 12,
     name: 'Yokai',
     evidences: [Evidence.DOTS, Evidence.ORBS, Evidence.SPIRITBOX],
     speeds: [Speed.NORMAL],
@@ -170,6 +183,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Hantu
   {
+    id: 13,
     name: 'Hantu',
     evidences: [Evidence.FINGERPRINTS, Evidence.FREEZING, Evidence.ORBS],
     forcedEvidence: Evidence.FREEZING,
@@ -185,6 +199,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Goryo
   {
+    id: 14,
     name: 'Goryo',
     evidences: [Evidence.DOTS, Evidence.EMF5, Evidence.FINGERPRINTS],
     speeds: [Speed.NORMAL],
@@ -199,6 +214,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Myling
   {
+    id: 15,
     name: 'Myling',
     evidences: [Evidence.EMF5, Evidence.FINGERPRINTS, Evidence.WRITING],
     speeds: [Speed.NORMAL],
@@ -209,6 +225,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Onryo
   {
+    id: 16,
     name: 'Onryo',
     evidences: [Evidence.FREEZING, Evidence.ORBS, Evidence.SPIRITBOX],
     speeds: [Speed.NORMAL],
@@ -223,6 +240,7 @@ export const GHOSTS: Ghost[] = [
   },
   // The Twins
   {
+    id: 17,
     name: 'The Twins',
     evidences: [Evidence.EMF5, Evidence.FREEZING, Evidence.SPIRITBOX],
     speeds: [Speed.SLOW, Speed.FAST],
@@ -234,6 +252,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Raiju
   {
+    id: 18,
     name: 'Raiju',
     evidences: [Evidence.DOTS, Evidence.EMF5, Evidence.ORBS],
     speeds: [Speed.NORMAL, Speed.FAST],
@@ -245,6 +264,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Obake
   {
+    id: 19,
     name: 'Obake',
     evidences: [Evidence.EMF5, Evidence.FINGERPRINTS, Evidence.ORBS],
     speeds: [Speed.NORMAL],
@@ -260,6 +280,7 @@ export const GHOSTS: Ghost[] = [
   },
   // The Mimic
   {
+    id: 20,
     name: 'The Mimic',
     evidences: [Evidence.FINGERPRINTS, Evidence.FREEZING, Evidence.SPIRITBOX, Evidence.ORBS],
     speeds: [Speed.SLOW, Speed.NORMAL, Speed.FAST],
@@ -275,6 +296,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Moroi
   {
+    id: 21,
     name: 'Moroi',
     evidences: [Evidence.FREEZING, Evidence.SPIRITBOX, Evidence.WRITING],
     speeds: [Speed.SLOW, Speed.NORMAL, Speed.FAST],
@@ -290,6 +312,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Deogen
   {
+    id: 22,
     name: 'Deogen',
     evidences: [Evidence.DOTS, Evidence.SPIRITBOX, Evidence.WRITING],
     speeds: [Speed.SLOW, Speed.FAST],
@@ -305,6 +328,7 @@ export const GHOSTS: Ghost[] = [
   },
   // Thaye
   {
+    id: 23,
     name: 'Thaye',
     evidences: [Evidence.DOTS, Evidence.ORBS, Evidence.WRITING],
     speeds: [Speed.SLOW, Speed.NORMAL, Speed.FAST],

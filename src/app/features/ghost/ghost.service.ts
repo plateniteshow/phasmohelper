@@ -1,5 +1,6 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, map, startWith } from 'rxjs';
 
 import { Ghost } from 'src/app/app';
 import { GHOSTS } from 'src/app/data';
@@ -8,37 +9,65 @@ import { GHOSTS } from 'src/app/data';
   providedIn: 'root'
 })
 export class GhostService {
-  public readonly ghosts$: Observable<Ghost[]>;
-  public readonly selectedGhost$: Observable<Ghost | undefined>;
+  public readonly _excludedGhosts: SelectionModel<Ghost>;
 
-  private ghostsSource: BehaviorSubject<Ghost[]>;
-  private selectedGhostSource: BehaviorSubject<Ghost | undefined>;
+  private readonly _selectableGhosts: SelectionModel<Ghost>;
+  private readonly _selectedGhost: SelectionModel<Ghost | undefined>;
 
   constructor() {
-    this.ghostsSource = new BehaviorSubject<Ghost[]>(GHOSTS);
-    this.ghosts$ = this.ghostsSource.asObservable();
-
-    this.selectedGhostSource = new BehaviorSubject<Ghost | undefined>(undefined);
-    this.selectedGhost$ = this.selectedGhostSource.asObservable();
+    this._excludedGhosts = new SelectionModel(true);
+    this._selectableGhosts = new SelectionModel(true, GHOSTS);
+    this._selectedGhost = new SelectionModel(false);
   }
 
-  public get ghosts(): Ghost[] {
-    return this.ghostsSource.value;
+  public get excludedGhosts(): Ghost[] {
+    return this._excludedGhosts.selected;
   }
 
-  public set ghosts(ghosts: Ghost[]) {
-    this.ghostsSource.next(ghosts);
+  public set excludedGhosts(excludedGhosts: Ghost[]) {
+    this._excludedGhosts.setSelection(...excludedGhosts);
+  }
 
-    if (this.selectedGhost && !ghosts.includes(this.selectedGhost)) {
-      this.selectedGhost = undefined;
-    }
+  public get excludedGhosts$(): Observable<Ghost[]> {
+    return this._excludedGhosts.changed.pipe(
+      map(s => s.source.selected),
+      startWith(this.excludedGhosts)
+    );
+  }
+
+  public get selectableGhosts(): Ghost[] {
+    return this._selectableGhosts.selected;
+  }
+
+  public set selectableGhosts(selectableGhosts: Ghost[]) {
+    this._selectableGhosts.setSelection(...selectableGhosts);
+  }
+
+  public get selectableGhosts$(): Observable<Ghost[]> {
+    return this._selectableGhosts.changed.pipe(
+      map(s => s.source.selected),
+      startWith(this.selectableGhosts)
+    );
   }
 
   public get selectedGhost(): Ghost | undefined {
-    return this.selectedGhostSource.value;
+    return this._selectedGhost.selected[0];
   }
 
-  public set selectedGhost(ghost: Ghost | undefined) {
-    this.selectedGhostSource.next(ghost);
+  public set selectedGhost(selectedGhost: Ghost | undefined) {
+    this._selectedGhost.setSelection(selectedGhost);
+  }
+
+  public excludeGhost = (ghost: Ghost) => {
+    if (this.selectedGhost === ghost) {
+      this._selectedGhost.clear();
+    }
+    this._excludedGhosts.toggle(ghost);
+  }
+
+  public selectGhost = (ghost: Ghost) => {
+    if (!this.excludedGhosts.includes(ghost)) {
+      this._selectedGhost.toggle(ghost)
+    }
   }
 }

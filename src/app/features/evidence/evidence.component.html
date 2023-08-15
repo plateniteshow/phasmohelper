@@ -1,5 +1,5 @@
 <ng-container *ngFor="let evidence of Evidence | keyvalue">
-  <box (click)="toggle(evidence.value)" [active]="isSelected(evidence.value)" [disabled]="isDisabled(evidence.value)">
+  <box [active]="isEvidenceSelected(evidence.value)" [disabled]="isEvidenceDisabled(evidence.value)" [indeterminate]="isEvidenceIndeterminate(evidence.value)" (click)="onClickEvidence(evidence.value, $event)">
     {{evidence.value}}
   </box>
 </ng-container>

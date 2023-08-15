@@ -1,12 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
-import { SelectionModel } from '@angular/cdk/collections';
-import { Subscription } from 'rxjs';
+import { Subscription, combineLatest, map } from 'rxjs';
 
 import { Evidence, Ghost } from 'src/app/app';
 
 import { DifficultyService } from '../difficulty/difficulty.service';
 import { EvidenceService } from './evidence.service';
-import { AppService } from 'src/app/app.service';
 import { GhostService } from '../ghost/ghost.service';
 
 @Component({
@@ -16,74 +14,77 @@ import { GhostService } from '../ghost/ghost.service';
 })
 export class EvidenceComponent implements OnDestroy {
   public readonly Evidence = Evidence;
-  public readonly evidenceSelection: SelectionModel<Evidence>;
 
   private ghosts: Ghost[];
+  private ghosts$: Subscription;
   private numberOfEvidences: number;
   private numberOfEvidences$: Subscription;
 
   constructor(
-    private appService: AppService,
     private difficultyService: DifficultyService,
     private evidenceService: EvidenceService,
     private ghostService: GhostService,
   ) {
-    this.evidenceSelection = new SelectionModel(true);
     this.ghosts = [];
     this.numberOfEvidences = 3;
 
     this.numberOfEvidences$ = this.difficultyService.numberOfEvidences$.subscribe(numberOfEvidences => {
       this.numberOfEvidences = numberOfEvidences;
-
-      this.evidenceSelection.selected.forEach(s => {
-        if (this.evidenceSelection.selected.length > this.numberOfEvidences) {
-          this.evidenceSelection.deselect(s);
-          this.evidenceService.evidences = this.evidenceSelection.selected;
-        }
-      });
-
+      this.evidenceService.selectedEvidences = [];
     });
 
-    this.ghostService.ghosts$.subscribe(ghosts => {
+    this.ghosts$ = this.ghostService.selectableGhosts$.subscribe(ghosts => {
       this.ghosts = ghosts;
-    });
-
-    this.appService.reset$.subscribe(() => {
-      this.evidenceSelection.clear();
-      this.evidenceService.evidences = [];
     });
   }
 
-  public isDisabled = (evidence: Evidence) => {
+  public isEvidenceDisabled = (evidence: Evidence) => {
     // If evidence is already selected, do not disable
-    if (this.evidenceSelection.selected.includes(evidence)) {
+    if (this.evidenceService.selectedEvidences.includes(evidence)) {
       return false;
     }
 
-    // If all of the filtered ghosts cannot have this evidence, disable
-    if (this.ghosts.map(g => g.evidences).every(e => !e.includes(evidence))) {
+    // If all of the filtered ghosts cannot have this evidence AND this evidence was not manually excluded, disable evidence
+    if (!this.evidenceService.excludedEvidences.includes(evidence) && this.ghosts.map(g => g.evidences).every(e => !e.includes(evidence))) {
       return true;
     }
 
     // If evidence is orbs, do not disable
-    if (this.ghosts.map(g => g.name).includes('The Mimic') && evidence === Evidence.ORBS) {
+    if (this.ghosts.some(g => g.id === 20) && evidence === Evidence.ORBS) {
+      return false;
+    }
+
+    // If all evidences AND Ghost Orbs are selected, allow selection of Fingerprints, Freezing or Spiritbox.
+    if (
+      this.evidenceService.selectedEvidences.length === this.numberOfEvidences &&
+      this.evidenceService.selectedEvidences.includes(Evidence.ORBS) &&
+      [Evidence.FINGERPRINTS, Evidence.FREEZING, Evidence.SPIRITBOX].includes(evidence)
+    ) {
       return false;
     }
 
     // Otherwise, compare number of selected items with max number of allowed evidence (defined by difficulty)
-    return this.evidenceSelection.selected.length >= this.numberOfEvidences;
+    return this.evidenceService.selectedEvidences.length >= this.numberOfEvidences;
   }
 
-  public isSelected = (evidence: Evidence): boolean => {
-    return this.evidenceSelection.isSelected(evidence);
+  public isEvidenceSelected = (evidence: Evidence): boolean => {
+    return this.evidenceService.selectedEvidences.includes(evidence);
+  }
+
+  public isEvidenceIndeterminate = (evidence: Evidence): boolean => {
+    return this.evidenceService.excludedEvidences.includes(evidence);
   }
 
   public ngOnDestroy(): void {
+    this.ghosts$.unsubscribe();
     this.numberOfEvidences$.unsubscribe();
   }
 
-  public toggle = (evidence: Evidence) => {
-    this.evidenceSelection.toggle(evidence);
-    this.evidenceService.evidences = this.evidenceSelection.selected;
+  public onClickEvidence = (evidence: Evidence, event: MouseEvent) => {
+    if (event.shiftKey) {
+      this.evidenceService.excludeEvidence(evidence);
+    } else {
+      this.evidenceService.selectEvidence(evidence);
+    }
   }
 }
