@@ -5,9 +5,28 @@
   grid-row-gap: 8px;
   grid-auto-rows: auto;
 
+  box {
+    position: relative;
+  }
+
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+  }
+
+  .hunt-sanity {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: .9em;
+
+    &--high {
+      color: red;
+    }
+
+    &--low {
+      color: #41FF00;
+    }
   }
 }

@@ -95,4 +95,12 @@ export class GhostComponent implements OnDestroy {
 
     this.ghostService.selectableGhosts = ghosts;
   }
+
+  public getHuntSanityClassName = (huntSanity: number): string => {
+    if (huntSanity > 50) {
+      return 'hunt-sanity hunt-sanity--high';
+    } else if (huntSanity < 50) {
+      return 'hunt-sanity hunt-sanity--low';
+    } else return 'hunt-sanity';
+  }
 }
