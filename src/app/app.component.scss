@@ -59,9 +59,14 @@ aside.info {
   justify-content: space-between;
 }
 
+.difficulty,
+.reset {
+  flex: 0 1 auto;
+}
+
 .evidence,
 .speed {
-  flex: 1 1 auto;
+  flex: 1 0 auto;
 }
 
 .info {
