@@ -24,6 +24,12 @@
     transition: color 250ms ease, border-color 250ms ease;
   }
 
+  &.indeterminate {
+    border-color: rgba(red, .5);
+    color: rgba(red, .75);
+    transition: color 250ms ease, border-color 250ms ease;
+  }
+
   &.disabled {
     opacity: 0.25;
     transition: opacity 250ms ease;

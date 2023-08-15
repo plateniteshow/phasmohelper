@@ -42,8 +42,12 @@ export class GhostComponent implements OnDestroy {
     });
   }
 
-  public get ghosts$(): Observable<Ghost[]> {
-    return this.ghostService.ghosts$;
+  public get ghosts(): Ghost[] {
+    return GHOSTS;
+  }
+
+  public isGhostDisabled = (ghost: Ghost): boolean => {
+    return !this.ghostService.ghosts.includes(ghost);
   }
 
   public isGhostSelected = (ghost: Ghost): boolean => {

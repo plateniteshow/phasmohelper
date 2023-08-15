@@ -22,6 +22,10 @@ export class GhostService {
     this.selectedGhost$ = this.selectedGhostSource.asObservable();
   }
 
+  public get ghosts(): Ghost[] {
+    return this.ghostsSource.value;
+  }
+
   public set ghosts(ghosts: Ghost[]) {
     this.ghostsSource.next(ghosts);
 

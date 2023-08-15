@@ -1,5 +1,6 @@
 <div class="ghost-container">
-  <box *ngFor="let ghost of ghosts$ | async" [active]="isGhostSelected(ghost)" (click)="toggleGhostSelection(ghost)">
+  <box *ngFor="let ghost of ghosts" [active]="isGhostSelected(ghost)" [disabled]="isGhostDisabled(ghost)" (click)="toggleGhostSelection(ghost)">
+    <!-- <box *ngFor="let ghost of ghosts" [active]="isGhostSelected(ghost)" [disabled]="isGhostDisabled(ghost)"> -->
     <h3>{{ghost.name}}</h3>
     <ul>
       <li *ngFor="let evidence of ghost.evidences">
