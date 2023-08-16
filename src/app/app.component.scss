@@ -1,97 +1,98 @@
 @import '../assets/styles/crt-effect.scss';
 
-$grid-size: 16px;
-$border-size: $grid-size / 4;
-$padding-size: $grid-size / 2;
-$bg-color: #0D1616;
-$fg-color: #A0B8BC;
-$tertiary-color: #2E3535;
+/***************/
+/* BASE STYLES */
+/***************/
 
 :host {
   @include crt();
-
-  display: grid;
-  grid-template-columns: 1fr 3fr 2fr;
-  grid-template-rows: 1fr;
-  text-transform: uppercase;
   background-color: #0D1616;
-  color: $fg-color;
-  font-family: monospace;
-  border: $border-size solid $fg-color;
-  position: absolute;
-  top: 0;
-  right: 0;
   bottom: 0;
+  color: #A0B8BC;
+  display: block;
+  font-family: monospace;
   left: 0;
   overflow: hidden;
+  position: absolute;
+  right: 0;
+  text-transform: uppercase;
+  top: 0;
 }
 
-main {
-  overflow-y: auto;
-  overflow-x: hidden;
-  border-left: $border-size solid $fg-color;
-  border-right: $border-size solid $fg-color;
+/********/
+/* GRID */
+/********/
+
+.container {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 0.5fr 1.5fr 1.0fr;
+  grid-template-rows: 60px 1fr auto;
+  grid-template-areas:
+    "header header header"
+    "filter main info"
+    "filter main tools";
+  height: calc(100% - 4px);
+  border: 2px solid #A0B8BC;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  grid-area: header;
+}
+
+.filter {
+  grid-area: filter;
+}
+
+.info {
+  grid-area: info;
+}
+
+.tools {
+  grid-area: tools;
+}
+
+.main {
+  grid-area: main;
+  overflow-y: scroll;
+}
+
+/*****************/
+/* GLOBAL STYLES */
+/*****************/
 section {
-  padding: $padding-size;
-
-  h2 {
-    margin-bottom: $padding-size;
-  }
+  border: 2px solid #A0B8BC;
+  padding: 2px + 8px;
 }
 
-// Grid Containers
-
-aside.settings {
+.filter {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
-
-  section:not(:last-child) {
-    border-bottom: $border-size solid $fg-color;
-  }
+  justify-content: flex-start;
+  gap: 16px;
 }
 
-aside.info {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-}
-
-.difficulty,
-.reset {
-  flex: 0 1 auto;
-}
-
-.evidence,
-.speed {
-  flex: 1 0 auto;
-}
-
-.smudge-timer {
-  border-top: $border-size solid $fg-color;
-  margin-top: auto;
-  flex: 0 1 auto;
-}
-
-///
+/********************/
+/* TODO: COMPONENTS */
+/********************/
 
 .reset-button {
-  background-color: $fg-color;
+  background-color: #A0B8BC;
   border: none;
-  color: $bg-color;
+  color: #0D1616;
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
   outline: none;
-  padding: $padding-size;
+  padding: 8px;
   text-transform: uppercase;
   transition: background-color 100ms ease;
   width: 100%;
 
   &:hover {
-    background-color: darken($fg-color, 10);
+    background-color: darken(#A0B8BC, 10);
     transition: background-color 100ms ease;
     cursor: pointer;
   }

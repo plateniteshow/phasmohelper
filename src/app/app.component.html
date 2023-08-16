@@ -1,51 +1,76 @@
-<aside class="settings">
+<div class="container">
 
-  <!-- Difficulty -->
-  <section class="difficulty">
-    <h2>Difficulty</h2>
-    <difficulty></difficulty>
+  <!------------>
+  <!-- HEADER -->
+  <!------------>
+  <section class="header">
+    <h1>Phasmohelper</h1>
   </section>
 
-  <!-- Evidence -->
-  <section class="evidence">
-    <h2>Evidence</h2>
-    <evidence></evidence>
+  <!------------>
+  <!-- FILTER -->
+  <!------------>
+  <section class="filter">
+
+    <!-- Difficulty -->
+    <div class="difficulty">
+      <h2>Difficulty</h2>
+      <difficulty></difficulty>
+    </div>
+
+    <!-- Evidence -->
+    <div class="evidence">
+      <h2>Evidence</h2>
+      <evidence></evidence>
+    </div>
+
+    <!-- Speed -->
+    <div class="speed">
+      <h2>Speed</h2>
+      <speed></speed>
+    </div>
+
+    <!-- Reset -->
+    <div class="reset">
+      <button type="button" class="reset-button" (click)="reset()">Reset</button>
+    </div>
+
   </section>
 
-  <!-- Speed -->
-  <section class="speed">
-    <h2>Speed</h2>
-    <speed></speed>
-  </section>
+  <!---------->
+  <!-- MAIN -->
+  <!---------->
+  <section class="main">
 
-  <!-- Reset -->
-  <section class="reset">
-    <button type="button" class="reset-button" (click)="reset()">Reset</button>
-  </section>
-
-</aside>
-
-<main>
-
-  <!-- Ghosts -->
-  <section class="ghost">
+    <!-- Ghosts -->
     <h2>Ghosts</h2>
     <ghost></ghost>
+
   </section>
 
-</main>
+  <!---------->
+  <!-- INFO -->
+  <!---------->
+  <section class="info">
 
-<aside class="info">
+    <!-- Ghost Info -->
+    <div *ngIf="selectedGhost">
+      <ghost-info [ghost]="selectedGhost"></ghost-info>
+    </div>
 
-  <!-- Ghost Info -->
-  <section class="ghost-info" *ngIf="selectedGhost" style="padding: 0;">
-    <ghost-info [ghost]="selectedGhost"></ghost-info>
   </section>
 
-  <!-- Smudge Timer -->
-  <section class="smudge-timer">
-    <h2>Smudge-Timer</h2>
-    <smudge-timer></smudge-timer>
+  <!---------->
+  <!-- TOOLS -->
+  <!---------->
+  <section class="tools">
+
+    <!-- Smudge Timer -->
+    <div>
+      <h2>Smudge-Timer</h2>
+      <smudge-timer></smudge-timer>
+    </div>
+
   </section>
 
-</aside>
+</div>
