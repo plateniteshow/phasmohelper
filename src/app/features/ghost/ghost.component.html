@@ -1,12 +1,6 @@
 <div class="ghost-container">
   <!-- <box *ngFor="let ghost of ghosts" [active]="isGhostSelected(ghost)" [disabled]="isGhostDisabled(ghost)" (click)="toggleGhostSelection(ghost)"> -->
   <box *ngFor="let ghost of ghosts" [active]="isGhostActive(ghost)" [disabled]="isGhostDisabled(ghost)" [indeterminate]="isGhostIndeterminate(ghost)" (click)="onClickGhost(ghost, $event)">
-    <h3>{{ghost.name}}</h3>
-    <ul>
-      <li *ngFor="let evidence of ghost.evidences">
-        {{evidence}}
-      </li>
-    </ul>
-    <span [class]="getHuntSanityClassName(ghost.huntSanity)">{{ghost.huntSanity}}%</span>
+    <ghost-box [ghost]="ghost"></ghost-box>
   </box>
 </div>

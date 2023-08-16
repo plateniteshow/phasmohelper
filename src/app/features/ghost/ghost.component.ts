@@ -1,7 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription, combineLatest } from 'rxjs';
 
-import { AppService } from 'src/app/app.service';
 import { Evidence, Ghost, Speed } from 'src/app/app';
 import { GHOSTS } from 'src/app/data';
 
@@ -94,13 +93,5 @@ export class GhostComponent implements OnDestroy {
     }
 
     this.ghostService.selectableGhosts = ghosts;
-  }
-
-  public getHuntSanityClassName = (huntSanity: number): string => {
-    if (huntSanity > 50) {
-      return 'hunt-sanity hunt-sanity--high';
-    } else if (huntSanity < 50) {
-      return 'hunt-sanity hunt-sanity--low';
-    } else return 'hunt-sanity';
   }
 }

@@ -25,8 +25,8 @@
   }
 
   &.indeterminate {
-    border-color: rgba(red, .5);
-    color: rgba(red, .75);
+    border-color: rgba(#ff0041, .5);
+    color: rgba(#ff0041, .75);
     transition: color 250ms ease, border-color 250ms ease;
   }
 

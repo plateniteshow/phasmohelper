@@ -1,0 +1,30 @@
+section {
+  padding: 8px;
+
+  h2 {
+    margin-bottom: 8px;
+  }
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.info {
+  pointer-events: none;
+}
+
+.tells,
+.behaviors,
+.hunt-sanity,
+.hunt-speed {
+  margin-bottom: 16px;
+
+  ul {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 16px;
+  }
+}

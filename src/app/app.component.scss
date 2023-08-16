@@ -69,31 +69,6 @@ aside.info {
   flex: 1 0 auto;
 }
 
-.info {
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__ghost {
-    pointer-events: none;
-  }
-
-  .tells,
-  .behaviors,
-  .hunt-sanity,
-  .hunt-speed {
-    margin-bottom: $padding-size * 2;
-
-    ul {
-      display: flex;
-      flex-flow: column nowrap;
-      gap: 16px;
-    }
-  }
-}
-
 .smudge-timer {
   border-top: $border-size solid $fg-color;
   margin-top: auto;

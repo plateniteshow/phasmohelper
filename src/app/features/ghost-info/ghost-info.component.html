@@ -1,0 +1,43 @@
+<!-- Info -->
+<section class="info">
+  <h2>Selected Ghost</h2>
+  <box>
+    <ghost-box [ghost]="ghost"></ghost-box>
+  </box>
+</section>
+
+<!-- Tells -->
+<section class="tells" *ngIf="ghost.tells">
+  <h2>Tells</h2>
+  <ul>
+    <li *ngFor="let tell of ghost.tells">
+      {{tell}}
+    </li>
+  </ul>
+</section>
+
+<!-- Behaviors -->
+<section class="behaviors" *ngIf="ghost.behaviors">
+  <h2>Behaviors</h2>
+  <ul>
+    <li *ngFor="let behaviors of ghost.behaviors">
+      {{behaviors}}
+    </li>
+  </ul>
+</section>
+
+<!-- Hunt Sanity -->
+<section class="hunt-sanity" *ngIf="ghost.huntSanityInfo">
+  <h2>Hunt Sanity</h2>
+  <p>
+    {{ghost.huntSanityInfo}}
+  </p>
+</section>
+
+<!-- Hunt Speed -->
+<section class="hunt-speed" *ngIf="ghost.huntSpeedInfo">
+  <h2>Hunt Speed</h2>
+  <p>
+    {{ghost.huntSpeedInfo}}
+  </p>
+</section>
