@@ -18,8 +18,12 @@ export class FlickerSimulatorComponent {
   @ViewChild('oni')
   public oni!: FlickeringIconComponent;
 
-  @HostListener('document:keydown.F', ['$event']) public onKeydownHandler() {
+  @HostListener('document:keydown.F', ['$event']) public onKeydownFHandler() {
     this.flickering ? this.stopFlickering() : this.startFlickering();
+  }
+
+  @HostListener('document:keydown.Escape', ['$event']) public onKeydownEscapeHandler() {
+    this.stopFlickering();
   }
 
   public readonly phantomConfig: FlickeringIconConfiguration = PHANTOM_FLICKERING_CONFIG;

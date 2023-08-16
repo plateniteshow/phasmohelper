@@ -56,8 +56,12 @@ export class SmudgeTimerComponent {
     return (this.spiritTimestamp / this.timerMax * 100) + "%";
   }
 
-  @HostListener('document:keydown.T', ['$event']) public onKeydownHandler() {
+  @HostListener('document:keydown.T', ['$event']) public onKeydownTHandler() {
     this.running ? this.stopTimer() : this.startTimer();
+  }
+
+  @HostListener('document:keydown.Escape', ['$event']) public onKeydownEscapeHandler() {
+    this.stopTimer();
   }
 
   /**
