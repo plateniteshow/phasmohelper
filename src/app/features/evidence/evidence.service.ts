@@ -47,10 +47,14 @@ export class EvidenceService {
   }
 
   public excludeEvidence = (evidence: Evidence) => {
-    this._excludedEvidences.toggle(evidence);
+    if (!this.selectedEvidences.includes(evidence)) {
+      this._excludedEvidences.toggle(evidence)
+    }
   }
 
   public selectEvidence = (evidence: Evidence) => {
-    this._selectedEvidences.toggle(evidence);
+    if (!this.excludedEvidences.includes(evidence)) {
+      this._selectedEvidences.toggle(evidence)
+    }
   }
 }

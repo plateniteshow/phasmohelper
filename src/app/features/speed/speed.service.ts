@@ -46,10 +46,14 @@ export class SpeedService {
   }
 
   public excludeSpeed = (speed: Speed) => {
-    this._excludedSpeeds.toggle(speed);
+    if (!this.selectedSpeeds.includes(speed)) {
+      this._excludedSpeeds.toggle(speed)
+    }
   }
 
   public selectSpeed = (speed: Speed) => {
-    this._selectedSpeeds.toggle(speed);
+    if (!this.excludedSpeeds.includes(speed)) {
+      this._selectedSpeeds.toggle(speed)
+    }
   }
 }
