@@ -40,7 +40,7 @@ export class SmudgeTimerComponent {
       this.timer -= 1000;
 
       // Demon Smudge
-      this.setCountDown('Demon Smudge', this.timer, 170, 5);
+      this.setCountDown('Demon Smudge', this.timer, 120, 5);
 
       // Default Smudge
       this.setCountDown('Default Smudge', this.timer, 90, 5);
