@@ -1,7 +1,7 @@
 // @ts-ignore
 import Speech from "speak-tts";
 
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'smudge-timer',
@@ -9,6 +9,10 @@ import { Component, HostBinding } from '@angular/core';
   styleUrls: ['./smudge-timer.component.scss']
 })
 export class SmudgeTimerComponent {
+  /** Whether the smudge timer is allowed to play sounds or not */
+  @Input()
+  public mute = false;
+
   public readonly timerMax = 180 * 1000;
 
   public running = false;
@@ -39,14 +43,11 @@ export class SmudgeTimerComponent {
     this.smudgeTimer = setInterval(() => {
       this.timer -= 1000;
 
-      // Demon Smudge
-      this.setCountDown('Demon Smudge', this.timer, 120, 5);
-
-      // Default Smudge
-      this.setCountDown('Default Smudge', this.timer, 90, 5);
-
-      // Spirit Smudge
-      this.setCountDown('Spirit Smudge', this.timer, 0, 5);
+      if (!this.mute) {
+        this.setCountDown('Demon Smudge', this.timer, 120, 5);
+        this.setCountDown('Default Smudge', this.timer, 90, 5);
+        this.setCountDown('Spirit Smudge', this.timer, 0, 5);
+      }
 
       if (this.timer === 0) {
         this.stopTimer();
@@ -54,7 +55,15 @@ export class SmudgeTimerComponent {
     }, 1000);
   }
 
-  public setCountDown = (text: string, currentTime: number, countDownEnd: number, countdownLength: number) => {
+  /**
+   * Starts a spoken countdown.
+   *
+   * @param text What to say when the countdown starts
+   * @param currentTime
+   * @param countDownEnd
+   * @param countdownLength
+   */
+  public setCountDown = (text: string, currentTime: number, countDownEnd: number, countdownLength: number): void => {
     if (countdownLength === 0) {
       return;
     }
@@ -71,11 +80,13 @@ export class SmudgeTimerComponent {
     if (currentTime / 1000 === countDownEnd + countdownLength + 1) {
       let countdown = countdownLength;
       const interval = setInterval(() => {
+        // If the countdown has run out OR the timer has been stopped, clear this interval.
+        if (countdown === 0 || !this.running) {
+          clearInterval(interval);
+          return;
+        }
         this.speech.speak({ text: `${countdown}` });
         countdown--;
-        if (countdown === 0) {
-          clearInterval(interval);
-        }
       }, 1000);
     }
 
