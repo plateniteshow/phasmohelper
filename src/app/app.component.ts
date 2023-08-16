@@ -14,7 +14,7 @@ export class AppComponent {
   public readonly Speed = Speed;
 
   @HostBinding('class.has-crt')
-  public enableCRT = false;
+  public enableCRT = true;
 
   public enableSound = true;
 
