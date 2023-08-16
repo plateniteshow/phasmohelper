@@ -1,7 +1,7 @@
 // @ts-ignore
 import Speech from "speak-tts";
 
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'smudge-timer',
@@ -54,6 +54,10 @@ export class SmudgeTimerComponent {
   @HostBinding("style.--spiritMarkerPosition")
   public get spiritMarkerPosition(): string {
     return (this.spiritTimestamp / this.timerMax * 100) + "%";
+  }
+
+  @HostListener('document:keydown.T', ['$event']) public onKeydownHandler() {
+    this.running ? this.stopTimer() : this.startTimer();
   }
 
   /**

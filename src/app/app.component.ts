@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Evidence, Ghost, Speed } from './app';
@@ -26,6 +26,10 @@ export class AppComponent {
   // public smudgeTimer: number;
   public get selectedGhost(): Ghost | undefined {
     return this.ghostService.selectedGhost;
+  }
+
+  @HostListener('document:keydown.R', ['$event']) public onKeydownHandler() {
+    this.reset();
   }
 
   public reset = (): void => {
