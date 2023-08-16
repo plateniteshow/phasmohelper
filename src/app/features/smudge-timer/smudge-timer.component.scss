@@ -1,10 +1,7 @@
-$bg-color: #0D1616;
-$fg-color: #A0B8BC;
-
 .smudge-timer-button {
   background-color: transparent;
-  border: 2px solid $fg-color;
-  color: $fg-color;
+  border: 2px solid #A0B8BC;
+  color: #A0B8BC;
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
@@ -15,8 +12,63 @@ $fg-color: #A0B8BC;
   width: 100%;
 
   &:hover {
-    background-color: lighten($bg-color, 10);
-    transition: background-color 100ms ease;
+    background-color: lighten(#0D1616, 10);
     cursor: pointer;
+    transition: background-color 100ms ease;
+  }
+}
+
+.timer {
+  padding: 8px 0;
+
+  .markers {
+    position: relative;
+    height: 16px;
+
+    .marker {
+      background-color: #A0B8BC;
+      height: 100%;
+      position: absolute;
+      width: 2px;
+
+      &--spirit {
+        left: 0;
+
+        &::before {
+          content: 'Spirit';
+          height: 100%;
+          padding-left: 6px;
+        }
+      }
+
+      &--regular {
+        left: 50%;
+      }
+
+      &--demon {
+        left: 75%;
+
+        &::before {
+          content: 'Demon';
+          height: 100%;
+          padding-left: 6px;
+        }
+      }
+    }
+  }
+
+  .bar {
+    background-color: #2E3535;
+    height: 16px;
+    width: 100%;
+    position: relative;
+
+    .progress {
+      background-color: #A0B8BC;
+      height: 16px;
+      position: absolute;
+      transition: width 1s linear;
+      width: var(--progress);
+    }
   }
 }
