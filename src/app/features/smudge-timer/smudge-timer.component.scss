@@ -32,7 +32,7 @@
       width: 2px;
 
       &--spirit {
-        left: 0;
+        left: var(--spiritMarkerPosition);
 
         &::before {
           content: 'Spirit';
@@ -42,11 +42,11 @@
       }
 
       &--default {
-        left: 50%;
+        left: var(--defaultMarkerPosition);
       }
 
       &--demon {
-        left: 66%;
+        left: var(--demonMarkerPosition);
 
         &::before {
           content: 'Demon';
