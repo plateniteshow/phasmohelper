@@ -5,6 +5,14 @@
   <!------------>
   <section class="header">
     <h1>Phasmohelper</h1>
+    <div class="toolbar">
+      <button (click)="toggleCRT()">
+        <span class="material-symbols-outlined">{{enableCRT ? 'blur_on' : 'blur_off'}}</span>
+      </button>
+      <button (click)="toggleSound()">
+        <span class="material-symbols-outlined">{{enableSound ? 'volume_up' : 'no_sound'}}</span>
+      </button>
+    </div>
   </section>
 
   <!------------>
@@ -32,7 +40,7 @@
 
     <!-- Reset -->
     <div class="reset">
-      <button type="button" class="reset-button" (click)="reset()">Reset</button>
+      <button type="button" class="reset-button" (click)="reset()">Reset (R)</button>
     </div>
 
   </section>
@@ -68,7 +76,7 @@
     <!-- Smudge Timer -->
     <div>
       <h2>Smudge-Timer</h2>
-      <smudge-timer></smudge-timer>
+      <smudge-timer [enableSound]="enableSound"></smudge-timer>
     </div>
 
   </section>

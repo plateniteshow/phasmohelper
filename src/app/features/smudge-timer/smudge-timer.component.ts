@@ -16,7 +16,7 @@ export class SmudgeTimerComponent {
 
   /** Whether the smudge timer is allowed to play sounds or not */
   @Input()
-  public mute = false;
+  public enableSound = true;
 
   public running = false;
   public timer: number = this.timerMax;
@@ -102,7 +102,7 @@ export class SmudgeTimerComponent {
     this.smudgeTimer = setInterval(() => {
       this.timer -= 1000;
 
-      if (!this.mute) {
+      if (this.enableSound) {
         this.setCountDown('Demon Smudge', this.timer, this.demonTimestamp, 5000);
         this.setCountDown('Default Smudge', this.timer, this.defaultTimestamp, 5000);
         this.setCountDown('Spirit Smudge', this.timer, this.spiritTimestamp, 5000);

@@ -1,5 +1,4 @@
-import { Component, HostListener } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, HostBinding, HostListener } from '@angular/core';
 
 import { Evidence, Ghost, Speed } from './app';
 import { GhostService } from './features/ghost/ghost.service';
@@ -14,16 +13,24 @@ export class AppComponent {
   public readonly Evidence = Evidence;
   public readonly Speed = Speed;
 
+  @HostBinding('class.has-crt')
+  public enableCRT = false;
+
+  public enableSound = true;
+
   constructor(
     private appService: AppService,
     private ghostService: GhostService,
-  ) {
-    // this.smudgeTimer = 0;
-    // this.isSmugdeTimerRunning = false;
+  ) { }
+
+  public toggleCRT = () => {
+    this.enableCRT = !this.enableCRT;
   }
 
-  // public isSmugdeTimerRunning: boolean;
-  // public smudgeTimer: number;
+  public toggleSound = () => {
+    this.enableSound = !this.enableSound;
+  }
+
   public get selectedGhost(): Ghost | undefined {
     return this.ghostService.selectedGhost;
   }
@@ -33,29 +40,6 @@ export class AppComponent {
   }
 
   public reset = (): void => {
-    // this.isSmugdeTimerRunning = false;
-    // this.smudgeTimer = 0;
     this.appService.reset();
   }
-
-  // public toggleSmudgeTimer = (): void => {
-  //   let smudgeInterval: any;
-  //   if (this.isSmugdeTimerRunning) {
-  //     // Stop Smudge Timer
-  //     this.isSmugdeTimerRunning = false;
-  //     clearInterval(smudgeInterval);
-  //   } else {
-  //     // Start Smudge Timer
-  //     this.smudgeTimer = 0;
-  //     this.isSmugdeTimerRunning = true;
-  //     smudgeInterval = setInterval(() => {
-  //       this.smudgeTimer += 1;
-  //       // Automatically Stop Smudge Timer
-  //       if (this.smudgeTimer === 180) {
-  //         this.isSmugdeTimerRunning = false;
-  //         clearInterval(smudgeInterval);
-  //       }
-  //     }, 1000);
-  //   }
-  // }
 }

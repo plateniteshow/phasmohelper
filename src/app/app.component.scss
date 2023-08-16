@@ -1,11 +1,21 @@
 @import '../assets/styles/crt-effect.scss';
 
+%button {
+  background: none;
+  border: none;
+  margin: 0;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 /***************/
 /* BASE STYLES */
 /***************/
 
 :host {
-  @include crt();
   background-color: #0D1616;
   bottom: 0;
   color: #A0B8BC;
@@ -17,6 +27,11 @@
   right: 0;
   text-transform: uppercase;
   top: 0;
+  user-select: none;
+
+  &.has-crt {
+    @include crt();
+  }
 }
 
 /********/
@@ -40,6 +55,19 @@
   display: flex;
   align-items: center;
   grid-area: header;
+
+  .toolbar {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+
+    button {
+      @extend %button;
+      color: #A0B8BC;
+
+      &:hover {}
+    }
+  }
 }
 
 .filter {
@@ -79,13 +107,12 @@ section {
 /********************/
 
 .reset-button {
+  @extend %button;
+
   background-color: #A0B8BC;
-  border: none;
   color: #0D1616;
   font-size: 1.2rem;
   font-weight: bold;
-  margin: 0;
-  outline: none;
   padding: 8px;
   text-transform: uppercase;
   transition: background-color 100ms ease;
@@ -94,6 +121,5 @@ section {
   &:hover {
     background-color: darken(#A0B8BC, 10);
     transition: background-color 100ms ease;
-    cursor: pointer;
   }
 }
