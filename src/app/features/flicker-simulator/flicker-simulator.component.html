@@ -1,0 +1,16 @@
+<div class="flickering-icons">
+
+  <!-- Phantom -->
+  <flickering-icon #phantom [config]="phantomConfig" [flickering]="flickering"></flickering-icon>
+
+  <!-- Default -->
+  <flickering-icon #default [config]="defaultConfig" [flickering]="flickering"></flickering-icon>
+
+  <!-- Oni -->
+  <flickering-icon #oni [config]="oniConfig" [flickering]="flickering"></flickering-icon>
+
+</div>
+
+<button type="button" (click)="flickering ? stopFlickering() : startFlickering()">
+  {{flickering ? 'Stop' : 'Start'}} (F)
+</button>

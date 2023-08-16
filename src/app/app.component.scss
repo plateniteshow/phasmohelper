@@ -95,7 +95,8 @@ section {
   padding: 2px + 8px;
 }
 
-.filter {
+.filter,
+.tools {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;

@@ -1,0 +1,27 @@
+button {
+  background-color: transparent;
+  border: 2px solid #A0B8BC;
+  color: #A0B8BC;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  outline: none;
+  padding: 8px;
+  text-transform: uppercase;
+  transition: background-color 100ms ease;
+  width: 100%;
+
+  &:hover {
+    background-color: lighten(#0D1616, 10);
+    cursor: pointer;
+    transition: background-color 100ms ease;
+  }
+}
+
+.flickering-icons {
+  display: flex;
+  gap: 16px;
+  justify-content: space-evenly;
+  padding: 8px 0;
+  margin-bottom: 8px;
+}

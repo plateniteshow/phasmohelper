@@ -1,4 +1,4 @@
-.smudge-timer-button {
+button {
   background-color: transparent;
   border: 2px solid #A0B8BC;
   color: #A0B8BC;
@@ -20,6 +20,7 @@
 
 .timer {
   padding: 8px 0;
+  margin-bottom: 8px;
 
   .markers {
     position: relative;
