@@ -41,12 +41,12 @@
         }
       }
 
-      &--regular {
+      &--default {
         left: 50%;
       }
 
       &--demon {
-        left: 75%;
+        left: 66%;
 
         &::before {
           content: 'Demon';
