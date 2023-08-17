@@ -7,10 +7,10 @@
     <h1>Phasmohelper</h1>
     <div class="toolbar">
       <button (click)="toggleCRT()">
-        <span class="material-symbols-outlined">{{enableCRT ? 'blur_on' : 'blur_off'}}</span>
+        <i class="icon fa-solid" [ngClass]="enableCRT ? 'fa-video' : 'fa-video-slash'"></i>
       </button>
       <button (click)="toggleSound()">
-        <span class="material-symbols-outlined">{{enableSound ? 'volume_up' : 'no_sound'}}</span>
+        <i class="icon fa-solid" [ngClass]="enableSound ? 'fa-volume-high': 'fa-volume-xmark'"></i>
       </button>
     </div>
   </section>

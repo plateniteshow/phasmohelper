@@ -64,8 +64,10 @@
     button {
       @extend %button;
       color: #A0B8BC;
+    }
 
-      &:hover {}
+    .icon {
+      font-size: 1.25em;
     }
   }
 }
