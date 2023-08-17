@@ -6,12 +6,12 @@
   <section class="header">
     <h1>Phasmohelper</h1>
     <div class="toolbar">
-      <button (click)="toggleCRT()">
+      <ph-button ph-icon-button (click)="toggleCRT()">
         <i class="icon fa-solid" [ngClass]="enableCRT ? 'fa-video' : 'fa-video-slash'"></i>
-      </button>
-      <button (click)="toggleSound()">
+      </ph-button>
+      <ph-button ph-icon-button (click)="toggleSound()">
         <i class="icon fa-solid" [ngClass]="enableSound ? 'fa-volume-high': 'fa-volume-xmark'"></i>
-      </button>
+      </ph-button>
     </div>
   </section>
 
@@ -23,7 +23,7 @@
     <!-- Difficulty -->
     <div class="difficulty">
       <h2>Difficulty</h2>
-      <difficulty></difficulty>
+      <difficulty [defaultDifficulty]="defaultDifficulty"></difficulty>
     </div>
 
     <!-- Evidence -->
@@ -40,7 +40,7 @@
 
     <!-- Reset -->
     <div class="reset">
-      <button type="button" class="reset-button" (click)="reset()">Reset (R)</button>
+      <ph-button (click)="reset()">Reset (R)</ph-button>
     </div>
 
   </section>

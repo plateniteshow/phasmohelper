@@ -1,4 +1,4 @@
-<h2>{{timer | date:'mm:ss'}}</h2>
+<h3>{{timer | date:'mm:ss'}}</h3>
 <div class="timer">
   <div class="markers">
     <div class="marker marker--spirit"></div>
@@ -9,6 +9,7 @@
     <div class="progress"></div>
   </div>
 </div>
-<button type="button" (click)="running ? stopTimer() : startTimer()">
+
+<ph-button ph-outlined-button (click)="running ? stopTimer() : startTimer()">
   {{ running ? 'Stop' : 'Start' }} (T)
-</button>
+</ph-button>

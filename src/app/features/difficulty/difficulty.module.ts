@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DifficultyComponent } from './difficulty.component';
 import { FormsModule } from '@angular/forms';
+
+import { SharedModule } from 'src/app/shared/shared.module';
+
+import { DifficultyComponent } from './difficulty.component';
 
 @NgModule({
   declarations: [
@@ -9,6 +12,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     FormsModule,
   ],
   exports: [

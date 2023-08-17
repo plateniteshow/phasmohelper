@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { SharedModule } from 'src/app/shared/shared.module';
+
 import { SmudgeTimerComponent } from './smudge-timer.component';
 
 @NgModule({
@@ -8,6 +11,7 @@ import { SmudgeTimerComponent } from './smudge-timer.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
   ],
   exports: [
     SmudgeTimerComponent,

@@ -1,3 +1,57 @@
-input {
-  width: 100%;
+$green: #41ff00;
+$yellow: #ffee00;
+$orange: #ff9900;
+$red: #ff0041;
+
+@mixin difficultyButton ($color: inherit) {
+  .ph-icon-button {
+    opacity: .5;
+
+    &.active {
+      opacity: 1;
+      color: $color;
+    }
+  }
+}
+
+.difficulties {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 8px;
+
+  .difficulty {
+    opacity: 1;
+
+    &--professional {
+      @include difficultyButton(($green));
+    }
+
+    &--nightmare {
+      @include difficultyButton(($yellow));
+    }
+
+    &--insanity {
+      @include difficultyButton(($orange));
+    }
+
+    &--apocalypse {
+      @include difficultyButton(($red));
+    }
+
+    .icon {
+      font-size: 1.75em;
+    }
+  }
+}
+
+button {
+  background: none;
+  border: transparent;
+  color: inherit;
+  margin: 0;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

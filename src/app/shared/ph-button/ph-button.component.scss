@@ -1,0 +1,55 @@
+:host {
+  background-color: #A0B8BC;
+  border: none;
+  color: #0D1616;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  outline: none;
+  padding: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 100ms ease;
+
+  &:hover {
+    cursor: pointer;
+    background-color: darken(#A0B8BC, 10);
+    transition: all 100ms ease;
+  }
+
+  &:active {
+    background-color: darken(#A0B8BC, 20);
+    transition: all 100ms ease;
+  }
+
+  &.ph-outlined-button {
+    background-color: transparent;
+    border: 2px solid #A0B8BC;
+    color: #A0B8BC;
+
+    &:hover {
+      border-color: lighten(#A0B8BC, 20);
+      color: lighten(#A0B8BC, 20);
+      background-color: lighten(#0D1616, 5);
+    }
+
+    &:active {
+      background-color: lighten(#0D1616, 10);
+    }
+  }
+
+  &.ph-icon-button {
+    background: transparent;
+    border: transparent;
+    color: #A0B8BC;
+
+    &:hover {
+      color: lighten(#A0B8BC, 20);
+    }
+
+    &:active {
+      color: lighten(#A0B8BC, 40);
+    }
+  }
+}

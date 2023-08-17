@@ -39,7 +39,7 @@ export class GhostComponent implements OnDestroy {
     return GHOSTS;
   }
 
-  public isGhostActive = (ghost: Ghost) => {
+  public isGhostSelected = (ghost: Ghost) => {
     return this.ghostService.selectedGhost === ghost;
   };
 
