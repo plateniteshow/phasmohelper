@@ -41,19 +41,7 @@
 }
 
 .header {
-  display: flex;
-  align-items: center;
   grid-area: header;
-
-  .toolbar {
-    display: flex;
-    gap: 8px;
-    margin-left: auto;
-
-    .icon {
-      font-size: 1.25em;
-    }
-  }
 }
 
 .filter {
@@ -77,9 +65,48 @@
 /*****************/
 /* GLOBAL STYLES */
 /*****************/
+
 section {
   border: 2px solid #A0B8BC;
-  padding: 2px + 8px;
+
+  .navbar,
+  .difficulty,
+  .evidence,
+  .speed,
+  .reset,
+  .ghosts,
+  .ghost-info,
+  .flicker-simulator,
+  .smudge-timer {
+    padding: 8px;
+  }
+
+  .difficulty,
+  .evidence,
+  .speed,
+  .flicker-simulator {
+    border-bottom: 4px solid #A0B8BC;
+  }
+
+  .evidence,
+  .speed {
+    flex: 1 0 auto;
+  }
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+
+  .toolbar {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+
+    .icon {
+      font-size: 1.25em;
+    }
+  }
 }
 
 .filter,
@@ -87,5 +114,5 @@ section {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
-  gap: 16px;
+  // gap: 16px;
 }

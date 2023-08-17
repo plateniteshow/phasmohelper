@@ -18,7 +18,7 @@ export class AppComponent {
   @HostBinding('class.has-crt')
   public enableCRT = true;
 
-  public enableSound = true;
+  public enableSound = false;
   public defaultDifficulty = Difficulty.PROFESSIONAL;
 
   constructor(

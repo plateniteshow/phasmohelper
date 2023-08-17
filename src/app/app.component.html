@@ -4,14 +4,16 @@
   <!-- HEADER -->
   <!------------>
   <section class="header">
-    <h1>Phasmohelper</h1>
-    <div class="toolbar">
-      <ph-button ph-icon-button (click)="toggleCRT()">
-        <i class="icon fa-solid" [ngClass]="enableCRT ? 'fa-video' : 'fa-video-slash'"></i>
-      </ph-button>
-      <ph-button ph-icon-button (click)="toggleSound()">
-        <i class="icon fa-solid" [ngClass]="enableSound ? 'fa-volume-high': 'fa-volume-xmark'"></i>
-      </ph-button>
+    <div class="navbar">
+      <h1>Phasmohelper</h1>
+      <div class="toolbar">
+        <ph-button ph-icon-button (click)="toggleCRT()">
+          <i class="icon fa-solid" [ngClass]="enableCRT ? 'fa-video' : 'fa-video-slash'"></i>
+        </ph-button>
+        <ph-button ph-icon-button (click)="toggleSound()">
+          <i class="icon fa-solid" [ngClass]="enableSound ? 'fa-volume-high': 'fa-volume-xmark'"></i>
+        </ph-button>
+      </div>
     </div>
   </section>
 
@@ -51,8 +53,10 @@
   <section class="main">
 
     <!-- Ghosts -->
-    <h2>Ghosts</h2>
-    <ghost></ghost>
+    <div class="ghosts">
+      <h2>Ghosts</h2>
+      <ghost></ghost>
+    </div>
 
   </section>
 
@@ -62,7 +66,7 @@
   <section class="info">
 
     <!-- Ghost Info -->
-    <div *ngIf="selectedGhost">
+    <div class="ghost-info" *ngIf="selectedGhost">
       <ghost-info [ghost]="selectedGhost"></ghost-info>
     </div>
 
@@ -74,13 +78,13 @@
   <section class="tools">
 
     <!-- Flicker -->
-    <div>
+    <div class="flicker-simulator">
       <h2>Flicker</h2>
       <flicker-simulator></flicker-simulator>
     </div>
 
     <!-- Smudge Timer -->
-    <div>
+    <div class="smudge-timer">
       <h2>Smudge-Timer</h2>
       <smudge-timer [enableSound]="enableSound"></smudge-timer>
     </div>
