@@ -1,1 +1,0 @@
-- difficulty, CRT-Option & Sound-Option controllable via queryParams

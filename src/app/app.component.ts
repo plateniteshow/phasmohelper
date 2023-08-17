@@ -1,9 +1,11 @@
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, HostBinding, HostListener } from '@angular/core';
 
 import { Evidence, Ghost, Speed } from './app';
 import { GhostService } from './features/ghost/ghost.service';
 import { AppService } from './app.service';
 
+// TODO: How to properly translate 0 and 1 to false and true?
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,25 +23,38 @@ export class AppComponent {
   constructor(
     private appService: AppService,
     private ghostService: GhostService,
-  ) { }
-
-  public toggleCRT = () => {
-    this.enableCRT = !this.enableCRT;
-  }
-
-  public toggleSound = () => {
-    this.enableSound = !this.enableSound;
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['crt']) {
+        this.enableCRT = params['crt'] == 1;
+      }
+      if (params['snd']) {
+        this.enableSound = params['snd'] == 1;
+      }
+    });
   }
 
   public get selectedGhost(): Ghost | undefined {
     return this.ghostService.selectedGhost;
   }
 
-  @HostListener('document:keydown.R', ['$event']) public onKeydownHandler() {
+  @HostListener('document:keydown.R', ['$event'])
+  @HostListener('document:keydown.Escape', ['$event'])
+  public onKeydownHandler() {
     this.reset();
   }
 
   public reset = (): void => {
     this.appService.reset();
+  }
+
+  public toggleCRT = () => {
+    this.router.navigate(['.'], { relativeTo: this.route, queryParams: { ...this.route.snapshot.queryParams, crt: this.enableCRT ? 0 : 1 } });
+  }
+
+  public toggleSound = () => {
+    this.router.navigate(['.'], { relativeTo: this.route, queryParams: { ...this.route.snapshot.queryParams, snd: this.enableSound ? 0 : 1 } });
   }
 }
