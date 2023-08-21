@@ -8,13 +8,13 @@ export enum Difficulty {
 }
 
 export enum Evidence {
-  DOTS = "DOTs",
-  EMF5 = "EMF 5",
-  FINGERPRINTS = "Fingerpints",
-  FREEZING = "Freezing",
-  ORBS = "Ghost Orbs",
-  SPIRITBOX = "Spirit Box",
-  WRITING = "Ghost Writing",
+  DOTS_PROJECTOR = "D.O.T.S Projector",
+  EMF_LEVEL_5 = "EMF Level 5",
+  ULTRAVIOLET = "Ultraviolet",
+  FREEZING_TEMPERATURES = "Freezing Temperatures",
+  GHOST_ORB = "Ghost Orb",
+  SPIRIT_BOX = "Spirit Box",
+  GHOST_WRITING = "Ghost Writing",
 }
 
 export enum Speed {

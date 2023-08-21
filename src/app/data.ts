@@ -5,7 +5,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 0,
     name: 'Spirit',
-    evidences: [Evidence.EMF5, Evidence.SPIRITBOX, Evidence.WRITING],
+    evidences: [Evidence.EMF_LEVEL_5, Evidence.SPIRIT_BOX, Evidence.GHOST_WRITING],
     speeds: [Speed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
@@ -15,7 +15,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 1,
     name: 'Wraith',
-    evidences: [Evidence.DOTS, Evidence.EMF5, Evidence.SPIRITBOX],
+    evidences: [Evidence.DOTS_PROJECTOR, Evidence.EMF_LEVEL_5, Evidence.SPIRIT_BOX],
     speeds: [Speed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
@@ -26,7 +26,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 2,
     name: 'Phantom',
-    evidences: [Evidence.DOTS, Evidence.FINGERPRINTS, Evidence.SPIRITBOX],
+    evidences: [Evidence.DOTS_PROJECTOR, Evidence.ULTRAVIOLET, Evidence.SPIRIT_BOX],
     speeds: [Speed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
@@ -41,7 +41,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 3,
     name: 'Poltergeist',
-    evidences: [Evidence.DOTS, Evidence.SPIRITBOX, Evidence.WRITING],
+    evidences: [Evidence.ULTRAVIOLET, Evidence.SPIRIT_BOX, Evidence.GHOST_WRITING],
     speeds: [Speed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
@@ -58,7 +58,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 4,
     name: 'Banshee',
-    evidences: [Evidence.DOTS, Evidence.FINGERPRINTS, Evidence.ORBS],
+    evidences: [Evidence.DOTS_PROJECTOR, Evidence.ULTRAVIOLET, Evidence.GHOST_ORB],
     speeds: [Speed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
@@ -74,7 +74,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 5,
     name: 'Jinn',
-    evidences: [Evidence.EMF5, Evidence.FINGERPRINTS, Evidence.FREEZING],
+    evidences: [Evidence.EMF_LEVEL_5, Evidence.ULTRAVIOLET, Evidence.FREEZING_TEMPERATURES],
     speeds: [Speed.NORMAL, Speed.FAST],
     huntSanity: 50,
     huntSpeed: [1.7, 2.5],
@@ -86,7 +86,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 6,
     name: 'Mare',
-    evidences: [Evidence.ORBS, Evidence.SPIRITBOX, Evidence.WRITING],
+    evidences: [Evidence.GHOST_ORB, Evidence.SPIRIT_BOX, Evidence.GHOST_WRITING],
     speeds: [Speed.NORMAL],
     huntSanity: 60,
     huntSpeed: [1.7],
@@ -101,7 +101,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 7,
     name: 'Revenant',
-    evidences: [Evidence.FREEZING, Evidence.ORBS, Evidence.WRITING],
+    evidences: [Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_ORB, Evidence.GHOST_WRITING],
     speeds: [Speed.SLOW, Speed.FAST],
     huntSanity: 50,
     huntSpeed: [1.0, 3.0],
@@ -111,7 +111,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 8,
     name: 'Shade',
-    evidences: [Evidence.EMF5, Evidence.FREEZING, Evidence.WRITING],
+    evidences: [Evidence.EMF_LEVEL_5, Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_WRITING],
     speeds: [Speed.NORMAL],
     huntSanity: 35,
     huntSpeed: [1.7],
@@ -129,7 +129,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 9,
     name: 'Demon',
-    evidences: [Evidence.FINGERPRINTS, Evidence.FREEZING, Evidence.WRITING],
+    evidences: [Evidence.ULTRAVIOLET, Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_WRITING],
     speeds: [Speed.NORMAL],
     huntSanity: 70,
     huntSpeed: [1.7],
@@ -144,7 +144,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 10,
     name: 'Yurei',
-    evidences: [Evidence.DOTS, Evidence.FREEZING, Evidence.ORBS],
+    evidences: [Evidence.DOTS_PROJECTOR, Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_ORB],
     speeds: [Speed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
@@ -158,7 +158,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 11,
     name: 'Oni',
-    evidences: [Evidence.DOTS, Evidence.EMF5, Evidence.FREEZING],
+    evidences: [Evidence.DOTS_PROJECTOR, Evidence.EMF_LEVEL_5, Evidence.FREEZING_TEMPERATURES],
     speeds: [Speed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
@@ -173,7 +173,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 12,
     name: 'Yokai',
-    evidences: [Evidence.DOTS, Evidence.ORBS, Evidence.SPIRITBOX],
+    evidences: [Evidence.DOTS_PROJECTOR, Evidence.GHOST_ORB, Evidence.SPIRIT_BOX],
     speeds: [Speed.NORMAL],
     huntSanity: 80,
     huntSpeed: [1.7],
@@ -185,8 +185,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 13,
     name: 'Hantu',
-    evidences: [Evidence.FINGERPRINTS, Evidence.FREEZING, Evidence.ORBS],
-    forcedEvidence: Evidence.FREEZING,
+    evidences: [Evidence.ULTRAVIOLET, Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_ORB],
+    forcedEvidence: Evidence.FREEZING_TEMPERATURES,
     speeds: [Speed.SLOW, Speed.NORMAL, Speed.FAST],
     huntSanity: 50,
     huntSpeed: [1.44, 1.7, 2.7],
@@ -201,9 +201,9 @@ export const GHOSTS: Ghost[] = [
   {
     id: 14,
     name: 'Goryo',
-    evidences: [Evidence.DOTS, Evidence.EMF5, Evidence.FINGERPRINTS],
+    evidences: [Evidence.DOTS_PROJECTOR, Evidence.EMF_LEVEL_5, Evidence.ULTRAVIOLET],
     speeds: [Speed.NORMAL],
-    forcedEvidence: Evidence.DOTS,
+    forcedEvidence: Evidence.DOTS_PROJECTOR,
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: ['DOTs only appear on camera and will rarely show if player is in the same room'],
@@ -216,7 +216,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 15,
     name: 'Myling',
-    evidences: [Evidence.EMF5, Evidence.FINGERPRINTS, Evidence.WRITING],
+    evidences: [Evidence.EMF_LEVEL_5, Evidence.ULTRAVIOLET, Evidence.GHOST_WRITING],
     speeds: [Speed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
@@ -227,7 +227,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 16,
     name: 'Onryo',
-    evidences: [Evidence.FREEZING, Evidence.ORBS, Evidence.SPIRITBOX],
+    evidences: [Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_ORB, Evidence.SPIRIT_BOX],
     speeds: [Speed.NORMAL],
     huntSanity: 60,
     huntSpeed: [1.7],
@@ -242,7 +242,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 17,
     name: 'The Twins',
-    evidences: [Evidence.EMF5, Evidence.FREEZING, Evidence.SPIRITBOX],
+    evidences: [Evidence.EMF_LEVEL_5, Evidence.FREEZING_TEMPERATURES, Evidence.SPIRIT_BOX],
     speeds: [Speed.SLOW, Speed.FAST],
     huntSanity: 50,
     huntSpeed: [1.53, 1.87],
@@ -254,7 +254,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 18,
     name: 'Raiju',
-    evidences: [Evidence.DOTS, Evidence.EMF5, Evidence.ORBS],
+    evidences: [Evidence.DOTS_PROJECTOR, Evidence.EMF_LEVEL_5, Evidence.GHOST_ORB],
     speeds: [Speed.NORMAL, Speed.FAST],
     huntSanity: 65,
     huntSpeed: [1.7, 2.5],
@@ -266,9 +266,9 @@ export const GHOSTS: Ghost[] = [
   {
     id: 19,
     name: 'Obake',
-    evidences: [Evidence.EMF5, Evidence.FINGERPRINTS, Evidence.ORBS],
+    evidences: [Evidence.EMF_LEVEL_5, Evidence.ULTRAVIOLET, Evidence.GHOST_ORB],
     speeds: [Speed.NORMAL],
-    forcedEvidence: Evidence.FINGERPRINTS,
+    forcedEvidence: Evidence.ULTRAVIOLET,
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: [
@@ -282,7 +282,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 20,
     name: 'The Mimic',
-    evidences: [Evidence.FINGERPRINTS, Evidence.FREEZING, Evidence.SPIRITBOX, Evidence.ORBS],
+    evidences: [Evidence.ULTRAVIOLET, Evidence.FREEZING_TEMPERATURES, Evidence.SPIRIT_BOX, Evidence.GHOST_ORB],
     speeds: [Speed.SLOW, Speed.NORMAL, Speed.FAST],
     huntSanity: 50,
     huntSpeed: [1.0, 1.7, 2.75],
@@ -298,9 +298,9 @@ export const GHOSTS: Ghost[] = [
   {
     id: 21,
     name: 'Moroi',
-    evidences: [Evidence.FREEZING, Evidence.SPIRITBOX, Evidence.WRITING],
+    evidences: [Evidence.FREEZING_TEMPERATURES, Evidence.SPIRIT_BOX, Evidence.GHOST_WRITING],
     speeds: [Speed.SLOW, Speed.NORMAL, Speed.FAST],
-    forcedEvidence: Evidence.SPIRITBOX,
+    forcedEvidence: Evidence.SPIRIT_BOX,
     huntSanity: 50,
     huntSpeed: [1.5, 1.7, 2.25],
     tells: [
@@ -314,9 +314,9 @@ export const GHOSTS: Ghost[] = [
   {
     id: 22,
     name: 'Deogen',
-    evidences: [Evidence.DOTS, Evidence.SPIRITBOX, Evidence.WRITING],
+    evidences: [Evidence.DOTS_PROJECTOR, Evidence.SPIRIT_BOX, Evidence.GHOST_WRITING],
     speeds: [Speed.SLOW, Speed.FAST],
-    forcedEvidence: Evidence.SPIRITBOX,
+    forcedEvidence: Evidence.SPIRIT_BOX,
     huntSanity: 40,
     huntSpeed: [0.4, 3.0],
     tells: [
@@ -330,7 +330,7 @@ export const GHOSTS: Ghost[] = [
   {
     id: 23,
     name: 'Thaye',
-    evidences: [Evidence.DOTS, Evidence.ORBS, Evidence.WRITING],
+    evidences: [Evidence.DOTS_PROJECTOR, Evidence.GHOST_ORB, Evidence.GHOST_WRITING],
     speeds: [Speed.SLOW, Speed.NORMAL, Speed.FAST],
     huntSanity: 75,
     huntSpeed: [1.0, 1.7, 2.75],

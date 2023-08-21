@@ -50,15 +50,15 @@ export class EvidenceComponent implements OnDestroy {
     }
 
     // If evidence is orbs, do not disable
-    if (this.ghosts.some(g => g.id === 20) && evidence === Evidence.ORBS) {
+    if (this.ghosts.some(g => g.id === 20) && evidence === Evidence.GHOST_ORB) {
       return false;
     }
 
     // If all evidences AND Ghost Orbs are selected, allow selection of Fingerprints, Freezing or Spiritbox.
     if (
       this.evidenceService.selectedEvidences.length === this.numberOfEvidences &&
-      this.evidenceService.selectedEvidences.includes(Evidence.ORBS) &&
-      [Evidence.FINGERPRINTS, Evidence.FREEZING, Evidence.SPIRITBOX].includes(evidence)
+      this.evidenceService.selectedEvidences.includes(Evidence.GHOST_ORB) &&
+      [Evidence.ULTRAVIOLET, Evidence.FREEZING_TEMPERATURES, Evidence.SPIRIT_BOX].includes(evidence)
     ) {
       return false;
     }
