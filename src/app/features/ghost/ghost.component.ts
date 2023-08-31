@@ -73,7 +73,7 @@ export class GhostComponent implements OnDestroy {
     }
 
     // Filter all ghosts whose forced evidence is no longer selectable
-    if (selectedEvidences.length === numberOfEvidences) {
+    if (numberOfEvidences !== 0 && selectedEvidences.length === numberOfEvidences) {
       ghosts = ghosts.filter(g => selectedEvidences.some(e => !g.forcedEvidence || g.forcedEvidence === e));
     }
 
