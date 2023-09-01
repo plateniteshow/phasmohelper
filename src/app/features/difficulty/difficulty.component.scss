@@ -37,10 +37,6 @@ $red: #ff0041;
     &--apocalypse {
       @include difficultyButton(($red));
     }
-
-    .icon {
-      font-size: 1.75em;
-    }
   }
 }
 

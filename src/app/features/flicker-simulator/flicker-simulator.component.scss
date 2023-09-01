@@ -1,7 +1,10 @@
 .flickering-icons {
   display: flex;
-  gap: 16px;
   justify-content: space-evenly;
   padding: 8px 0;
   margin-bottom: 8px;
+
+  flickering-icon {
+    flex: 1 0 33%;
+  }
 }

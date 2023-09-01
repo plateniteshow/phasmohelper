@@ -30,8 +30,8 @@
 .container {
   display: grid;
   grid-auto-rows: 1fr;
-  grid-template-columns: 0.5fr 1.5fr 1.0fr;
-  grid-template-rows: 60px 1fr auto;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
     "header header header"
     "filter main info"
@@ -102,10 +102,6 @@ section {
     display: flex;
     gap: 8px;
     margin-left: auto;
-
-    .icon {
-      font-size: 1.25em;
-    }
   }
 }
 
@@ -115,4 +111,8 @@ section {
   flex-flow: column nowrap;
   justify-content: flex-start;
   // gap: 16px;
+}
+
+::ng-deep .icon {
+  font-size: 1.75em;
 }

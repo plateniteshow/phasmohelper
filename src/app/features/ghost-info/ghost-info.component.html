@@ -6,6 +6,30 @@
   </box>
 </div>
 
+<!-- Hunt Speed -->
+<div class="hunt-speed">
+  <h2>Hunt Speed</h2>
+  <div class="hunt-speed-list">
+    <div class="hunt-speed-list-item" *ngFor="let huntSpeed of ghost.huntSpeed">
+      <ph-button ph-icon-button (click)="playHuntSpeed(huntSpeed)">
+        <i class="icon fa-solid fa-shoe-prints"></i>
+      </ph-button>
+      {{huntSpeed | number:'1.1'}} m/s
+    </div>
+  </div>
+  <div *ngIf="ghost.huntSpeedInfo">
+    <p>{{ghost.huntSpeedInfo}}</p>
+  </div>
+</div>
+
+<!-- Hunt Sanity -->
+<div class="hunt-sanity" *ngIf="ghost.huntSanityInfo">
+  <h2>Hunt Sanity</h2>
+  <p>
+    {{ghost.huntSanityInfo}}
+  </p>
+</div>
+
 <!-- Tells -->
 <div class="tells" *ngIf="ghost.tells">
   <h2>Tells</h2>
@@ -24,20 +48,4 @@
       {{behaviors}}
     </li>
   </ul>
-</div>
-
-<!-- Hunt Sanity -->
-<div class="hunt-sanity" *ngIf="ghost.huntSanityInfo">
-  <h2>Hunt Sanity</h2>
-  <p>
-    {{ghost.huntSanityInfo}}
-  </p>
-</div>
-
-<!-- Hunt Speed -->
-<div class="hunt-speed" *ngIf="ghost.huntSpeedInfo">
-  <h2>Hunt Speed</h2>
-  <p>
-    {{ghost.huntSpeedInfo}}
-  </p>
 </div>

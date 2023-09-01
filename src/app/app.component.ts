@@ -1,5 +1,5 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Component, HostBinding, HostListener } from '@angular/core';
+import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 
 import { Difficulty, Evidence, Ghost, Speed } from './app';
 import { GhostService } from './features/ghost/ghost.service';
@@ -18,8 +18,8 @@ export class AppComponent {
   @HostBinding('class.has-crt')
   public enableCRT = true;
 
-  public enableSound = false;
   public defaultDifficulty = Difficulty.PROFESSIONAL;
+  public enableSound = false;
 
   constructor(
     private appService: AppService,
