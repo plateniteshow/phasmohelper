@@ -59,15 +59,10 @@ export class GhostService {
   }
 
   public excludeGhost = (ghost: Ghost) => {
-    if (this.selectedGhost === ghost) {
-      this._selectedGhost.clear();
-    }
     this._excludedGhosts.toggle(ghost);
   }
 
   public selectGhost = (ghost: Ghost) => {
-    if (!this.excludedGhosts.includes(ghost)) {
-      this._selectedGhost.toggle(ghost)
-    }
+    this._selectedGhost.toggle(ghost)
   }
 }

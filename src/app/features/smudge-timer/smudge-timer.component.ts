@@ -14,7 +14,7 @@ export class SmudgeTimerComponent {
   public readonly spiritTimestamp = 0;
   public readonly timerMax = 180 * 1000;
 
-  /** Whether the smudge timer is allowed to play sounds or not */
+  /** Whether this component is allowed to play sounds or not */
   @Input()
   public enableSound = true;
 

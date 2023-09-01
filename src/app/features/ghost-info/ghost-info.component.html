@@ -11,7 +11,7 @@
   <h2>Hunt Speed</h2>
   <div class="hunt-speed-list">
     <div class="hunt-speed-list-item" *ngFor="let huntSpeed of ghost.huntSpeed">
-      <ph-button ph-icon-button (click)="playHuntSpeed(huntSpeed)">
+      <ph-button ph-icon-button (click)="toggleHuntSpeed(huntSpeed)">
         <i class="icon fa-solid fa-shoe-prints"></i>
       </ph-button>
       {{huntSpeed | number:'1.1'}} m/s

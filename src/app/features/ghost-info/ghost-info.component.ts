@@ -1,6 +1,6 @@
 import { Howl } from 'howler';
 
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input, OnDestroy } from '@angular/core';
 import { Ghost } from 'src/app/app';
 
 @Component({
@@ -8,13 +8,15 @@ import { Ghost } from 'src/app/app';
   templateUrl: './ghost-info.component.html',
   styleUrls: ['./ghost-info.component.scss']
 })
-export class GhostInfoComponent {
+export class GhostInfoComponent implements OnDestroy {
+  /** Whether this component is allowed to play sounds or not */
+  @Input()
+  public enableSound = true;
   @Input()
   public ghost!: Ghost;
 
-  private sound: Howl;
-
   private interval?: NodeJS.Timer;
+  private sound: Howl;
 
   constructor() {
     this.sound = new Howl({
@@ -22,13 +24,23 @@ export class GhostInfoComponent {
     });
   }
 
-  // TODO: Do not stop speed automatically
-  // TODO: Indicator on icon whether a sound is playing
-  public playHuntSpeed = (huntSpeed: number) => {
-    var times = 9;
+  public ngOnDestroy(): void {
+    this.stopHuntSpeed();
+  }
 
+  public toggleHuntSpeed = (huntSpeed: number) => {
     if (this.interval) {
-      clearInterval(this.interval);
+      this.stopHuntSpeed();
+    } else {
+      this.playHuntSpeed(huntSpeed);
+    }
+  }
+
+  // TODO: Indicator on icon whether a sound is playing
+  private playHuntSpeed = (huntSpeed: number) => {
+    if (!this.enableSound) {
+      console.warn('Audio is currently disabled. You can activate it by clicking on the speakers icon in the top right corner of the window.');
+      return;
     }
 
     // Play sound initially
@@ -37,10 +49,10 @@ export class GhostInfoComponent {
     // Keep on playing sound periodically (TODO: Currently 10 times)
     this.interval = setInterval(() => {
       this.sound.play();
-      times--;
-      if (times === 0) {
-        clearInterval(this.interval);
-      }
     }, 1000 / huntSpeed);
+  }
+
+  private stopHuntSpeed = () => {
+    clearInterval(this.interval);
   }
 }
