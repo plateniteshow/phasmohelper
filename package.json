@@ -20,7 +20,6 @@
     "@angular/platform-browser-dynamic": "^17.0.8",
     "@angular/router": "^17.0.8",
     "rxjs": "~7.5.0",
-    "speak-tts": "^2.0.8",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
