@@ -34,7 +34,7 @@
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
     "header header header"
-    "filter main info"
+    "filter main tools"
     "filter main tools";
   height: calc(100% - 4px);
   border: 2px solid #A0B8BC;
@@ -48,10 +48,10 @@
   grid-area: filter;
 }
 
-.info {
-  grid-area: info;
-  overflow-y: scroll;
-}
+// .info {
+//   grid-area: info;
+//   overflow-y: scroll;
+// }
 
 .tools {
   grid-area: tools;
@@ -75,7 +75,6 @@ section {
   .speed,
   .reset,
   .ghosts,
-  .ghost-info,
   .flicker-simulator,
   .smudge-timer {
     padding: 8px;

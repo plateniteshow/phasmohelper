@@ -19,7 +19,6 @@ export class AppComponent {
   public enableCRT = true;
 
   public defaultDifficulty = Difficulty.PROFESSIONAL;
-  public enableSound = false;
 
   constructor(
     private appService: AppService,
@@ -30,9 +29,6 @@ export class AppComponent {
     this.route.queryParams.subscribe((params: Params) => {
       if (params['crt']) {
         this.enableCRT = params['crt'] == 1;
-      }
-      if (params['snd']) {
-        this.enableSound = params['snd'] == 1;
       }
     });
   }
@@ -56,6 +52,6 @@ export class AppComponent {
   }
 
   public toggleSound = () => {
-    this.router.navigate(['.'], { relativeTo: this.route, queryParams: { ...this.route.snapshot.queryParams, snd: this.enableSound ? 0 : 1 } });
+    this.router.navigate(['.'], { relativeTo: this.route, queryParams: { ...this.route.snapshot.queryParams } });
   }
 }

@@ -10,9 +10,6 @@
         <ph-button ph-icon-button (click)="toggleCRT()">
           <i class="icon fa-solid" [ngClass]="enableCRT ? 'fa-video' : 'fa-video-slash'"></i>
         </ph-button>
-        <ph-button ph-icon-button (click)="toggleSound()">
-          <i class="icon fa-solid" [ngClass]="enableSound ? 'fa-volume-high': 'fa-volume-xmark'"></i>
-        </ph-button>
       </div>
     </div>
   </section>
@@ -61,18 +58,6 @@
   </section>
 
   <!---------->
-  <!-- INFO -->
-  <!---------->
-  <section class="info">
-
-    <!-- Ghost Info -->
-    <div class="ghost-info" *ngIf="selectedGhost">
-      <ghost-info [ghost]="selectedGhost" [enableSound]="enableSound"></ghost-info>
-    </div>
-
-  </section>
-
-  <!---------->
   <!-- TOOLS -->
   <!---------->
   <section class="tools">
@@ -86,7 +71,7 @@
     <!-- Smudge Timer -->
     <div class="smudge-timer">
       <h2>Smudge-Timer</h2>
-      <smudge-timer [enableSound]="enableSound"></smudge-timer>
+      <smudge-timer></smudge-timer>
     </div>
 
   </section>

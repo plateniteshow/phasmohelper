@@ -11,7 +11,6 @@ import { SharedModule } from './shared/shared.module';
 import { DifficultyModule } from './features/difficulty/difficulty.module';
 import { EvidenceModule } from './features/evidence/evidence.module';
 import { FlickerSimulatorModule } from './features/flicker-simulator/flicker-simulator.module';
-import { GhostInfoModule } from './features/ghost-info/ghost-info.module';
 import { GhostModule } from './features/ghost/ghost.module';
 import { SmudgeTimerModule } from './features/smudge-timer/smudge-timer.module';
 import { SpeedModule } from './features/speed/speed.module';
@@ -28,7 +27,6 @@ import { SpeedModule } from './features/speed/speed.module';
     EvidenceModule,
     FlickerSimulatorModule,
     FormsModule,
-    GhostInfoModule,
     GhostModule,
     ReactiveFormsModule,
     SharedModule,

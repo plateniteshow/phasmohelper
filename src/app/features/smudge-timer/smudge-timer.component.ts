@@ -1,7 +1,4 @@
-// @ts-ignore
-import Speech from "speak-tts";
-
-import { Component, HostBinding, HostListener, Input } from '@angular/core';
+import { Component, HostBinding, HostListener } from '@angular/core';
 
 @Component({
   selector: 'smudge-timer',
@@ -14,27 +11,12 @@ export class SmudgeTimerComponent {
   public readonly spiritTimestamp = 0;
   public readonly timerMax = 180 * 1000;
 
-  /** Whether this component is allowed to play sounds or not */
-  @Input()
-  public enableSound = true;
-
   public running = false;
   public timer: number = this.timerMax;
 
   private readonly speech: any;
 
   private smudgeTimer!: NodeJS.Timer;
-
-  constructor() {
-    const speech = new Speech();
-    speech.init({
-      volume: 0.25,
-      lang: "en-GB",
-      rate: 1,
-      pitch: 1,
-    });
-    this.speech = speech;
-  }
 
   @HostBinding("style.--defaultMarkerPosition")
   public get defaultMarkerPosition(): string {
@@ -105,13 +87,6 @@ export class SmudgeTimerComponent {
 
     this.smudgeTimer = setInterval(() => {
       this.timer -= 1000;
-
-      if (this.enableSound) {
-        this.setCountDown('Demon Smudge', this.timer, this.demonTimestamp, 5000);
-        this.setCountDown('Default Smudge', this.timer, this.defaultTimestamp, 5000);
-        this.setCountDown('Spirit Smudge', this.timer, this.spiritTimestamp, 5000);
-      }
-
       if (this.timer === 0) {
         this.stopTimer();
       }

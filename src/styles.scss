@@ -1,6 +1,8 @@
+@use "sass:math";
+
 $grid-size: 16px;
-$border-size: $grid-size / 4;
-$padding-size: $grid-size / 2;
+$border-size: math.div($grid-size, 4);
+$padding-size: math.div($grid-size, 2);
 $bg-color: #0D1616;
 $fg-color: #A0B8BC;
 
