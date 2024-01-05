@@ -16,7 +16,7 @@ export class AppComponent {
   public readonly Speed = Speed;
 
   @HostBinding('class.has-crt')
-  public enableCRT = true;
+  public enableCRT = false;
 
   public defaultDifficulty = Difficulty.PROFESSIONAL;
 
