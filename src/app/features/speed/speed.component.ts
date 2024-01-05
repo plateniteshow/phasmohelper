@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Speed } from 'src/app/app';
+import { ESpeed } from 'src/app/app';
 import { SpeedService } from './speed.service';
 
 @Component({
@@ -8,22 +8,22 @@ import { SpeedService } from './speed.service';
   styleUrls: ['./speed.component.scss']
 })
 export class SpeedComponent {
-  public readonly Speed = Speed;
+  public readonly Speed = ESpeed;
 
   constructor(
     private speedService: SpeedService,
   ) {
   }
 
-  public isSpeedSelected = (speed: Speed): boolean => {
+  public isSpeedSelected = (speed: ESpeed): boolean => {
     return this.speedService.selectedSpeeds.includes(speed);
   }
 
-  public isSpeedIndeterminate = (speed: Speed): boolean => {
+  public isSpeedIndeterminate = (speed: ESpeed): boolean => {
     return this.speedService.excludedSpeeds.includes(speed);
   }
 
-  public onClickSpeed = (speed: Speed, event: MouseEvent) => {
+  public onClickSpeed = (speed: ESpeed, event: MouseEvent) => {
     if (event.shiftKey) {
       this.speedService.excludeSpeed(speed);
     } else {

@@ -1,12 +1,12 @@
-import { Evidence, Ghost, Speed } from "./app";
+import { EEvidence, Ghost, ESpeed } from "./app";
 
 export const GHOSTS: Ghost[] = [
   // Spirit
   {
     id: 0,
     name: 'Spirit',
-    evidences: [Evidence.EMF_LEVEL_5, Evidence.SPIRIT_BOX, Evidence.GHOST_WRITING],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.EMF_LEVEL_5, EEvidence.SPIRIT_BOX, EEvidence.GHOST_WRITING],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: ['Smudging the ghost will prevent a hunt for 180s instead of the normal 90s'],
@@ -15,8 +15,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 1,
     name: 'Wraith',
-    evidences: [Evidence.DOTS_PROJECTOR, Evidence.EMF_LEVEL_5, Evidence.SPIRIT_BOX],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.DOTS_PROJECTOR, EEvidence.EMF_LEVEL_5, EEvidence.SPIRIT_BOX],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: ['Ghost will never step in salt'],
@@ -26,8 +26,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 2,
     name: 'Phantom',
-    evidences: [Evidence.DOTS_PROJECTOR, Evidence.ULTRAVIOLET, Evidence.SPIRIT_BOX],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.DOTS_PROJECTOR, EEvidence.ULTRAVIOLET, EEvidence.SPIRIT_BOX],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: [
@@ -41,8 +41,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 3,
     name: 'Poltergeist',
-    evidences: [Evidence.ULTRAVIOLET, Evidence.SPIRIT_BOX, Evidence.GHOST_WRITING],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.ULTRAVIOLET, EEvidence.SPIRIT_BOX, EEvidence.GHOST_WRITING],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: [
@@ -58,8 +58,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 4,
     name: 'Banshee',
-    evidences: [Evidence.DOTS_PROJECTOR, Evidence.ULTRAVIOLET, Evidence.GHOST_ORB],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.DOTS_PROJECTOR, EEvidence.ULTRAVIOLET, EEvidence.GHOST_ORB],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: ['Banshee scream through paramic'],
@@ -74,8 +74,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 5,
     name: 'Jinn',
-    evidences: [Evidence.EMF_LEVEL_5, Evidence.ULTRAVIOLET, Evidence.FREEZING_TEMPERATURES],
-    speeds: [Speed.NORMAL, Speed.FAST],
+    evidences: [EEvidence.EMF_LEVEL_5, EEvidence.ULTRAVIOLET, EEvidence.FREEZING_TEMPERATURES],
+    speeds: [ESpeed.NORMAL, ESpeed.FAST],
     huntSanity: 50,
     huntSpeed: [1.7, 2.5],
     tells: ['Ability will drop nearby players\' sanity by 25% with EMF 2 at the breaker'],
@@ -86,8 +86,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 6,
     name: 'Mare',
-    evidences: [Evidence.GHOST_ORB, Evidence.SPIRIT_BOX, Evidence.GHOST_WRITING],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.GHOST_ORB, EEvidence.SPIRIT_BOX, EEvidence.GHOST_WRITING],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 60,
     huntSpeed: [1.7],
     tells: [
@@ -101,8 +101,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 7,
     name: 'Revenant',
-    evidences: [Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_ORB, Evidence.GHOST_WRITING],
-    speeds: [Speed.SLOW, Speed.FAST],
+    evidences: [EEvidence.FREEZING_TEMPERATURES, EEvidence.GHOST_ORB, EEvidence.GHOST_WRITING],
+    speeds: [ESpeed.SLOW, ESpeed.FAST],
     huntSanity: 50,
     huntSpeed: [1.0, 3.0],
     huntSpeedInfo: '3.0m/s immediately once the player has been sensed (equipment, voice, or line of sight) and until ghost has reached the players last known location where it will gradually slow down to 1m/s',
@@ -111,8 +111,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 8,
     name: 'Shade',
-    evidences: [Evidence.EMF_LEVEL_5, Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_WRITING],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.EMF_LEVEL_5, EEvidence.FREEZING_TEMPERATURES, EEvidence.GHOST_WRITING],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 35,
     huntSpeed: [1.7],
     tells: [
@@ -129,8 +129,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 9,
     name: 'Demon',
-    evidences: [Evidence.ULTRAVIOLET, Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_WRITING],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.ULTRAVIOLET, EEvidence.FREEZING_TEMPERATURES, EEvidence.GHOST_WRITING],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 70,
     huntSpeed: [1.7],
     tells: [
@@ -144,8 +144,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 10,
     name: 'Yurei',
-    evidences: [Evidence.DOTS_PROJECTOR, Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_ORB],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.DOTS_PROJECTOR, EEvidence.FREEZING_TEMPERATURES, EEvidence.GHOST_ORB],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: [
@@ -158,8 +158,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 11,
     name: 'Oni',
-    evidences: [Evidence.DOTS_PROJECTOR, Evidence.EMF_LEVEL_5, Evidence.FREEZING_TEMPERATURES],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.DOTS_PROJECTOR, EEvidence.EMF_LEVEL_5, EEvidence.FREEZING_TEMPERATURES],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: [
@@ -173,8 +173,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 12,
     name: 'Yokai',
-    evidences: [Evidence.DOTS_PROJECTOR, Evidence.GHOST_ORB, Evidence.SPIRIT_BOX],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.DOTS_PROJECTOR, EEvidence.GHOST_ORB, EEvidence.SPIRIT_BOX],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 80,
     huntSpeed: [1.7],
     tells: ['Hearing/electronic distance is less than 2.5m during hunts'],
@@ -185,9 +185,9 @@ export const GHOSTS: Ghost[] = [
   {
     id: 13,
     name: 'Hantu',
-    evidences: [Evidence.ULTRAVIOLET, Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_ORB],
-    forcedEvidence: Evidence.FREEZING_TEMPERATURES,
-    speeds: [Speed.SLOW, Speed.NORMAL, Speed.FAST],
+    evidences: [EEvidence.ULTRAVIOLET, EEvidence.FREEZING_TEMPERATURES, EEvidence.GHOST_ORB],
+    forcedEvidence: EEvidence.FREEZING_TEMPERATURES,
+    speeds: [ESpeed.SLOW, ESpeed.NORMAL, ESpeed.FAST],
     huntSanity: 50,
     huntSpeed: [1.44, 1.7, 2.7],
     tells: [
@@ -201,9 +201,9 @@ export const GHOSTS: Ghost[] = [
   {
     id: 14,
     name: 'Goryo',
-    evidences: [Evidence.DOTS_PROJECTOR, Evidence.EMF_LEVEL_5, Evidence.ULTRAVIOLET],
-    speeds: [Speed.NORMAL],
-    forcedEvidence: Evidence.DOTS_PROJECTOR,
+    evidences: [EEvidence.DOTS_PROJECTOR, EEvidence.EMF_LEVEL_5, EEvidence.ULTRAVIOLET],
+    speeds: [ESpeed.NORMAL],
+    forcedEvidence: EEvidence.DOTS_PROJECTOR,
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: ['DOTs only appear on camera and will rarely show if player is in the same room'],
@@ -216,8 +216,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 15,
     name: 'Myling',
-    evidences: [Evidence.EMF_LEVEL_5, Evidence.ULTRAVIOLET, Evidence.GHOST_WRITING],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.EMF_LEVEL_5, EEvidence.ULTRAVIOLET, EEvidence.GHOST_WRITING],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: ['Footsteps and vocals cannot be heard more than 12m away during hunts (normal is 20m)'],
@@ -227,8 +227,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 16,
     name: 'Onryo',
-    evidences: [Evidence.FREEZING_TEMPERATURES, Evidence.GHOST_ORB, Evidence.SPIRIT_BOX],
-    speeds: [Speed.NORMAL],
+    evidences: [EEvidence.FREEZING_TEMPERATURES, EEvidence.GHOST_ORB, EEvidence.SPIRIT_BOX],
+    speeds: [ESpeed.NORMAL],
     huntSanity: 60,
     huntSpeed: [1.7],
     tells: ['Will hunt at any sanity after extinguishing every 3rd flame if no other flames or crucifix will prevent it'],
@@ -242,8 +242,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 17,
     name: 'The Twins',
-    evidences: [Evidence.EMF_LEVEL_5, Evidence.FREEZING_TEMPERATURES, Evidence.SPIRIT_BOX],
-    speeds: [Speed.SLOW, Speed.FAST],
+    evidences: [EEvidence.EMF_LEVEL_5, EEvidence.FREEZING_TEMPERATURES, EEvidence.SPIRIT_BOX],
+    speeds: [ESpeed.SLOW, ESpeed.FAST],
     huntSanity: 50,
     huntSpeed: [1.53, 1.87],
     tells: ['Often do interactions at the same time'],
@@ -254,8 +254,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 18,
     name: 'Raiju',
-    evidences: [Evidence.DOTS_PROJECTOR, Evidence.EMF_LEVEL_5, Evidence.GHOST_ORB],
-    speeds: [Speed.NORMAL, Speed.FAST],
+    evidences: [EEvidence.DOTS_PROJECTOR, EEvidence.EMF_LEVEL_5, EEvidence.GHOST_ORB],
+    speeds: [ESpeed.NORMAL, ESpeed.FAST],
     huntSanity: 65,
     huntSpeed: [1.7, 2.5],
     tells: ['During a hunt, flickers electronics at 15m range instead of 10m'],
@@ -266,9 +266,9 @@ export const GHOSTS: Ghost[] = [
   {
     id: 19,
     name: 'Obake',
-    evidences: [Evidence.EMF_LEVEL_5, Evidence.ULTRAVIOLET, Evidence.GHOST_ORB],
-    speeds: [Speed.NORMAL],
-    forcedEvidence: Evidence.ULTRAVIOLET,
+    evidences: [EEvidence.EMF_LEVEL_5, EEvidence.ULTRAVIOLET, EEvidence.GHOST_ORB],
+    speeds: [ESpeed.NORMAL],
+    forcedEvidence: EEvidence.ULTRAVIOLET,
     huntSanity: 50,
     huntSpeed: [1.7],
     tells: [
@@ -282,8 +282,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 20,
     name: 'The Mimic',
-    evidences: [Evidence.ULTRAVIOLET, Evidence.FREEZING_TEMPERATURES, Evidence.SPIRIT_BOX, Evidence.GHOST_ORB],
-    speeds: [Speed.SLOW, Speed.NORMAL, Speed.FAST],
+    evidences: [EEvidence.ULTRAVIOLET, EEvidence.FREEZING_TEMPERATURES, EEvidence.SPIRIT_BOX, EEvidence.GHOST_ORB],
+    speeds: [ESpeed.SLOW, ESpeed.NORMAL, ESpeed.FAST],
     huntSanity: 50,
     huntSpeed: [1.0, 1.7, 2.75],
     tells: [
@@ -298,9 +298,9 @@ export const GHOSTS: Ghost[] = [
   {
     id: 21,
     name: 'Moroi',
-    evidences: [Evidence.FREEZING_TEMPERATURES, Evidence.SPIRIT_BOX, Evidence.GHOST_WRITING],
-    speeds: [Speed.SLOW, Speed.NORMAL, Speed.FAST],
-    forcedEvidence: Evidence.SPIRIT_BOX,
+    evidences: [EEvidence.FREEZING_TEMPERATURES, EEvidence.SPIRIT_BOX, EEvidence.GHOST_WRITING],
+    speeds: [ESpeed.SLOW, ESpeed.NORMAL, ESpeed.FAST],
+    forcedEvidence: EEvidence.SPIRIT_BOX,
     huntSanity: 50,
     huntSpeed: [1.5, 1.7, 2.25],
     tells: [
@@ -314,9 +314,9 @@ export const GHOSTS: Ghost[] = [
   {
     id: 22,
     name: 'Deogen',
-    evidences: [Evidence.DOTS_PROJECTOR, Evidence.SPIRIT_BOX, Evidence.GHOST_WRITING],
-    speeds: [Speed.SLOW, Speed.FAST],
-    forcedEvidence: Evidence.SPIRIT_BOX,
+    evidences: [EEvidence.DOTS_PROJECTOR, EEvidence.SPIRIT_BOX, EEvidence.GHOST_WRITING],
+    speeds: [ESpeed.SLOW, ESpeed.FAST],
+    forcedEvidence: EEvidence.SPIRIT_BOX,
     huntSanity: 40,
     huntSpeed: [0.4, 3.0],
     tells: [
@@ -330,8 +330,8 @@ export const GHOSTS: Ghost[] = [
   {
     id: 23,
     name: 'Thaye',
-    evidences: [Evidence.DOTS_PROJECTOR, Evidence.GHOST_ORB, Evidence.GHOST_WRITING],
-    speeds: [Speed.SLOW, Speed.NORMAL, Speed.FAST],
+    evidences: [EEvidence.DOTS_PROJECTOR, EEvidence.GHOST_ORB, EEvidence.GHOST_WRITING],
+    speeds: [ESpeed.SLOW, ESpeed.NORMAL, ESpeed.FAST],
     huntSanity: 75,
     huntSpeed: [1.0, 1.7, 2.75],
     behaviors: [

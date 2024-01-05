@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Subscription, combineLatest, map } from 'rxjs';
+import { Subscription } from 'rxjs';
 
-import { Evidence, Ghost } from 'src/app/app';
+import { EEvidence, Ghost } from 'src/app/app';
 
 import { DifficultyService } from '../difficulty/difficulty.service';
 import { EvidenceService } from './evidence.service';
@@ -13,7 +13,7 @@ import { GhostService } from '../ghost/ghost.service';
   styleUrls: ['./evidence.component.scss'],
 })
 export class EvidenceComponent implements OnDestroy {
-  public readonly Evidence = Evidence;
+  public readonly Evidence = EEvidence;
 
   private ghosts: Ghost[];
   private ghosts$: Subscription;
@@ -38,7 +38,7 @@ export class EvidenceComponent implements OnDestroy {
     });
   }
 
-  public isEvidenceDisabled = (evidence: Evidence) => {
+  public isEvidenceDisabled = (evidence: EEvidence) => {
     // If evidence is already selected, do not disable
     if (this.evidenceService.selectedEvidences.includes(evidence)) {
       return false;
@@ -50,15 +50,15 @@ export class EvidenceComponent implements OnDestroy {
     }
 
     // If evidence is orbs, do not disable
-    if (this.ghosts.some(g => g.id === 20) && evidence === Evidence.GHOST_ORB) {
+    if (this.ghosts.some(g => g.id === 20) && evidence === EEvidence.GHOST_ORB) {
       return false;
     }
 
     // If all evidences AND Ghost Orbs are selected, allow selection of Fingerprints, Freezing or Spiritbox.
     if (
       this.evidenceService.selectedEvidences.length === this.numberOfEvidences &&
-      this.evidenceService.selectedEvidences.includes(Evidence.GHOST_ORB) &&
-      [Evidence.ULTRAVIOLET, Evidence.FREEZING_TEMPERATURES, Evidence.SPIRIT_BOX].includes(evidence)
+      this.evidenceService.selectedEvidences.includes(EEvidence.GHOST_ORB) &&
+      [EEvidence.ULTRAVIOLET, EEvidence.FREEZING_TEMPERATURES, EEvidence.SPIRIT_BOX].includes(evidence)
     ) {
       return false;
     }
@@ -67,11 +67,11 @@ export class EvidenceComponent implements OnDestroy {
     return this.evidenceService.selectedEvidences.length >= this.numberOfEvidences;
   }
 
-  public isEvidenceSelected = (evidence: Evidence): boolean => {
+  public isEvidenceSelected = (evidence: EEvidence): boolean => {
     return this.evidenceService.selectedEvidences.includes(evidence);
   }
 
-  public isEvidenceIndeterminate = (evidence: Evidence): boolean => {
+  public isEvidenceIndeterminate = (evidence: EEvidence): boolean => {
     return this.evidenceService.excludedEvidences.includes(evidence);
   }
 
@@ -80,7 +80,7 @@ export class EvidenceComponent implements OnDestroy {
     this.numberOfEvidences$.unsubscribe();
   }
 
-  public onClickEvidence = (evidence: Evidence, event: MouseEvent) => {
+  public onClickEvidence = (evidence: EEvidence, event: MouseEvent) => {
     if (event.shiftKey) {
       this.evidenceService.excludeEvidence(evidence);
     } else {

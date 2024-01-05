@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Difficulty } from 'src/app/app';
+import { EDifficulty } from 'src/app/app';
 import { DifficultyService } from './difficulty.service';
 
 @Component({
@@ -8,20 +8,20 @@ import { DifficultyService } from './difficulty.service';
   styleUrls: ['./difficulty.component.scss']
 })
 export class DifficultyComponent implements OnInit {
-  public readonly Difficulty = Difficulty;
+  public readonly Difficulty = EDifficulty;
 
   @Input()
-  public defaultDifficulty!: Difficulty;
+  public defaultDifficulty!: EDifficulty;
 
   constructor(
     private difficultyService: DifficultyService,
   ) { }
 
-  public get selectedDifficulty(): Difficulty {
+  public get selectedDifficulty(): EDifficulty {
     return this.difficultyService.selectedDifficulty;
   }
 
-  public isDifficultySelected = (difficulty: Difficulty): boolean => {
+  public isDifficultySelected = (difficulty: EDifficulty): boolean => {
     return this.difficultyService.selectedDifficulty === difficulty;
   };
 
@@ -29,7 +29,7 @@ export class DifficultyComponent implements OnInit {
     this.difficultyService.selectDifficulty(this.defaultDifficulty);
   }
 
-  public onClickDifficulty = (difficulty: Difficulty) => {
+  public onClickDifficulty = (difficulty: EDifficulty) => {
     this.difficultyService.selectDifficulty(difficulty);
   }
 }

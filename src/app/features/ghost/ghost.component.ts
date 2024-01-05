@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription, combineLatest } from 'rxjs';
 
-import { Evidence, Ghost, Speed } from 'src/app/app';
+import { EEvidence, Ghost, ESpeed } from 'src/app/app';
 import { GHOSTS } from 'src/app/data';
 
 import { DifficultyService } from '../difficulty/difficulty.service';
@@ -63,7 +63,7 @@ export class GhostComponent implements OnDestroy {
     }
   }
 
-  private filterGhosts = (numberOfEvidences: number, selectedEvidences: Evidence[], excludedEvidences: Evidence[], selectedSpeeds: Speed[], excludedSpeeds: Speed[]) => {
+  private filterGhosts = (numberOfEvidences: number, selectedEvidences: EEvidence[], excludedEvidences: EEvidence[], selectedSpeeds: ESpeed[], excludedSpeeds: ESpeed[]) => {
     let ghosts: Ghost[] = GHOSTS;
 
     if (selectedEvidences.length > numberOfEvidences) {

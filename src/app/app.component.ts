@@ -1,7 +1,7 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 
-import { Difficulty, Evidence, Ghost, Speed } from './app';
+import { EDifficulty, EEvidence, Ghost, ESpeed } from './app';
 import { GhostService } from './features/ghost/ghost.service';
 import { AppService } from './app.service';
 
@@ -12,13 +12,13 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public readonly Evidence = Evidence;
-  public readonly Speed = Speed;
+  public readonly Evidence = EEvidence;
+  public readonly Speed = ESpeed;
 
   @HostBinding('class.has-crt')
   public enableCRT = false;
 
-  public defaultDifficulty = Difficulty.PROFESSIONAL;
+  public defaultDifficulty = EDifficulty.PROFESSIONAL;
 
   constructor(
     private appService: AppService,

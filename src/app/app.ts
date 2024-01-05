@@ -1,13 +1,13 @@
 import { FormControl } from "@angular/forms";
 
-export enum Difficulty {
+export enum EDifficulty {
   PROFESSIONAL = "Professional",
   NIGHTMARE = "Nightmare",
   INSANITY = "Insanity",
   APOCALYPSE = "Apocalypse",
 }
 
-export enum Evidence {
+export enum EEvidence {
   DOTS_PROJECTOR = "D.O.T.S Projector",
   EMF_LEVEL_5 = "EMF Level 5",
   ULTRAVIOLET = "Ultraviolet",
@@ -17,7 +17,7 @@ export enum Evidence {
   GHOST_WRITING = "Ghost Writing",
 }
 
-export enum Speed {
+export enum ESpeed {
   SLOW = "Slow",
   NORMAL = "Normal",
   FAST = "Fast",
@@ -26,9 +26,9 @@ export enum Speed {
 export type Ghost = {
   id: number;
   behaviors?: string[];
-  evidences: Evidence[];
-  speeds: Speed[];
-  forcedEvidence?: Evidence;
+  evidences: EEvidence[];
+  speeds: ESpeed[];
+  forcedEvidence?: EEvidence;
   huntSanity: number;
   huntSanityInfo?: string;
   huntSpeed: number[];
