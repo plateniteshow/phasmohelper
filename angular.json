@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "phasmohelper:build:production"
+              "buildTarget": "phasmohelper:build:production"
             },
             "development": {
-              "browserTarget": "phasmohelper:build:development"
+              "buildTarget": "phasmohelper:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "phasmohelper:build"
+            "buildTarget": "phasmohelper:build"
           }
         },
         "test": {
