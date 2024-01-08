@@ -8,7 +8,7 @@ export class AppService {
   public excludedEvidences: WritableSignal<EEvidence[]> = signal([]);
   public excludedGhosts: WritableSignal<Ghost[]> = signal([]);
   public excludedSpeeds: WritableSignal<ESpeed[]> = signal([]);
-  public selectedDifficulty: WritableSignal<EDifficulty> = signal(EDifficulty.PROFESSIONAL);
+  public selectedDifficulty: WritableSignal<EDifficulty> = signal(EDifficulty.INSANITY);
   public selectedEvidences: WritableSignal<EEvidence[]> = signal([]);
   public selectedGhost: WritableSignal<Ghost | undefined> = signal(undefined);
   public selectedSpeeds: WritableSignal<ESpeed[]> = signal([]);

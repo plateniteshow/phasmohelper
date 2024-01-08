@@ -1,5 +1,5 @@
-import { Component, WritableSignal } from '@angular/core';
-import { EDifficulty } from 'src/app/app';
+import { Component, Signal, WritableSignal } from '@angular/core';
+import { EDifficulty, EEvidence } from 'src/app/app';
 import { AppService } from 'src/app/app.service';
 
 @Component({
@@ -10,8 +10,16 @@ import { AppService } from 'src/app/app.service';
 export class DifficultyComponent {
   public readonly EDifficulty = EDifficulty;
 
+  public get numberOfEvidences(): Signal<number> {
+    return this.appService.numberOfEvidences;
+  }
+
   public get selectedDifficulty(): WritableSignal<EDifficulty> {
     return this.appService.selectedDifficulty;
+  }
+
+  public get selectedEvidences(): WritableSignal<EEvidence[]> {
+    return this.appService.selectedEvidences;
   }
 
   constructor(
@@ -41,5 +49,10 @@ export class DifficultyComponent {
 
   public select = (difficulty: EDifficulty): void => {
     this.selectedDifficulty.set(difficulty);
+
+    if (this.selectedEvidences().length > this.numberOfEvidences()) {
+      const difference = this.selectedEvidences().length - this.numberOfEvidences();
+      this.selectedEvidences.update(e => e.slice(0, e.length - difference));
+    }
   }
 }

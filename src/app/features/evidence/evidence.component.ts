@@ -24,15 +24,7 @@ export class EvidenceComponent {
 
   constructor(
     private appService: AppService
-  ) {
-    effect(() => {
-      console.log(this.selectedEvidences().length, this.numberOfEvidences());
-      if (this.selectedEvidences().length > this.numberOfEvidences()) {
-        const difference = this.selectedEvidences().length - this.numberOfEvidences();
-        this.selectedEvidences.update(e => e.slice(0, difference));
-      }
-    }, { allowSignalWrites: true });
-  }
+  ) { }
 
   private toggleExcludedEvidence = (evidence: EEvidence) => {
     // If the evidence is already selected, unselect it
