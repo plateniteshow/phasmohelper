@@ -1,90 +1,85 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-
-import { EEvidence, Ghost } from 'src/app/app';
-
-import { DifficultyService } from '../difficulty/difficulty.service';
-import { EvidenceService } from './evidence.service';
-import { GhostService } from '../ghost/ghost.service';
+import { Component, Signal, WritableSignal, effect } from '@angular/core';
+import { EEvidence } from 'src/app/app';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'evidence',
   templateUrl: './evidence.component.html',
   styleUrls: ['./evidence.component.scss'],
 })
-export class EvidenceComponent implements OnDestroy {
-  public readonly Evidence = EEvidence;
+export class EvidenceComponent {
+  public readonly EEvidence = EEvidence;
 
-  private ghosts: Ghost[];
-  private ghosts$: Subscription;
-  private numberOfEvidences: number;
-  private numberOfEvidences$: Subscription;
+  public get excludedEvidences(): WritableSignal<EEvidence[]> {
+    return this.appService.excludedEvidences;
+  }
+
+  public get numberOfEvidences(): Signal<number> {
+    return this.appService.numberOfEvidences
+  }
+
+  public get selectedEvidences(): WritableSignal<EEvidence[]> {
+    return this.appService.selectedEvidences;
+  }
 
   constructor(
-    private difficultyService: DifficultyService,
-    private evidenceService: EvidenceService,
-    private ghostService: GhostService,
+    private appService: AppService
   ) {
-    this.ghosts = [];
-    this.numberOfEvidences = 3;
+    effect(() => {
+      console.log(this.selectedEvidences().length, this.numberOfEvidences());
+      if (this.selectedEvidences().length > this.numberOfEvidences()) {
+        const difference = this.selectedEvidences().length - this.numberOfEvidences();
+        this.selectedEvidences.update(e => e.slice(0, difference));
+      }
+    }, { allowSignalWrites: true });
+  }
 
-    this.numberOfEvidences$ = this.difficultyService.numberOfEvidences$.subscribe(numberOfEvidences => {
-      this.numberOfEvidences = numberOfEvidences;
-      this.evidenceService.selectedEvidences = [];
+  private toggleExcludedEvidence = (evidence: EEvidence) => {
+    // If the evidence is already selected, unselect it
+    if (this.selectedEvidences().includes(evidence)) {
+      this.selectedEvidences.update(e => e.filter(e => e !== evidence));
+    }
+
+    // Update the excluded evidences
+    this.excludedEvidences.update(e => {
+      if (e.includes(evidence)) {
+        return e.filter(e => e !== evidence);
+      } else {
+        return [...e, evidence];
+      }
     });
+  }
 
-    this.ghosts$ = this.ghostService.selectableGhosts$.subscribe(ghosts => {
-      this.ghosts = ghosts;
+  private toggleSelectedEvidence = (evidence: EEvidence) => {
+    // If the evidence is already excluded, unexclude it
+    if (this.excludedEvidences().includes(evidence)) {
+      this.excludedEvidences.update(e => e.filter(e => e !== evidence));
+    }
+
+    // Update the selected evidence
+    this.selectedEvidences.update(e => {
+      if (e.includes(evidence)) {
+        return e.filter(e => e !== evidence);
+      } else {
+        return [...e, evidence];
+      }
     });
   }
 
-  public isEvidenceDisabled = (evidence: EEvidence) => {
-    // If evidence is already selected, do not disable
-    if (this.evidenceService.selectedEvidences.includes(evidence)) {
-      return false;
-    }
+  public isActive = (evidence: EEvidence) => this.selectedEvidences().includes(evidence);
 
-    // If all of the filtered ghosts cannot have this evidence AND this evidence was not manually excluded, disable evidence
-    if (!this.evidenceService.excludedEvidences.includes(evidence) && this.ghosts.map(g => g.evidences).every(e => !e.includes(evidence))) {
-      return true;
-    }
+  public isDisabled = (evidence: EEvidence): boolean => {
+    return !this.selectedEvidences().includes(evidence) && this.selectedEvidences().length >= this.numberOfEvidences();
+  };
 
-    // If evidence is orbs, do not disable
-    if (this.ghosts.some(g => g.id === 20) && evidence === EEvidence.GHOST_ORB) {
-      return false;
-    }
+  public isIndeterminate = (evidence: EEvidence) => this.excludedEvidences().includes(evidence);
 
-    // If all evidences AND Ghost Orbs are selected, allow selection of Fingerprints, Freezing or Spiritbox.
-    if (
-      this.evidenceService.selectedEvidences.length === this.numberOfEvidences &&
-      this.evidenceService.selectedEvidences.includes(EEvidence.GHOST_ORB) &&
-      [EEvidence.ULTRAVIOLET, EEvidence.FREEZING_TEMPERATURES, EEvidence.SPIRIT_BOX].includes(evidence)
-    ) {
-      return false;
-    }
-
-    // Otherwise, compare number of selected items with max number of allowed evidence (defined by difficulty)
-    return this.evidenceService.selectedEvidences.length >= this.numberOfEvidences;
-  }
-
-  public isEvidenceSelected = (evidence: EEvidence): boolean => {
-    return this.evidenceService.selectedEvidences.includes(evidence);
-  }
-
-  public isEvidenceIndeterminate = (evidence: EEvidence): boolean => {
-    return this.evidenceService.excludedEvidences.includes(evidence);
-  }
-
-  public ngOnDestroy(): void {
-    this.ghosts$.unsubscribe();
-    this.numberOfEvidences$.unsubscribe();
-  }
-
-  public onClickEvidence = (evidence: EEvidence, event: MouseEvent) => {
+  public toggle = (evidence: EEvidence, event: MouseEvent) => {
     if (event.shiftKey) {
-      this.evidenceService.excludeEvidence(evidence);
+      // TODO: Excluding evidences should not be possible on higher difficulties.
+      this.toggleExcludedEvidence(evidence);
     } else {
-      this.evidenceService.selectEvidence(evidence);
+      this.toggleSelectedEvidence(evidence);
     }
   }
 }

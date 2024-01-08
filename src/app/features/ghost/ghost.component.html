@@ -1,6 +1,6 @@
 <ul>
   <li *ngFor="let ghost of ghosts">
-    <box [active]="isGhostSelected(ghost)" [disabled]="isGhostDisabled(ghost)" [indeterminate]="isGhostIndeterminate(ghost)" (click)="onClickGhost(ghost, $event)">
+    <box [active]="isActive(ghost)" [disabled]="isDisabled(ghost)" [indeterminate]="isIndeterminate(ghost)" (click)="toggle(ghost, $event)">
       <ghost-box [ghost]="ghost"></ghost-box>
     </box>
   </li>

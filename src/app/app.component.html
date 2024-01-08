@@ -6,11 +6,6 @@
   <section class="header">
     <div class="navbar">
       <h1>Phasmohelper</h1>
-      <div class="toolbar">
-        <ph-button ph-icon-button (click)="toggleCRT()">
-          <i class="icon fa-solid" [ngClass]="enableCRT ? 'fa-video' : 'fa-video-slash'"></i>
-        </ph-button>
-      </div>
     </div>
   </section>
 
@@ -22,7 +17,7 @@
     <!-- Difficulty -->
     <div class="difficulty">
       <h2>Difficulty</h2>
-      <difficulty [defaultDifficulty]="defaultDifficulty"></difficulty>
+      <difficulty></difficulty>
     </div>
 
     <!-- Evidence -->

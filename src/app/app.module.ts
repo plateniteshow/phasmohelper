@@ -14,6 +14,7 @@ import { FlickerSimulatorModule } from './features/flicker-simulator/flicker-sim
 import { GhostModule } from './features/ghost/ghost.module';
 import { SmudgeTimerModule } from './features/smudge-timer/smudge-timer.module';
 import { SpeedModule } from './features/speed/speed.module';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,11 @@ import { SpeedModule } from './features/speed/speed.module';
     SmudgeTimerModule,
     SpeedModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    AppService,
+  ],
+  bootstrap: [
+    AppComponent,
+  ]
 })
 export class AppModule { }

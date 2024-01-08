@@ -1,5 +1,7 @@
-<ng-container *ngFor="let speed of Speed | keyvalue">
-  <box [active]="isSpeedSelected(speed.value)" [indeterminate]="isSpeedIndeterminate(speed.value)" (click)="onClickSpeed(speed.value, $event)" >
-    {{speed.value}}
-  </box>
-</ng-container>
+<ul>
+  <li *ngFor="let speed of ESpeed | keyvalue">
+    <box [active]="isActive(speed.value)" [disabled]="isDisabled(speed.value)" [indeterminate]="isIndeterminate(speed.value)" (click)="toggle(speed.value, $event)">
+      {{speed.value}}
+    </box>
+  </li>
+</ul>

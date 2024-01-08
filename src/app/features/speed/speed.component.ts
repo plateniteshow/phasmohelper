@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { ESpeed } from 'src/app/app';
-import { SpeedService } from './speed.service';
+import { Component, Signal, WritableSignal, computed, effect } from '@angular/core';
+
+import { ESpeed, Ghost } from 'src/app/app';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'speed',
@@ -8,26 +9,67 @@ import { SpeedService } from './speed.service';
   styleUrls: ['./speed.component.scss']
 })
 export class SpeedComponent {
-  public readonly Speed = ESpeed;
+  public readonly ESpeed = ESpeed;
+
+  public get excludedSpeeds(): WritableSignal<ESpeed[]> {
+    return this.appService.excludedSpeeds;
+  }
+
+  public get selectedSpeeds(): WritableSignal<ESpeed[]> {
+    return this.appService.selectedSpeeds;
+  }
 
   constructor(
-    private speedService: SpeedService,
-  ) {
+    private appService: AppService,
+  ) { }
+
+  private toggleExcludedSpeed = (speed: ESpeed) => {
+    // If the speed is already selected, unselect it
+    if (this.selectedSpeeds().includes(speed)) {
+      this.selectedSpeeds.update(e => e.filter(e => e !== speed));
+    }
+
+    // Update the excluded speeds
+    this.excludedSpeeds.update(e => {
+      if (e.includes(speed)) {
+        return e.filter(e => e !== speed);
+      } else {
+        return [...e, speed];
+      }
+    });
   }
 
-  public isSpeedSelected = (speed: ESpeed): boolean => {
-    return this.speedService.selectedSpeeds.includes(speed);
+  private toggleSelectedSpeed = (speed: ESpeed) => {
+    // If the speed is already excluded, unexclude it
+    if (this.excludedSpeeds().includes(speed)) {
+      this.excludedSpeeds.update(e => e.filter(e => e !== speed));
+    }
+
+    // Update the selected speed
+    this.selectedSpeeds.update(e => {
+      if (e.includes(speed)) {
+        return e.filter(e => e !== speed);
+      } else {
+        return [...e, speed];
+      }
+    });
   }
 
-  public isSpeedIndeterminate = (speed: ESpeed): boolean => {
-    return this.speedService.excludedSpeeds.includes(speed);
+  public isActive = (speed: ESpeed): boolean => {
+    return this.selectedSpeeds().includes(speed);
   }
 
-  public onClickSpeed = (speed: ESpeed, event: MouseEvent) => {
+  public isDisabled = (speed: ESpeed): boolean => false;
+
+  public isIndeterminate = (speed: ESpeed): boolean => {
+    return this.excludedSpeeds().includes(speed);
+  }
+
+  public toggle = (speed: ESpeed, event: MouseEvent) => {
     if (event.shiftKey) {
-      this.speedService.excludeSpeed(speed);
+      this.toggleExcludedSpeed(speed);
     } else {
-      this.speedService.selectSpeed(speed);
+      this.toggleSelectedSpeed(speed);
     }
   }
 }

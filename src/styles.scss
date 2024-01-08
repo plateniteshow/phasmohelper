@@ -11,11 +11,6 @@ $fg-color: #A0B8BC;
   src: url(./assets/fonts/OctoberCrow.ttf) format("truetype");
 }
 
-@font-face {
-  font-family: crt;
-  src: url(./assets/fonts/retro_computer_personal_use.ttf) format("truetype");
-}
-
 html,
 body {
   min-height: 100%;
@@ -30,4 +25,10 @@ p {
 
 h2 {
   margin-bottom: 8px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

@@ -1,53 +1,39 @@
+//TODO: css variables
 $green: #41ff00;
 $yellow: #ffee00;
 $orange: #ff9900;
 $red: #ff0041;
 
-@mixin difficultyButton ($color: inherit) {
-  .ph-icon-button {
-    opacity: .5;
-
-    &.active {
-      opacity: 1;
-      color: $color;
-    }
-  }
-}
-
-.difficulties {
+ul {
   display: flex;
+  flex-flow: row nowrap;
   justify-content: space-evenly;
   gap: 8px;
-
-  .difficulty {
-    opacity: 1;
-
-    &--professional {
-      @include difficultyButton(($green));
-    }
-
-    &--nightmare {
-      @include difficultyButton(($yellow));
-    }
-
-    &--insanity {
-      @include difficultyButton(($orange));
-    }
-
-    &--apocalypse {
-      @include difficultyButton(($red));
-    }
-  }
 }
 
-button {
-  background: none;
-  border: transparent;
-  color: inherit;
-  margin: 0;
-  outline: none;
+.ph-icon-button {
+  opacity: .5;
 
-  &:hover {
-    cursor: pointer;
+  &.active {
+    opacity: 1;
+
+    &.difficulty {
+      &--professional {
+        color: $green;
+      }
+
+      &--nightmare {
+        color: $yellow;
+      }
+
+      &--insanity {
+        color: $orange;
+      }
+
+      &--apocalypse {
+        color: $red;
+      }
+    }
   }
+
 }

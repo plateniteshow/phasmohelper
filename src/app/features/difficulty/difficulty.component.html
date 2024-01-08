@@ -1,32 +1,7 @@
-<h3>{{selectedDifficulty}}</h3>
-<div class="difficulties">
-
-  <!-- Professional -->
-  <div class="difficulty difficulty--professional">
-    <ph-button ph-icon-button [class.active]="isDifficultySelected(Difficulty.PROFESSIONAL)" (click)="onClickDifficulty(Difficulty.PROFESSIONAL)">
+<ul>
+  <li *ngFor="let difficulty of EDifficulty | keyvalue: keepOrder">
+    <ph-button ph-icon-button [class]="getClassName(difficulty.value)" [class.active]="isSelected(difficulty.value)" (click)="select(difficulty.value)">
       <i class="icon fa-solid fa-skull"></i>
     </ph-button>
-  </div>
-
-  <!-- Nightmare -->
-  <div class="difficulty difficulty--nightmare">
-    <ph-button ph-icon-button [class.active]="isDifficultySelected(Difficulty.NIGHTMARE)" (click)="onClickDifficulty(Difficulty.NIGHTMARE)">
-      <i class="icon fa-solid fa-skull"></i>
-    </ph-button>
-  </div>
-
-  <!-- Insanity -->
-  <div class="difficulty difficulty--insanity">
-    <ph-button ph-icon-button [class.active]="isDifficultySelected(Difficulty.INSANITY)" (click)="onClickDifficulty(Difficulty.INSANITY)">
-      <i class="icon fa-solid fa-skull"></i>
-    </ph-button>
-  </div>
-
-  <!-- Apocalypse -->
-  <div class="difficulty difficulty--apocalypse">
-    <ph-button ph-icon-button [class.active]="isDifficultySelected(Difficulty.APOCALYPSE)" (click)="onClickDifficulty(Difficulty.APOCALYPSE)">
-      <i class="icon fa-solid fa-skull"></i>
-    </ph-button>
-  </div>
-
-</div>
+  </li>
+</ul>

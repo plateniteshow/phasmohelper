@@ -1,5 +1,3 @@
-@import '../assets/styles/crt-effect.scss';
-
 /***************/
 /* BASE STYLES */
 /***************/
@@ -17,10 +15,6 @@
   text-transform: uppercase;
   top: 0;
   user-select: none;
-
-  &.has-crt {
-    @include crt();
-  }
 }
 
 /********/

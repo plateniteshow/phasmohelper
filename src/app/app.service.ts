@@ -1,33 +1,54 @@
-import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { GhostService } from './features/ghost/ghost.service';
-import { EvidenceService } from './features/evidence/evidence.service';
-import { SpeedService } from './features/speed/speed.service';
+import { Injectable, Signal, WritableSignal, computed, signal } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+import { EDifficulty, EEvidence, ESpeed, Ghost } from './app';
+import { GHOSTS } from './data';
+
+@Injectable()
 export class AppService {
-  public readonly reset$: Observable<void>;
+  public excludedEvidences: WritableSignal<EEvidence[]> = signal([]);
+  public excludedGhosts: WritableSignal<Ghost[]> = signal([]);
+  public excludedSpeeds: WritableSignal<ESpeed[]> = signal([]);
+  public selectedDifficulty: WritableSignal<EDifficulty> = signal(EDifficulty.PROFESSIONAL);
+  public selectedEvidences: WritableSignal<EEvidence[]> = signal([]);
+  public selectedGhost: WritableSignal<Ghost | undefined> = signal(undefined);
+  public selectedSpeeds: WritableSignal<ESpeed[]> = signal([]);
 
-  private resetSource: Subject<void>;
+  public numberOfEvidences: Signal<number> = computed(() => {
+    switch (this.selectedDifficulty()) {
+      case EDifficulty.PROFESSIONAL:
+        return 3;
+      case EDifficulty.NIGHTMARE:
+        return 2;
+      case EDifficulty.INSANITY:
+        return 1;
+      case EDifficulty.APOCALYPSE:
+        return 0;
+    }
+  });
 
-  constructor(
-    private evidenceService: EvidenceService,
-    private ghostService: GhostService,
-    private speedService: SpeedService,
-  ) {
-    this.resetSource = new Subject<void>();
-    this.reset$ = this.resetSource.asObservable();
-  }
+  public readonly availableGhosts: Signal<Ghost[]> = computed(() => {
+    return GHOSTS.filter(g =>
+      // Evidences
+      !g.evidences.some(e => this.excludedEvidences().includes(e)) &&
+      this.selectedEvidences().every(e =>
+        g.evidences.includes(e) &&
+        g.evidences.every(ev => !this.excludedEvidences().includes(ev))
+      ) &&
+      // Speeds
+      !g.speeds.some(s => this.excludedSpeeds().includes(s)) &&
+      this.selectedSpeeds().every(s =>
+        g.speeds.includes(s) &&
+        g.speeds.every(sp => !this.excludedSpeeds().includes(sp))
+      )
+    );
+  });
 
   public reset = (): void => {
-    this.evidenceService.excludedEvidences = [];
-    this.evidenceService.selectedEvidences = [];
-    this.ghostService.excludedGhosts = [];
-    this.ghostService.selectedGhost = undefined;
-    this.speedService.excludedSpeeds = [];
-    this.speedService.selectedSpeeds = [];
-    this.resetSource.next();
+    this.excludedEvidences.set([]);
+    this.excludedGhosts.set([]);
+    this.excludedSpeeds.set([]);
+    this.selectedEvidences.set([]);
+    this.selectedGhost.set(undefined);
+    this.selectedSpeeds.set([]);
   }
 }
