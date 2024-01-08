@@ -3,6 +3,9 @@ import { Injectable, Signal, WritableSignal, computed, signal } from '@angular/c
 import { EDifficulty, EEvidence, ESpeed, Ghost } from './app';
 import { GHOSTS } from './data';
 
+/**
+ * Service class that manages the state and logic of the Phasmophobia app.
+ */
 @Injectable()
 export class AppService {
   public excludedEvidences: WritableSignal<EEvidence[]> = signal([]);
@@ -13,6 +16,10 @@ export class AppService {
   public selectedGhost: WritableSignal<Ghost | undefined> = signal(undefined);
   public selectedSpeeds: WritableSignal<ESpeed[]> = signal([]);
 
+  /**
+   * Computed signal that calculates the number of evidences based on the selected difficulty.
+   * @returns The number of evidences.
+   */
   public numberOfEvidences: Signal<number> = computed(() => {
     switch (this.selectedDifficulty()) {
       case EDifficulty.PROFESSIONAL:
@@ -26,6 +33,10 @@ export class AppService {
     }
   });
 
+  /**
+   * Computed signal that calculates the list of available ghosts based on the selected evidences and speeds.
+   * @returns The list of available ghosts.
+   */
   public readonly availableGhosts: Signal<Ghost[]> = computed(() => {
     return GHOSTS.filter(g =>
       // Evidences
@@ -43,6 +54,9 @@ export class AppService {
     );
   });
 
+  /**
+   * Resets the state of the app service.
+   */
   public reset = (): void => {
     this.excludedEvidences.set([]);
     this.excludedGhosts.set([]);

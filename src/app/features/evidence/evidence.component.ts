@@ -1,4 +1,4 @@
-import { Component, Signal, WritableSignal, effect } from '@angular/core';
+import { Component, Signal, WritableSignal } from '@angular/core';
 import { EEvidence } from 'src/app/app';
 import { AppService } from 'src/app/app.service';
 
@@ -15,7 +15,7 @@ export class EvidenceComponent {
   }
 
   public get numberOfEvidences(): Signal<number> {
-    return this.appService.numberOfEvidences
+    return this.appService.numberOfEvidences;
   }
 
   public get selectedEvidences(): WritableSignal<EEvidence[]> {
@@ -58,14 +58,18 @@ export class EvidenceComponent {
     });
   }
 
+  // Check if the evidence is active (selected)
   public isActive = (evidence: EEvidence) => this.selectedEvidences().includes(evidence);
 
-  public isDisabled = (evidence: EEvidence): boolean => {
-    return !this.selectedEvidences().includes(evidence) && this.selectedEvidences().length >= this.numberOfEvidences();
-  };
+  // Check if the evidence is disabled (not selectable)
+  public isDisabled = (evidence: EEvidence): boolean =>
+    !this.excludedEvidences().includes(evidence) && this.appService.availableGhosts().every(g => !g.evidences.includes(evidence)) ||
+    !this.selectedEvidences().includes(evidence) && this.selectedEvidences().length >= this.numberOfEvidences();
 
+  // Check if the evidence is indeterminate (excluded)
   public isIndeterminate = (evidence: EEvidence) => this.excludedEvidences().includes(evidence);
 
+  // Toggle the evidence based on the event (shift key for excluding evidence)
   public toggle = (evidence: EEvidence, event: MouseEvent) => {
     if (event.shiftKey) {
       // TODO: Excluding evidences should not be possible on higher difficulties.
