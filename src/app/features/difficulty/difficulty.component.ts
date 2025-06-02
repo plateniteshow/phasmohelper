@@ -1,12 +1,21 @@
 import { Component, Signal, WritableSignal } from '@angular/core';
+import { KeyValuePipe } from '@angular/common';
+
 import { EDifficulty, EEvidence } from 'src/app/app';
 import { AppService } from 'src/app/app.service';
 
+import { PhButtonComponent } from '../../shared/ph-button/ph-button.component';
+import { PhIconButtonDirective } from '../../shared/ph-button/ph-icon-button.directive';
+
 @Component({
-    selector: 'difficulty',
-    templateUrl: './difficulty.component.html',
-    styleUrls: ['./difficulty.component.scss'],
-    standalone: false
+  selector: 'difficulty',
+  templateUrl: './difficulty.component.html',
+  styleUrls: ['./difficulty.component.scss'],
+  imports: [
+    KeyValuePipe,
+    PhButtonComponent,
+    PhIconButtonDirective,
+  ]
 })
 export class DifficultyComponent {
   public readonly EDifficulty = EDifficulty;

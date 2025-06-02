@@ -2,12 +2,14 @@ import { Component, Signal, WritableSignal } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { GHOSTS } from 'src/app/data';
 import { EEvidence, ESpeed, Ghost } from 'src/app/app';
+import { BoxComponent } from '../../shared/box/box.component';
+import { GhostBoxComponent } from '../../shared/ghost-box/ghost-box.component';
 
 @Component({
     selector: 'ghost',
     templateUrl: './ghost.component.html',
     styleUrls: ['./ghost.component.scss'],
-    standalone: false
+    imports: [BoxComponent, GhostBoxComponent]
 })
 export class GhostComponent {
   public readonly ghosts: Ghost[] = GHOSTS;

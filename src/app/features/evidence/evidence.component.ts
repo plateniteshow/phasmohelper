@@ -1,12 +1,14 @@
 import { Component, Signal, WritableSignal } from '@angular/core';
 import { EEvidence } from 'src/app/app';
 import { AppService } from 'src/app/app.service';
+import { BoxComponent } from '../../shared/box/box.component';
+import { KeyValuePipe } from '@angular/common';
 
 @Component({
     selector: 'evidence',
     templateUrl: './evidence.component.html',
     styleUrls: ['./evidence.component.scss'],
-    standalone: false
+    imports: [BoxComponent, KeyValuePipe]
 })
 export class EvidenceComponent {
   public readonly EEvidence = EEvidence;

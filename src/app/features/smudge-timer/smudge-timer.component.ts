@@ -1,10 +1,13 @@
 import { Component, HostBinding, HostListener } from '@angular/core';
+import { PhButtonComponent } from '../../shared/ph-button/ph-button.component';
+import { PhOutlinedButtonDirective } from '../../shared/ph-button/ph-outlined-button.directive';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'smudge-timer',
     templateUrl: './smudge-timer.component.html',
     styleUrls: ['./smudge-timer.component.scss'],
-    standalone: false
+    imports: [PhButtonComponent, PhOutlinedButtonDirective, DatePipe]
 })
 export class SmudgeTimerComponent {
   public readonly defaultTimestamp = 90 * 1000;
@@ -17,7 +20,7 @@ export class SmudgeTimerComponent {
 
   private readonly speech: any;
 
-  private smudgeTimer!: NodeJS.Timer;
+  private smudgeTimer!: NodeJS.Timeout;
 
   @HostBinding("style.--defaultMarkerPosition")
   public get defaultMarkerPosition(): string {

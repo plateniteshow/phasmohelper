@@ -2,18 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { GhostComponent } from './ghost.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+
+import { GhostService } from './ghost.service';
 
 @NgModule({
-  declarations: [
-    GhostComponent
-  ],
-  imports: [
+    imports: [
     CommonModule,
-    SharedModule,
-  ],
-  exports: [
     GhostComponent,
-  ],
+],
+    exports: [
+        GhostComponent,
+    ],
+    providers: [
+        GhostService,
+    ],
 })
 export class GhostModule { }

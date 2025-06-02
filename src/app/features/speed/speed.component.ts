@@ -2,12 +2,14 @@ import { Component, Signal, WritableSignal, computed, effect } from '@angular/co
 
 import { ESpeed, Ghost } from 'src/app/app';
 import { AppService } from 'src/app/app.service';
+import { BoxComponent } from '../../shared/box/box.component';
+import { KeyValuePipe } from '@angular/common';
 
 @Component({
     selector: 'speed',
     templateUrl: './speed.component.html',
     styleUrls: ['./speed.component.scss'],
-    standalone: false
+    imports: [BoxComponent, KeyValuePipe]
 })
 export class SpeedComponent {
   public readonly ESpeed = ESpeed;

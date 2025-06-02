@@ -2,12 +2,14 @@ import { Component, HostListener, ViewChild } from '@angular/core';
 import { FlickeringIconComponent } from './flickering-icon/flickering-icon.component';
 import { FlickeringIconConfiguration } from './flickering-icon/flickering-icon';
 import { DEFAULT_FLICKERING_CONFIG, ONI_FLICKERING_CONFIG, PHANTOM_FLICKERING_CONFIG } from './flicker-simulator';
+import { PhButtonComponent } from '../../shared/ph-button/ph-button.component';
+import { PhOutlinedButtonDirective } from '../../shared/ph-button/ph-outlined-button.directive';
 
 @Component({
     selector: 'flicker-simulator',
     templateUrl: './flicker-simulator.component.html',
     styleUrls: ['./flicker-simulator.component.scss'],
-    standalone: false
+    imports: [FlickeringIconComponent, PhButtonComponent, PhOutlinedButtonDirective]
 })
 export class FlickerSimulatorComponent {
   @ViewChild('phantom')

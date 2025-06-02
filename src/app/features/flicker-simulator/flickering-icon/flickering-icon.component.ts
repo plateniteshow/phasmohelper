@@ -4,8 +4,7 @@ import { FlickeringIconConfiguration } from './flickering-icon';
 @Component({
     selector: 'flickering-icon',
     templateUrl: './flickering-icon.component.html',
-    styleUrls: ['./flickering-icon.component.scss'],
-    standalone: false
+    styleUrls: ['./flickering-icon.component.scss']
 })
 export class FlickeringIconComponent {
   @Input()
