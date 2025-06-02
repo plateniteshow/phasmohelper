@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, input } from '@angular/core';
 
 @Component({
 	selector: 'box',
@@ -8,20 +8,11 @@ import { Component, HostBinding, Input } from '@angular/core';
 })
 export class BoxComponent {
 	@HostBinding('class.active')
-	@Input()
-	public active: boolean;
+	public readonly active = input<boolean>(false);
 
 	@HostBinding('class.disabled')
-	@Input()
-	public disabled: boolean;
+	public readonly disabled = input<boolean>(false);
 
 	@HostBinding('class.indeterminate')
-	@Input()
-	public indeterminate: boolean;
-
-	constructor() {
-		this.active = false;
-		this.disabled = false;
-		this.indeterminate = false;
-	}
+	public readonly indeterminate = input<boolean>(false);
 }

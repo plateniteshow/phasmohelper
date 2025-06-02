@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 import { Ghost } from 'src/app/app';
 
@@ -10,6 +10,5 @@ import { Ghost } from 'src/app/app';
 	imports: [CommonModule],
 })
 export class GhostBoxComponent {
-  @Input()
-	public ghost!: Ghost;
+	public readonly ghost = input.required<Ghost>();
 }
