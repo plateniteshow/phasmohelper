@@ -4,9 +4,10 @@ import { ESpeed, Ghost } from 'src/app/app';
 import { AppService } from 'src/app/app.service';
 
 @Component({
-  selector: 'speed',
-  templateUrl: './speed.component.html',
-  styleUrls: ['./speed.component.scss']
+    selector: 'speed',
+    templateUrl: './speed.component.html',
+    styleUrls: ['./speed.component.scss'],
+    standalone: false
 })
 export class SpeedComponent {
   public readonly ESpeed = ESpeed;

@@ -1,9 +1,10 @@
 import { Component, HostBinding, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'smudge-timer',
-  templateUrl: './smudge-timer.component.html',
-  styleUrls: ['./smudge-timer.component.scss']
+    selector: 'smudge-timer',
+    templateUrl: './smudge-timer.component.html',
+    styleUrls: ['./smudge-timer.component.scss'],
+    standalone: false
 })
 export class SmudgeTimerComponent {
   public readonly defaultTimestamp = 90 * 1000;

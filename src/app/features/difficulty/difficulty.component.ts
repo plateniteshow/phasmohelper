@@ -3,9 +3,10 @@ import { EDifficulty, EEvidence } from 'src/app/app';
 import { AppService } from 'src/app/app.service';
 
 @Component({
-  selector: 'difficulty',
-  templateUrl: './difficulty.component.html',
-  styleUrls: ['./difficulty.component.scss']
+    selector: 'difficulty',
+    templateUrl: './difficulty.component.html',
+    styleUrls: ['./difficulty.component.scss'],
+    standalone: false
 })
 export class DifficultyComponent {
   public readonly EDifficulty = EDifficulty;

@@ -4,9 +4,10 @@ import { FlickeringIconConfiguration } from './flickering-icon/flickering-icon';
 import { DEFAULT_FLICKERING_CONFIG, ONI_FLICKERING_CONFIG, PHANTOM_FLICKERING_CONFIG } from './flicker-simulator';
 
 @Component({
-  selector: 'flicker-simulator',
-  templateUrl: './flicker-simulator.component.html',
-  styleUrls: ['./flicker-simulator.component.scss']
+    selector: 'flicker-simulator',
+    templateUrl: './flicker-simulator.component.html',
+    styleUrls: ['./flicker-simulator.component.scss'],
+    standalone: false
 })
 export class FlickerSimulatorComponent {
   @ViewChild('phantom')

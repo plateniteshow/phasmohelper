@@ -3,9 +3,10 @@ import { EEvidence } from 'src/app/app';
 import { AppService } from 'src/app/app.service';
 
 @Component({
-  selector: 'evidence',
-  templateUrl: './evidence.component.html',
-  styleUrls: ['./evidence.component.scss'],
+    selector: 'evidence',
+    templateUrl: './evidence.component.html',
+    styleUrls: ['./evidence.component.scss'],
+    standalone: false
 })
 export class EvidenceComponent {
   public readonly EEvidence = EEvidence;

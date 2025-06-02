@@ -2,9 +2,10 @@ import { Component, HostBinding, Input } from '@angular/core';
 import { FlickeringIconConfiguration } from './flickering-icon';
 
 @Component({
-  selector: 'flickering-icon',
-  templateUrl: './flickering-icon.component.html',
-  styleUrls: ['./flickering-icon.component.scss']
+    selector: 'flickering-icon',
+    templateUrl: './flickering-icon.component.html',
+    styleUrls: ['./flickering-icon.component.scss'],
+    standalone: false
 })
 export class FlickeringIconComponent {
   @Input()

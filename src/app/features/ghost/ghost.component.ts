@@ -4,9 +4,10 @@ import { GHOSTS } from 'src/app/data';
 import { EEvidence, ESpeed, Ghost } from 'src/app/app';
 
 @Component({
-  selector: 'ghost',
-  templateUrl: './ghost.component.html',
-  styleUrls: ['./ghost.component.scss']
+    selector: 'ghost',
+    templateUrl: './ghost.component.html',
+    styleUrls: ['./ghost.component.scss'],
+    standalone: false
 })
 export class GhostComponent {
   public readonly ghosts: Ghost[] = GHOSTS;

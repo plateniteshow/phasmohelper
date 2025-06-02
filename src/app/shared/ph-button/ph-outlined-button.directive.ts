@@ -1,7 +1,8 @@
 import { Directive, Host, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: '[ph-outlined-button]'
+    selector: '[ph-outlined-button]',
+    standalone: false
 })
 export class PhOutlinedButtonDirective {
   @HostBinding('class.ph-outlined-button')
