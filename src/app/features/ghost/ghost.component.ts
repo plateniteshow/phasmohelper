@@ -1,94 +1,96 @@
 import { Component, Signal, WritableSignal } from '@angular/core';
+
+import { EEvidence, ESpeed, Ghost } from 'src/app/app';
 import { AppService } from 'src/app/app.service';
 import { GHOSTS } from 'src/app/data';
-import { EEvidence, ESpeed, Ghost } from 'src/app/app';
+
 import { BoxComponent } from '../../shared/box/box.component';
 import { GhostBoxComponent } from '../../shared/ghost-box/ghost-box.component';
 
 @Component({
-    selector: 'ghost',
-    templateUrl: './ghost.component.html',
-    styleUrls: ['./ghost.component.scss'],
-    imports: [BoxComponent, GhostBoxComponent]
+	selector: 'ghost',
+	templateUrl: './ghost.component.html',
+	styleUrls: ['./ghost.component.scss'],
+	imports: [BoxComponent, GhostBoxComponent],
 })
 export class GhostComponent {
-  public readonly ghosts: Ghost[] = GHOSTS;
+	public readonly ghosts: Ghost[] = GHOSTS;
 
-  public get availableGhosts(): Signal<Ghost[]> {
-    return this.appService.availableGhosts;
-  }
+	constructor(
+		private appService: AppService,
+	) { }
 
-  public get excludedEvidences(): WritableSignal<EEvidence[]> {
-    return this.appService.excludedEvidences;
-  }
+	public get availableGhosts(): Signal<Ghost[]> {
+		return this.appService.availableGhosts;
+	}
 
-  public get excludedGhosts(): WritableSignal<Ghost[]> {
-    return this.appService.excludedGhosts;
-  }
+	public get excludedEvidences(): WritableSignal<EEvidence[]> {
+		return this.appService.excludedEvidences;
+	}
 
-  public get excludedSpeeds(): WritableSignal<ESpeed[]> {
-    return this.appService.excludedSpeeds
-  }
+	public get excludedGhosts(): WritableSignal<Ghost[]> {
+		return this.appService.excludedGhosts;
+	}
 
-  public get selectedEvidences(): WritableSignal<EEvidence[]> {
-    return this.appService.selectedEvidences;
-  }
+	public get excludedSpeeds(): WritableSignal<ESpeed[]> {
+		return this.appService.excludedSpeeds;
+	}
 
-  public get selectedGhost(): WritableSignal<Ghost | undefined> {
-    return this.appService.selectedGhost;
-  }
+	public get selectedEvidences(): WritableSignal<EEvidence[]> {
+		return this.appService.selectedEvidences;
+	}
 
-  public get selectedSpeeds(): WritableSignal<ESpeed[]> {
-    return this.appService.selectedSpeeds;
-  }
+	public get selectedGhost(): WritableSignal<Ghost | undefined> {
+		return this.appService.selectedGhost;
+	}
 
-  constructor(
-    private appService: AppService,
-  ) { }
+	public get selectedSpeeds(): WritableSignal<ESpeed[]> {
+		return this.appService.selectedSpeeds;
+	}
 
-  private toggleExcludedGhost = (ghost: Ghost) => {
-    // If the ghost is already selected, unselect it
-    if (this.selectedGhost() === ghost) {
-      this.selectedGhost.set(undefined);
-    }
+	public isActive = (ghost: Ghost): boolean => this.selectedGhost() === ghost;
 
-    // Update the excluded ghosts
-    this.excludedGhosts.update(e => {
-      if (e.includes(ghost)) {
-        return e.filter(e => e !== ghost);
-      } else {
-        return [...e, ghost];
-      }
-    });
-  }
+	public isDisabled = (ghost: Ghost): boolean => !this.availableGhosts().includes(ghost);
 
-  private toggleSelectedGhost = (ghost: Ghost) => {
-    // If the ghost is already excluded, unexclude it
-    if (this.excludedGhosts().includes(ghost)) {
-      this.excludedGhosts.update(e => e.filter(e => e !== ghost));
-    }
+	public isIndeterminate = (ghost: Ghost): boolean => this.excludedGhosts().includes(ghost);
 
-    // Update the selected ghost
-    this.selectedGhost.update(e => {
-      if (e === ghost) {
-        return undefined;
-      } else {
-        return ghost;
-      }
-    });
-  }
+	public toggle = (ghost: Ghost, event: MouseEvent): void => {
+		if (event.shiftKey) {
+			this.toggleExcludedGhost(ghost);
+		} else {
+			this.toggleSelectedGhost(ghost);
+		}
+	};
 
-  public isActive = (ghost: Ghost) => this.selectedGhost() === ghost;
+	private toggleExcludedGhost = (ghost: Ghost): void => {
+		// If the ghost is already selected, unselect it
+		if (this.selectedGhost() === ghost) {
+			this.selectedGhost.set(undefined);
+		}
 
-  public isDisabled = (ghost: Ghost) => !this.availableGhosts().includes(ghost);
+		// Update the excluded ghosts
+		this.excludedGhosts.update(e => {
+			if (e.includes(ghost)) {
+				return e.filter(e => e !== ghost);
+			} else {
+				return [...e, ghost];
+			}
+		});
+	};
 
-  public isIndeterminate = (ghost: Ghost) => this.excludedGhosts().includes(ghost);
+	private toggleSelectedGhost = (ghost: Ghost): void => {
+		// If the ghost is already excluded, unexclude it
+		if (this.excludedGhosts().includes(ghost)) {
+			this.excludedGhosts.update(e => e.filter(e => e !== ghost));
+		}
 
-  public toggle = (ghost: Ghost, event: MouseEvent) => {
-    if (event.shiftKey) {
-      this.toggleExcludedGhost(ghost);
-    } else {
-      this.toggleSelectedGhost(ghost);
-    }
-  }
+		// Update the selected ghost
+		this.selectedGhost.update(e => {
+			if (e === ghost) {
+				return undefined;
+			} else {
+				return ghost;
+			}
+		});
+	};
 }
