@@ -11,7 +11,6 @@ import { PhButtonComponent } from './shared/ph-button/ph-button.component';
 import { SmudgeTimerComponent } from './features/smudge-timer/smudge-timer.component';
 
 @Component({
-  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   imports: [
