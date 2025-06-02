@@ -1,7 +1,9 @@
 <h3>{{ghost.name}}</h3>
 <ul>
-  <li *ngFor="let evidence of ghost.evidences">
-    {{evidence}}
-  </li>
+  @for (evidence of ghost.evidences; track evidence) {
+    <li>
+      {{evidence}}
+    </li>
+  }
 </ul>
 <span [ngClass]="['hunt-sanity', (ghost.huntSanity > 50) ? 'hunt-sanity--high' : (ghost.huntSanity < 50) ? 'hunt-sanity--low' : '']">{{ghost.huntSanity}}%</span>

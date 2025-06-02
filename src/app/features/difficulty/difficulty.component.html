@@ -1,7 +1,9 @@
 <ul>
-  <li *ngFor="let difficulty of EDifficulty | keyvalue: keepOrder">
-    <ph-button ph-icon-button [class]="getClassName(difficulty.value)" [class.active]="isSelected(difficulty.value)" (click)="select(difficulty.value)">
-      <i class="icon fa-solid fa-skull"></i>
-    </ph-button>
-  </li>
+  @for (difficulty of EDifficulty | keyvalue: keepOrder; track difficulty) {
+    <li>
+      <ph-button ph-icon-button [class]="getClassName(difficulty.value)" [class.active]="isSelected(difficulty.value)" (click)="select(difficulty.value)">
+        <i class="icon fa-solid fa-skull"></i>
+      </ph-button>
+    </li>
+  }
 </ul>

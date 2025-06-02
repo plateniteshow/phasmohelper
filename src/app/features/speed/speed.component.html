@@ -1,7 +1,9 @@
 <ul>
-  <li *ngFor="let speed of ESpeed | keyvalue">
-    <box [active]="isActive(speed.value)" [disabled]="isDisabled(speed.value)" [indeterminate]="isIndeterminate(speed.value)" (click)="toggle(speed.value, $event)">
-      {{speed.value}}
-    </box>
-  </li>
+  @for (speed of ESpeed | keyvalue; track speed) {
+    <li>
+      <box [active]="isActive(speed.value)" [disabled]="isDisabled(speed.value)" [indeterminate]="isIndeterminate(speed.value)" (click)="toggle(speed.value, $event)">
+        {{speed.value}}
+      </box>
+    </li>
+  }
 </ul>
