@@ -1,9 +1,10 @@
 <ul>
-  @for (ghost of ghosts; track ghost) {
-    <li>
-      <box [active]="isActive(ghost)" [disabled]="isDisabled(ghost)" [indeterminate]="isIndeterminate(ghost)" (click)="toggle(ghost, $event)">
-        <ghost-box [ghost]="ghost"></ghost-box>
-      </box>
-    </li>
-  }
+	@for (ghost of data(); track $index) {
+		<li>
+			<ghost-box
+				[ghost]="ghost"
+				(click)="onClick($event, ghost.id)"
+			></ghost-box>
+		</li>
+	}
 </ul>

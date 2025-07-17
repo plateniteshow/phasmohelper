@@ -1,45 +1,68 @@
-import { Component, HostListener } from '@angular/core';
+/* eslint-disable object-curly-newline */
+import { Component, computed, HostListener, Signal, signal, WritableSignal } from '@angular/core';
 
-import { EDifficulty, EEvidence, ESpeed } from './app';
-import { AppService } from './app.service';
-import { DifficultyComponent } from './features/difficulty/difficulty.component';
-import { EvidenceComponent } from './features/evidence/evidence.component';
-import { FlickerSimulatorComponent } from './features/flicker-simulator/flicker-simulator.component';
+import { Ghost } from './app';
+import { GHOSTS } from './data';
+import { GhostInput } from './features/ghost/ghost';
 import { GhostComponent } from './features/ghost/ghost.component';
-import { SmudgeTimerComponent } from './features/smudge-timer/smudge-timer.component';
-import { SpeedComponent } from './features/speed/speed.component';
-import { PhButtonComponent } from './shared/ph-button/ph-button.component';
 
 @Component({
+	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
 	imports: [
-		DifficultyComponent,
-		EvidenceComponent,
-		FlickerSimulatorComponent,
 		GhostComponent,
-		PhButtonComponent,
-		SmudgeTimerComponent,
-		SpeedComponent,
 	],
 })
 export class AppComponent {
-	public readonly Evidence = EEvidence;
-	public readonly Speed = ESpeed;
+	public readonly ghostData: Signal<GhostInput[]> = computed((): GhostInput[] => {
+		return GHOSTS.map(({ id, name, evidences, huntSanity }: Ghost): GhostInput => ({
+			id,
+			name,
+			evidences,
+			huntSanity,
+			isSelected: this.selectedGhosts().includes(id),
+			isExcluded: this.excludedGhosts().includes(id),
+		}));
+	});
 
-	public defaultDifficulty = EDifficulty.PROFESSIONAL;
+	private readonly excludedGhosts: WritableSignal<Ghost['id'][]> = signal([]);
+	private readonly selectedGhosts: WritableSignal<Ghost['id'][]> = signal([]);
 
-	constructor(
-    private appService: AppService,
-	) { }
+	///////////////////////
+	// Decorated Methods //
+	///////////////////////
 
-  @HostListener('document:keydown.R', ['$event'])
-  @HostListener('document:keydown.Escape', ['$event'])
+	@HostListener('document:keydown.R', ['$event'])
+	@HostListener('document:keydown.Escape', ['$event'])
 	public onKeydownHandler(): void {
 		this.reset();
 	}
 
-  public reset = (): void => {
-  	this.appService.reset();
-  };
+	////////////////////
+	// Public Methods //
+	////////////////////
+
+	public onClickGhost = (id: GhostInput['id']): void => {
+		this.selectedGhosts.update((ids) => {
+			if (ids.includes(id)) {
+				return ids.filter((ghostId) => ghostId !== id);
+			}
+			return [...ids, id];
+		});
+	};
+
+	public onShiftClickGhost = (id: GhostInput['id']): void => {
+		this.excludedGhosts.update((ids) => {
+			if (ids.includes(id)) {
+				return ids.filter((ghostId) => ghostId !== id);
+			}
+			return [...ids, id];
+		});
+	};
+
+	public reset = (): void => {
+		this.selectedGhosts.set([]);
+		this.excludedGhosts.set([]);
+	};
 }

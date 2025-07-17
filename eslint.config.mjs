@@ -32,9 +32,6 @@ export default defineConfig([
 			////////
 			// js //
 			////////
-			indent: [
-				"error", "tab",
-			],
 			"array-element-newline": [
 				"error",
 				{

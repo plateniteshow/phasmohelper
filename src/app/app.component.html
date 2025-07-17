@@ -1,65 +1,69 @@
 <div class="container">
-  <!------------>
-  <!-- HEADER -->
-  <!------------>
-  <section class="header">
-    <div class="navbar">
-      <h1>Phasmohelper</h1>
-    </div>
-  </section>
+	<!------------>
+	<!-- HEADER -->
+	<!------------>
+	<section class="header">
+		<div class="navbar">
+			<h1>Phasmohelper</h1>
+		</div>
+	</section>
 
-  <!------------>
-  <!-- FILTER -->
-  <!------------>
-  <section class="filter">
-    <!-- Difficulty -->
-    <div class="difficulty">
+	<!------------>
+	<!-- FILTER -->
+	<!------------>
+	<section class="filter">
+		<!-- Difficulty -->
+		<!-- <div class="difficulty">
       <h2>Difficulty</h2>
       <difficulty></difficulty>
-    </div>
+    </div> -->
 
-    <!-- Evidence -->
-    <div class="evidence">
+		<!-- Evidence -->
+		<!-- <div class="evidence">
       <h2>Evidence</h2>
       <evidence></evidence>
-    </div>
+    </div> -->
 
-    <!-- Speed -->
-    <div class="speed">
+		<!-- Speed -->
+		<!-- <div class="speed">
       <h2>Speed</h2>
       <speed></speed>
-    </div>
+    </div> -->
 
-    <!-- Reset -->
-    <div class="reset">
+		<!-- Reset -->
+		<!-- <div class="reset">
       <ph-button (click)="reset()">Reset (R)</ph-button>
-    </div>
-  </section>
+    </div> -->
+	</section>
 
-  <!---------->
-  <!-- MAIN -->
-  <!---------->
-  <section class="main">
-    <!-- Ghosts -->
-    <div class="ghosts">
-      <ghost></ghost>
-    </div>
-  </section>
+	<!---------->
+	<!-- MAIN -->
+	<!---------->
+	<section class="main">
+		<!-- Ghosts -->
+		<div class="ghosts">
+			<ghost
+				[data]="ghostData()"
+				($click)="onClickGhost($event)"
+				($shiftClick)="onShiftClickGhost($event)"
+			></ghost>
+		</div>
+	</section>
 
-  <!---------->
-  <!-- TOOLS -->
-  <!---------->
-  <section class="tools">
-    <!-- Flicker -->
-    <div class="flicker-simulator">
+	<!---------->
+	<!-- TOOLS -->
+	<!---------->
+	<section class="tools">
+		<!-- Flicker -->
+		<!-- <div class="flicker-simulator">
       <h2>Flicker</h2>
       <flicker-simulator></flicker-simulator>
-    </div>
+    </div> -->
 
-    <!-- Smudge Timer -->
-    <div class="smudge-timer">
+		<!-- Smudge Timer -->
+		<!-- <div class="smudge-timer">
       <h2>Smudge-Timer</h2>
       <smudge-timer></smudge-timer>
-    </div>
-  </section>
+    </div> -->
+	</section>
 </div>

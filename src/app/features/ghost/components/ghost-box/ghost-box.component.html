@@ -1,0 +1,9 @@
+<h3>{{ghost().name}}</h3>
+<ul>
+  @for (evidence of ghost().evidences; track evidence) {
+    <li>
+      {{evidence}}
+    </li>
+  }
+</ul>
+<span [ngClass]="getHuntSanityClass()">{{ghost().huntSanity}}%</span>

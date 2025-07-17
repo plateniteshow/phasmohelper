@@ -1,0 +1,26 @@
+@import '../../../../shared/shared.scss';
+
+:host {
+  @include box-styles();
+  position: relative;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hunt-sanity {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  &--low {
+    color: #41FF00;
+  }
+
+  &--high {
+    color: #ff0041;
+  }
+}

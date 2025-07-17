@@ -21,7 +21,7 @@ export class DifficultyComponent {
 	public readonly EDifficulty = EDifficulty;
 
 	constructor(
-    private appService: AppService,
+		private appService: AppService,
 	) { }
 
 	public get numberOfEvidences(): Signal<number> {
@@ -62,7 +62,8 @@ export class DifficultyComponent {
 		}
 	};
 
-	protected keepOrder = (a: unknown, _b: unknown): unknown => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	protected keepOrder = (a: any, _b: any): any => {
 		return a;
 	};
 }
